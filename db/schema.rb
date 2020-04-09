@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2020_04_09_161317) do
     t.string "last_name"
     t.string "address"
     t.string "phone_number"
-    t.bigint "task_application_id", null: false
-    t.bigint "task_id", null: false
+    t.bigint "task_application_id"
+    t.bigint "task_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["task_application_id"], name: "index_users_on_task_application_id"

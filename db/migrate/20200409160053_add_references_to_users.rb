@@ -2,7 +2,7 @@
 
 class AddReferencesToUsers < ActiveRecord::Migration[6.0]
   def change
-    add_reference :users, :task_application, null: false, foreign_key: true
-    add_reference :users, :task, null: false
+    add_reference :users, :task_application, foreign_key: true
+    add_reference :users, :task
   end
 end
