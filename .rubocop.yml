@@ -1,0 +1,76 @@
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+    - "**/Gemfile"
+    - "**/*.gemspec"
+    - "**/*.rake"
+    - "**/*.rb"
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - db/**/*
+    - node_modules/**/*
+    - public/**/*
+    - script/**/*
+    - vendor/**/*
+  TargetRubyVersion: 2.7
+
+
+Metrics/BlockLength:
+  Max: 100
+
+Naming/MethodParameterName:
+  MinNameLength: 1
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+Layout/ClassStructure:
+  Enabled: true
+Layout/LineLength:
+  Max: 120
+
+Lint/RaiseException:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/EachWithObject:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Lambda:
+  EnforcedStyle: literal
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoredMethods:
+    [
+      "authorize",
+      "desc",
+      "gem",
+      "has_many",
+      "head",
+      "puts",
+      "raise",
+      "redirect_to",
+      "render",
+      "require",
+      "require_relative",
+      "ruby",
+      "run",
+      "separator",
+      "source",
+      "yield",
+    ]
+Style/MultilineMethodSignature:
+  Enabled: true
