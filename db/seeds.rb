@@ -26,8 +26,15 @@ Tag.destroy_all
   puts 'Creating User'
 end
 
+20.times do
+  Tag.new(
+    name: Faker::GreekPhilosophers.name
+  ).save
+  puts 'Creating Tag'
+end
+
 30.times do
-  Task.new(
+  task = Task.new(
     title: Faker::Job.field,
     description: Faker::GreekPhilosophers.quote,
     due_date: Faker::Date.forward,
@@ -35,8 +42,17 @@ end
     status: ['completed', 'in progress', 'pending'].sample,
     creator_id: User.all.sample.id,
     helper_id: User.all.sample.id
-  ).save
+  )
+  task.save
   puts 'Creating Task'
+
+  3.times do
+    TaskTag.new(
+      task_id: task.id,
+      tag_id: Tag.all.sample.id
+    ).save
+    puts 'Creating TaskTag'
+  end
 end
 
 50.times do
@@ -45,19 +61,4 @@ end
     task_id: Task.all.sample.id
   ).save
   puts 'Creating Task Application'
-end
-
-20.times do
-  Tag.new(
-    name: Faker::GreekPhilosophers.name
-  ).save
-  puts 'Creating Tag'
-end
-
-100.times do
-  TaskTag.new(
-    task_id: Task.all.sample.id,
-    tag_id: Tag.all.sample.id
-  ).save
-  puts 'Creating TaskTag'
 end
