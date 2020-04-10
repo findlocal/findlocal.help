@@ -16,7 +16,6 @@ AllCops:
     - vendor/**/*
   TargetRubyVersion: 2.7
 
-
 Metrics/BlockLength:
   Max: 100
 
@@ -51,7 +50,9 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/Lambda:
   EnforcedStyle: literal
-Style/MethodCallWithArgsParentheses:
+Style/CommentedKeyword:
+  Enabled: false
+Style/MethodCallWithArgsParentheses: # always use parentheses when you call a method, except:
   Enabled: true
   IgnoredMethods:
     [

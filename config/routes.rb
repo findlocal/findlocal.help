@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users # DON'T REMOVE, user routes are managed by devise!
+
+  # TODO: all the main routes we need in our app
+  # e.g. resources :tasks, only: [ :index ]
 end
