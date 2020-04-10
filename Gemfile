@@ -23,23 +23,21 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'devise'
-
 gem 'autoprefixer-rails'
+gem 'devise'
+gem 'faker'
 gem 'font-awesome-sass'
+gem 'rubocop'
+gem 'simple_form'
+
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'pry-byebug'
-  gem 'simple_form'
-
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-byebug' # call 'binding.pry' anywhere in the code to stop execution and get a debugger console
 end
 
 group :development do
@@ -53,5 +51,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'faker'
