@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :tasks, through: :task_applications
   has_many :creators, class_name: 'Task', foreign_key: 'creator_id'
   has_many :helpers, class_name: 'Task', foreign_key: 'helper_id'
+  has_one_attached :avatar
 
   def applications # alias
     task_applications
