@@ -1,31 +1,32 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # Constants at the top:
+  PHONE_REGEX = /\A(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*\z/
 
+  # Devise:
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
+  # Associations:
   has_many :task_applications
   has_many :tasks, through: :task_applications
-  has_many :creators, class_name: 'Task', foreign_key: 'creator_id'
-  has_many :helpers, class_name: 'Task', foreign_key: 'helper_id'
+  has_one_attached :avatar
 
-  def applications # alias
+  # Validations:
+  validates :first_name, :last_name, length: { minimum: 2, maximum: 20 }, presence: true
+  # use the regex from devise (it's just an helper the gem is giving us):
+  validates :email, format: { with: Devise::email_regexp, message: "is not a valid email" }
+  validates :phone_number, format: { with: PHONE_REGEX, message: "is not a valid phone number" }
+  validates_associated :task_applications, :tasks, :creators, :helpers
+
+  # Custom methods and aliases:
+  def applications
     task_applications
   end
-
-  def accepted_applications
-    # find all tasks where the current user was picked to be the helper
-    # (chances are in the current seed script there will be none)
+  
+  def assigned_tasks # find all tasks where the current user was assigned to be the helper
     tasks.where(helper: self)
   end
-
-  def created
-    creators
-  end
-
-  def helping
-    helpers
+  
+  def created_tasks # find all tasks where the current user is the creatir
+    tasks.where(creator: self)
   end
 end
