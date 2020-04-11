@@ -8,8 +8,6 @@ class User < ApplicationRecord
   # Associations:
   has_many :task_applications
   has_many :tasks, through: :task_applications
-  has_many :creators, class_name: 'Task', foreign_key: 'creator_id'
-  has_many :helpers, class_name: 'Task', foreign_key: 'helper_id'
   has_one_attached :avatar
 
   # Validations:
@@ -23,8 +21,12 @@ class User < ApplicationRecord
   def applications
     task_applications
   end
-
-  def accepted_applications # find all tasks where the current user was picked to be the helper
+  
+  def assigned_tasks # find all tasks where the current user was assigned to be the helper
     tasks.where(helper: self)
+  end
+  
+  def created_tasks # find all tasks where the current user is the creatir
+    tasks.where(creator: self)
   end
 end
