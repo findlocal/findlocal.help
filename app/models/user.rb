@@ -18,15 +18,15 @@ class User < ApplicationRecord
   validates_associated :task_applications, :tasks, :creators, :helpers
 
   # Custom methods and aliases:
-  def applications
+  def applications # just an alias
     task_applications
   end
-  
-  def assigned_tasks # find all tasks where the current user was assigned to be the helper
+
+  def accepted_tasks # find all tasks where the current user was picked to be the helper
     tasks.where(helper: self)
   end
-  
-  def created_tasks # find all tasks where the current user is the creatir
-    tasks.where(creator: self)
+
+  def created_tasks
+    tasks
   end
 end
