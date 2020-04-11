@@ -6,11 +6,13 @@ This is a web app where people can help each other complete tasks during COVID-1
 
 Clone the repository, install the gems and packages, and run the migrations and seeds:
 
+```sh
 git clone git@github.com:jones-sam/local-help
 cd local-help
 bundle
 yarn
 rails db:migrate db:seed
+```
 
 ### Cloudinary
 
