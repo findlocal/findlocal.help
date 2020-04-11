@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # TODO: all the main routes we need in our app
 
-  get '/', to: 'application#index' #homepage
+  get '/', to: 'pages#index' #homepage
 
   resources :tasks, only: [:index, :show, :edit, :create, :update, :destroy] do
     resources :tags, only: [:index, :create, :update, :destroy]
