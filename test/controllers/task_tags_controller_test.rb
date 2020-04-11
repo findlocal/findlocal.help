@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TaskTagControllerTest < ActionDispatch::IntegrationTest
+class TaskTagsControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
     get task_tag_create_url
     assert_response :success
