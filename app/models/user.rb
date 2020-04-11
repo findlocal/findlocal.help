@@ -18,6 +18,14 @@ class User < ApplicationRecord
   def accepted_applications
     # find all tasks where the current user was picked to be the helper
     # (chances are in the current seed script there will be none)
-    tasks.where(helper: id)
+    tasks.where(helper: self)
+  end
+
+  def created
+    creators
+  end
+
+  def helping
+    helpers
   end
 end
