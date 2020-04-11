@@ -15,7 +15,7 @@ class User < ApplicationRecord
   # use the regex from devise (it's just an helper the gem is giving us):
   validates :email, format: { with: Devise::email_regexp, message: "is not a valid email" }
   validates :phone_number, format: { with: PHONE_REGEX, message: "is not a valid phone number" }
-  validates_associated :task_applications, :tasks, :creators, :helpers
+  validates_associated :task_applications, :tasks
 
   # Custom methods and aliases:
   def applications # just an alias
