@@ -1,15 +1,13 @@
 class Task < ApplicationRecord
-  belongs_to :creator, class_name: 'User'
-  belongs_to :helper, class_name: 'User'
-  has_many :task_tags
+  # Associations
+  belongs_to :creator, class_name: "User"
+  belongs_to :helper, class_name: "User"
+  has_many :helps, dependent: :destroy
+  has_many :task_tags, dependent: :destroy
   has_many :tags, through: :task_tags
-  has_many :task_applications
-  has_many_attached :photos
+  has_many_attached :photos, dependent: :destroy
 
-  def applications # alias
-    task_applications
-  end
-
+  # Validations
   validates :title, :description, :location, :status, presence: true
   validates_associated :task_tags, :tags
 end

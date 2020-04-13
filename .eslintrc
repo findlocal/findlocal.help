@@ -1,0 +1,45 @@
+{
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules"]
+      }
+    }
+  },
+  "globals": {
+    "module": true,
+    "process": true,
+    "Promise": true,
+    "require": true
+  },
+  "rules": {
+    "max-lines": 2,
+    "no-console": 1,
+    "no-var": 2,
+    "object-shorthand": [2, "always"],
+    "prefer-const": [
+      2,
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "quotes": [2, "single", "avoid-escape"],
+    "sort-keys": 0,
+    "sort-vars": [
+      1,
+      {
+        "ignoreCase": false
+      }
+    ]
+  }
+}

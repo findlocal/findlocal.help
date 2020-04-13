@@ -1,32 +1,30 @@
 class User < ApplicationRecord
-  # Constants at the top:
-  PHONE_REGEX = /\A(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*\z/
+  # N.B: the order of the methods is not important, but can help organize the different parts of the model
 
-  # Devise:
+  # 1. Constants
+  PHONE_REGEX = /\A(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*\z/.freeze # .freeze is to make it an actual costant
+
+  # 2. Devise -> https://github.com/heartcombo/devise/wiki
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  # Associations:
-  has_many :task_applications
-  has_many :tasks, through: :task_applications
-  has_one_attached :avatar
+  # 3. Associations
+  has_many :helps, dependent: :destroy
+  has_many :tasks, through: :helps
+  has_one_attached :avatar, dependent: :destroy
 
-  # Validations:
+  # 4. Validations
   validates :first_name, :last_name, length: { minimum: 2, maximum: 20 }, presence: true
-  # use the regex from devise (it's just an helper the gem is giving us):
-  validates :email, format: { with: Devise::email_regexp, message: "is not a valid email" }
+  validates :email, format: { with: Devise.email_regexp, message: "is not a valid email" } # the regex here is from devise
   validates :phone_number, format: { with: PHONE_REGEX, message: "is not a valid phone number" }
-  validates_associated :task_applications, :tasks
 
-  # Custom methods and aliases:
-  def applications # just an alias
-    task_applications
-  end
-
-  def accepted_tasks # find all tasks where the current user was picked to be the helper
-    tasks.where(helper: self)
-  end
-
+  # 5. Custom methods
+  # All tasks created by the user
   def created_tasks
-    tasks
+    tasks.where(creator: self) # *self* refers to the instance of the user
+  end
+
+  # All tasks where the current user was picked to be the helper
+  def helper_tasks
+    tasks.where(helper: self)
   end
 end

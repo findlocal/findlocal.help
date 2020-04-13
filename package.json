@@ -7,10 +7,16 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint": "^6.8.0",
     "webpack-dev-server": "^3.10.3"
+  },
+  "scripts": {
+    "lint": "rubocop; ./node_modules/.bin/eslint ./app/javascript"
   }
 }

@@ -14,7 +14,11 @@ AllCops:
     - public/**/*
     - script/**/*
     - vendor/**/*
+    - "**/*.erb"
   TargetRubyVersion: 2.7
+
+Bundler/OrderedGems:
+  Enabled: false
 
 Metrics/BlockLength:
   Max: 100
@@ -27,7 +31,7 @@ Lint/AmbiguousBlockAssociation:
 Layout/ClassStructure:
   Enabled: true
 Layout/LineLength:
-  Max: 120
+  Max: 140
 
 Lint/RaiseException:
   Enabled: false
@@ -45,6 +49,8 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 Style/EachWithObject:
+  Enabled: false
+Style/EmptyMethod:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -71,7 +77,13 @@ Style/MethodCallWithArgsParentheses: # always use parentheses when you call a me
       "run",
       "separator",
       "source",
-      "yield",
+      "system",
+      "task",
+      "yield"
     ]
 Style/MultilineMethodSignature:
   Enabled: true
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/SymbolArray:
+  Enabled: false

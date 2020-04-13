@@ -2,14 +2,13 @@ class TasksController < ApplicationController
   def index
   end
 
-  def show #we probably don't need this since we can just use a model on the same page
+  def new
   end
-  
-  def edit
-  end
-
 
   def create
+  end
+
+  def edit
   end
 
   def update

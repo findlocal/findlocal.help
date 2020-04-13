@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_161014) do
+ActiveRecord::Schema.define(version: 2020_04_11_155221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,19 +36,19 @@ ActiveRecord::Schema.define(version: 2020_04_10_161014) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "task_applications", force: :cascade do |t|
+  create_table "helps", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["task_id"], name: "index_task_applications_on_task_id"
-    t.index ["user_id"], name: "index_task_applications_on_user_id"
+    t.index ["task_id"], name: "index_helps_on_task_id"
+    t.index ["user_id"], name: "index_helps_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "task_tags", force: :cascade do |t|
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_161014) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "task_applications", "tasks"
-  add_foreign_key "task_applications", "users"
+  add_foreign_key "helps", "tasks"
+  add_foreign_key "helps", "users"
   add_foreign_key "task_tags", "tags"
   add_foreign_key "task_tags", "tasks"
 end
