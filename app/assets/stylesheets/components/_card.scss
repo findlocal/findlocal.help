@@ -3,6 +3,12 @@
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   height: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-trip:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .card-trip > img {
@@ -20,7 +26,7 @@
 .card-trip p {
   font-size: 12px;
   opacity: 0.7;
-  margin: 0;
+  margin-top: 0;
 }
 
 .card-trip .card-trip-infos {
@@ -41,22 +47,15 @@
 .bottom {
   margin: 0 16px 16px 16px;
   padding: auto;
-  display: flex;
+  display: flex wrap;
   align-items: center;
-}
-
-.tags {
-  width: 75%;
 }
 
 .tag {
   border: 1px solid grey;
   border-radius: 10px;
   padding: 2px 3px;
+  margin: 2px;
   max-width: fit-content;
   display: inline-flex;
-}
-
-.view-button {
-  margin-left: auto;
 }

@@ -1,11 +1,12 @@
 <div class="container">
-    <h1 class="my-4">City</h1>
+    <h1 class="city-title">Milan</h1>
 
     <div class="row">
 
         <% @tasks.each do |task| %>
-        <% if task.status == "pending" %>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+        <%# only showing tasks that are looking for helpers %>
+        <% if task.status == "pending"  %>
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
             <%= render "shared/card",
             photo: "https://picsum.photos/500",
             title: task.title,
@@ -15,8 +16,14 @@
             tags: task.tags
                %>
 
+            <!-- Modal -->
+            <%= render 'shared/task_modal',
+            title: task.title,
+            modalId: "taskModal#{task.id}"
+            %>
         </div>
         <% end %>
         <% end %>
+
     </div>
 </div>
