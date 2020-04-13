@@ -1,7 +1,4 @@
-class TagsController < ApplicationController
-  def index
-  end
-
+class HelpsController < ApplicationController
   def create
   end
 

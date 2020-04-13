@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
 
   devise_for :users # DON'T REMOVE, user routes are managed by devise!
 
-  # TODO: all the main routes we need in our app
-
-  root to: 'pages#index'
-
-  resources :tasks, only: [:index, :show, :edit, :create, :update, :destroy] do
-    resources :task_applications, only: [:index, :create, :destroy]
+  resources :tasks, except: [:show] do
+    # Everything inside here is related to a specific task
+    resources :helps, only: [:create, :update, :destroy]
   end
   resources :tags, only: [:index, :create, :update, :destroy]
-  
 end

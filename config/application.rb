@@ -1,18 +1,18 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
 require "active_record/railtie"
+require "active_model/railtie"
 require "active_storage/engine"
+require "active_job/railtie"
 require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
 require "action_view/railtie"
+require "action_text/engine"
 require "action_cable/engine"
 require "sprockets/railtie"
+# require "action_mailer/railtie"
+# require "action_mailbox/engine"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -24,7 +24,8 @@ module LocalHelp
     config.generators do |generate|
       generate.assets false
       generate.helper false
-      generate.test_framework :test_unit, fixture: false
+      # Temporarily disable tests:
+      # generate.test_framework :test_unit, fixture: false
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0

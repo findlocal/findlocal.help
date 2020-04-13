@@ -1,5 +1,5 @@
 require "test_helper"
 
-class UserTest < ActiveSupport::TestCase
+class HelpTest < ActiveSupport::TestCase
   # TODO: test this model
 end
