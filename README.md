@@ -19,3 +19,7 @@ rails db:migrate db:seed
 You need to connect a [Cloudinary](https://cloudinary.com/users/register/free) account in order to store and fetch images with Active Storage.
 
 Create an `.env` file at the root of the repository, then copy and paste your `CLOUDINARY_URL` there.
+
+### Lint
+
+One default task has been defined in the `Rakefile`, executing `rubocop` and `eslint`. Launch it with just `rake`.
