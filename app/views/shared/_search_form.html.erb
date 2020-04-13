@@ -1,12 +1,20 @@
 <div class="container">
   <%= simple_form_for tasks_path, method: :get do |f| %>
-    <div class="form-inputs">
-      <%= f.input :location %>
-      <%= f.input :due_date %>
-      <p>MB: NEED TO CONNECT THE TASK TAG IN HERE</p>
+  <div class="form-inputs">
+    <%= f.input :location %>
+    <div class="form-group">
+      <div class='input-group date' id='datetimepicker3'>
+        <input type='text' class="form-control" />
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+      </div>
     </div>
-    <div class="form-actions">
-      <%= f.submit "Search", class: "btn-outline-secondary"%>
-    </div>
+    <%= f.input :due_date %>
+    <%= f.input :task_tags %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Search", class: "btn-outline-secondary"%>
+  </div>
   <% end %>
 </div>
