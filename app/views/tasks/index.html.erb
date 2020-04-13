@@ -1,2 +1,18 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<div class="container">
+    <h1 class="my-4">City</h1>
+
+    <div class="row">
+        <% @tasks.each do |task| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <%= render "shared/card",
+            photo: "https://picsum.photos/500",
+            title: task.title,
+            description: task.description,
+            avatar: "https://picsum.photos/100",
+            due_date: "12h"
+               %>
+
+        </div>
+        <% end %>
+    </div>
+</div>

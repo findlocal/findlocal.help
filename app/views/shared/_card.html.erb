@@ -1,11 +1,11 @@
 <div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <%= image_tag(photo) %>
   <div class="card-trip-infos">
     <div>
-      <h2>Card Placeholder</h2>
-      <p>Short description here!</p>
+      <h2><%= title %></h2>
+      <p><%= description %></p>
     </div>
-    <h2 class="card-trip-pricing">To change</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <h2 class="card-trip-pricing"><%= due_date %></h2>
+    <%= image_tag avatar, class: "card-trip-user avatar-bordered" %>
   </div>
 </div>
