@@ -18,7 +18,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def update?
-    edit?
+    record.creator = user
   end
 
   def destroy?
