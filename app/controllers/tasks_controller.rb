@@ -1,15 +1,19 @@
 class TasksController < ApplicationController
   def index
-     @tasks = policy_scope(Tasks)
+     @tasks = policy_scope(Task)
   end
 
   def new
+    @task = Task.new
+  end
+  
+  def edit
+
   end
 
   def create
-  end
-
-  def edit
+    @task = Task.new(task_params)
+    authorize @task
   end
 
   def update
@@ -17,10 +21,10 @@ class TasksController < ApplicationController
 
   def destroy
     @tasks = Tasks.find(params[:id])
-    authorize @tasks
+    authorize @task
+    @task.destroy
+    flash[:notice] = "\"#{@task.title}\" was successfully deleted."
+    redirect_to @task
 
-    @tasks.destroy
-    flash[:notice] = "\"#{@tasks.title}\" was successfully deleted."
-    redirect_to @tasks
   end
 end

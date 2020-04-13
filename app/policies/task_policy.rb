@@ -1,21 +1,27 @@
 class TaskPolicy < ApplicationPolicy
   class Scope < Scope
-    def resolve
-      scope.all
-    end
     
-    def initialize(user, task)
-    @user = user
-    @task = task
-	end
+  def resolve
+    scope.where(user: current_user)
+  end
+
+  def index?
+    true
+  end
 
 	def create
-		user.present? #all users can create tasks
-  	end
+    new?
+  end
 
-  	def update?
-      user.creator? #only permit the creator of the task to update the task
-  	end
+  def new?
+    user
+  end
 
+  def update?
+    edit?
+  end
+
+  def destroy?
+    record.creator = user
   end
 end
