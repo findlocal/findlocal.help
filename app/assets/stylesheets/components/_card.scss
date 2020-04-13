@@ -30,11 +30,19 @@
 }
 
 .card-trip .card-trip-infos {
+  height: 125px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+}
+
+.card-trip .card-trip-infos p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .card-trip-infos .card-trip-user {
