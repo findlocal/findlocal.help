@@ -28,7 +28,7 @@ puts "Creating tasks with helps..."
 100.times do
   task = Task.create(
     title: Faker::Job.field,
-    description: Faker::GreekPhilosophers.quote,
+    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 16),
     due_date: Faker::Date.forward,
     location: Faker::Address.city,
     status: ["completed", "in progress", "pending"].sample,
