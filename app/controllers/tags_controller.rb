@@ -3,11 +3,14 @@ class TagsController < ApplicationController
   end
 
   def create
+  	user.creator?
   end
 
   def update
+  	user.creator?
   end
 
   def destroy
+  	user.creator?
   end
 end
