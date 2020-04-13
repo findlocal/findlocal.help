@@ -1,0 +1,5 @@
+<% if policy(@tasks).destroy? %>
+    <%= link_to "Delete", @tasks, method: :delete, class: 'btn btn-danger' %>
+<% end %>
+
+<!-- only permitted creators will be able to delete tasks -->

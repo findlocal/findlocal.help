@@ -6,4 +6,10 @@ class TasksPolicy < ApplicationPolicy
 
 	def create
   end
+
+  def update?
+      user.creator? #only permit the creator of the task to update the task
+  end
+
+
 end
