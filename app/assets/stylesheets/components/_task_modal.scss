@@ -1,0 +1,27 @@
+.user-photo-and-name {
+  text-align: center;
+  h6 {
+    margin-top: 4px;
+  }
+  img {
+    border-radius: 200px;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.carousel-photo {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.modal-tags {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.modal-body .tag {
+  font-size: 12px;
+}

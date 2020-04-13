@@ -2,7 +2,8 @@
     <h1 class="city-title">Milan</h1>
 
     <div class="row">
-
+        <%# TODO: Add actual photos from task and user models %>
+        <%# TODO: Add function to calculate due date %>
         <% @tasks.each do |task| %>
         <%# only showing tasks that are looking for helpers %>
         <% if task.status == "pending"  %>
@@ -13,15 +14,23 @@
             description: task.description,
             avatar: "https://picsum.photos/100",
             due_date: "12h",
-            tags: task.tags
+            tags: task.tags,
+            user_name: task.creator.first_name
                %>
-
-            <!-- Modal -->
-            <%= render 'shared/task_modal',
-            title: task.title,
-            modalId: "taskModal#{task.id}"
-            %>
         </div>
+
+        <!-- Modal -->
+        <%= render 'shared/task_modal',
+            title: task.title,
+            taskId: task.id,
+            description: task.description,
+            avatar: "https://picsum.photos/200",
+            user_name: task.creator.first_name,
+            photos: ["https://picsum.photos/600", "https://picsum.photos/601", "https://picsum.photos/602", "https://picsum.photos/603"],
+            tags: task.tags,
+            due_date: "12h"
+
+            %>
         <% end %>
         <% end %>
 
