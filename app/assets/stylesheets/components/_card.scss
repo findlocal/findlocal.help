@@ -6,6 +6,16 @@
   transition: all 0.2s ease-in-out;
 }
 
+.card-time-left {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: black;
+  background-color: white;
+  padding: 4px;
+  border-radius: 50px;
+}
+
 .card-trip:hover {
   transform: scale(1.05);
   cursor: pointer;
@@ -30,6 +40,7 @@
 }
 
 .card-trip .card-trip-infos {
+  color: black;
   height: 125px;
   padding: 16px;
   display: flex;
@@ -52,6 +63,15 @@
   width: 40px;
 }
 
+.card-trip-infos .card-user-name {
+  position: absolute;
+  right: 16px;
+  top: 25px;
+  width: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .bottom {
   margin: 0 16px 16px 16px;
   padding: auto;
@@ -64,6 +84,7 @@
   border-radius: 10px;
   padding: 2px 3px;
   margin: 2px;
+  opacity: 50%;
   max-width: fit-content;
   display: inline-flex;
 }
