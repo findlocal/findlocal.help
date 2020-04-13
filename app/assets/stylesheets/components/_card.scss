@@ -1,7 +1,8 @@
 .card-trip {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  height: 100%;
 }
 
 .card-trip > img {
@@ -18,10 +19,9 @@
 
 .card-trip p {
   font-size: 12px;
-  opacity: .7;
+  opacity: 0.7;
   margin: 0;
 }
-
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -36,4 +36,27 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.bottom {
+  margin: 0 16px 16px 16px;
+  padding: auto;
+  display: flex;
+  align-items: center;
+}
+
+.tags {
+  width: 75%;
+}
+
+.tag {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 2px 3px;
+  max-width: fit-content;
+  display: inline-flex;
+}
+
+.view-button {
+  margin-left: auto;
 }

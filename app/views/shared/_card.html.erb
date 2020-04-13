@@ -8,4 +8,12 @@
     <h2 class="card-trip-pricing"><%= due_date %></h2>
     <%= image_tag avatar, class: "card-trip-user avatar-bordered" %>
   </div>
+  <div class="bottom">
+    <div class="tags">
+      <% tags.max(4).each do |tag| %>
+      <p class="tag shadow-sm"><%= tag.name %></p>
+      <% end %>
+    </div>
+    <button class="btn btn-sm btn-dark view-button">View</button>
+  </div>
 </div>
