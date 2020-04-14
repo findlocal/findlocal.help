@@ -1,0 +1,51 @@
+<div class="container">
+  <br>
+  <h1 class="text-center">Hi <%= current_user.first_name %>!</h1>
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <div class="left-side">
+        <h5 class="text-center">Tasks you created</h5>
+        <% @created_tasks.each do |task| %>
+          <div style="max-width: 95%" class="col-12 col-sm-12 col-md-6 col-lg-4 col-lg-4 card border-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %> mb-3">
+            <div class="card-body text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
+              <h5 class="card-title"><%= task.title %></h5>
+              <hr>
+              <p class="card-text"><%= task.description %></p>
+              <p>This task was created by <%= task.creator.first_name %> <%= task.creator.last_name %></p>
+              <p class="text-right"><%= task.status.upcase %></p>
+              <% if task.status == 'in progress' || task.status == 'pending' %>
+                <%= link_to root_path do %>
+                  <p class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>"><i class="fas fa-pen"></i></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="right-side">
+        <h5 class="text-center">Tasks you applied for</h5>
+        <% @helper_tasks.each do |task| %>
+          <div style="max-width: 95%" class="col-12 col-sm-12 col-md-6 col-lg-4 col-lg-4 card border-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %> mb-3">
+            <div class="card-body text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
+              <h5 class="card-title"><%= task.title %></h5>
+              <hr>
+              <p class="card-text"><%= task.description %></p>
+              <p>This task was created by <%= task.creator.first_name %> <%= task.creator.last_name %></p>
+              <p class="text-right"><%= task.status.upcase %></p>
+              <% help = task.helps.find_by(user: current_user) %>
+              <% if task.status == 'in progress' %>
+                <%= link_to task_help_path(task, help), method: :delete, data: { confirm: "Are you sure?"} do %>
+                  <p class="text-primary"><i class="fas fa-undo"></i>   Cancel application</p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
