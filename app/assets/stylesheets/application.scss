@@ -4,11 +4,6 @@
 @import "config/bootstrap_variables";
 
 // External libraries
-// Needing sprockets - datetimepicker for the calendar dropdown 
-// @import 'bootstrap-sprockets';
-// @import 'bootstrap';
-// @import 'bootstrap-datetimepicker';
-
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -16,3 +11,5 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+*= require bootstrap-datepicker // for css
