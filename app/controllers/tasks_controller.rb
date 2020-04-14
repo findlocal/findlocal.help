@@ -1,9 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task
-
   def index
     @tasks = Task.all
-
   end
 
   def new
@@ -21,18 +18,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id].to_i)
     @task.destroy
 
+    flash[:alert] = "Task successfully deleted."
     redirect_to dashboard_path
-  end
-
-  private
-
-  def set_task
-    @task = Task.find(params[:id])
-  end
-
-  def task_params
-    params.require(:task).permit(:title, :description, :due_date, :location, :photos, :status, :creator_id, :helper_id)
   end
 end
