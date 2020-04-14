@@ -1,25 +1,37 @@
 <div class="container">
   <%= simple_form_for tasks_path, method: :get do |f| %>
   <form>
- <div class="form-group">
-      <div class='input-group date' id='datetimepicker3'>
-        <input type='text' class="form-control" />
-      </div>
-    <%= f.input :location %>
+    <div class="form-group">
+      <label for="location">City</label>
+      <input type='text' class="form-control" placeholder="Your location">
+    </div>
+
+
     <div class="form-group">
       <div class='input-group date' id='datetimepicker3'>
-        <input type='text' class="form-control" />
+        <label for="due_date">Due Date</label>
+        <input type='text' class="form-control" placeholder="Date">
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-time"></span>
         </span>
       </div>
     </div>
-    <%= f.input :due_date %>
-    <%= f.input :task_tags %>
-  </div>
-  <div class="form-actions">
-    <%= f.submit "Search", class: "btn-outline-secondary"%>
-  </div>
-  <% end %>
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+
+
+    <div class="form-group">
+      <label for="task_tags">Task Tags</label>
+      <input type='text' class="form-control" placeholder="Task Category">
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Search", class: "btn-outline-secondary"%>
+    </div>
+    <% end %>
   </form>
 </div>
