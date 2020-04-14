@@ -18,10 +18,10 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def update?
-    record.creator = user
+    record.creator == user
   end
 
   def destroy?
-    record.creator = user
+    record.creator == user
   end
 end
