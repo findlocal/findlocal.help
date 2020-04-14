@@ -1,6 +1,10 @@
 <div class="container">
   <%= simple_form_for tasks_path, method: :get do |f| %>
-  <div class="form-inputs">
+  <form>
+ <div class="form-group">
+      <div class='input-group date' id='datetimepicker3'>
+        <input type='text' class="form-control" />
+      </div>
     <%= f.input :location %>
     <div class="form-group">
       <div class='input-group date' id='datetimepicker3'>
@@ -17,4 +21,5 @@
     <%= f.submit "Search", class: "btn-outline-secondary"%>
   </div>
   <% end %>
+  </form>
 </div>
