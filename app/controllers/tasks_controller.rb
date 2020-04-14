@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task
+
   def index
     @tasks = Task.all
 
@@ -19,12 +21,15 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task.destroy
+
+    redirect_to dashboard_path
   end
 
   private
 
   def set_task
-    @cocktail = Cocktail.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def task_params
