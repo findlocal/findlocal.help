@@ -12,10 +12,7 @@
 
 <body>
 
-  <% unless request.env['PATH_INFO'] == "/" %>
   <%= render 'shared/navbar' %>
-  <% end %>
-
   <%= render 'shared/flashes' %>
   <%= yield %>
 </body>
