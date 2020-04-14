@@ -14,8 +14,20 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task.update(task_params)
+    redirect_to dashboard_path
   end
 
   def destroy
+  end
+
+  private
+
+  def set_task
+    @cocktail = Cocktail.find(params[:id])
+  end
+
+  def task_params
+    params.require(:task).permit(:title, :description, :due_date, :location, :photos, :status, :creator_id, :helper_id)
   end
 end
