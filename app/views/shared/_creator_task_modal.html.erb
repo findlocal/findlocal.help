@@ -1,0 +1,29 @@
+<div id="modal<%= taskId %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-3">
+      <div>
+        <div class="d-flex justify-content-between">
+          <h1><%= title %></h1>
+          <p>
+            <%= link_to edit_task_path(taskId) do %>
+              <i class="fas fa-pen"></i>
+            <% end %>
+            <%= link_to task_path(taskId), method: :delete, data: { confirm: "Are you sure?"} do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </p>
+        </div>
+        <div class="d-flex justify-content-between">
+
+        <h5>Location: <%= location %></h5>
+        <p class="text-right text-<%= status == "pending" ? "secondary" : status == "completed" ? "success" : "primary" %>"><%= status.upcase %></p>
+        </div>
+        <h6>Due Date: <%= due_date %></h6>
+        <p><%= description * 5 %></p>
+        <% task_tags.each do |tag| %>
+          <span class="tag card-text"><%= tag.name %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

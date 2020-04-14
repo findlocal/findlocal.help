@@ -11,45 +11,24 @@
             <h5 class="card-title"><%= task.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= task.location %></h6>
             <p class="card-text">Due date: <%= task.due_date %></p>
-
             <br>
-
-
             <div class="d-flex justify-content-between">
               <p class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>"><%= task.status.upcase %></p>
-
-              <!-- Large modal -->
+              <!-- Modal -->
               <p type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#modal<%= task.id %>">More info</p>
-              <div id="modal<%= task.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content p-3">
-                    <div>
-                      <div class="d-flex justify-content-between">
-                        <h1><%= task.title %></h1>
-                        <p>
-                          <%= link_to edit_task_path(task) do %>
-                            <i class="fas fa-pen"></i>
-                          <% end %>
-                          <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?"} do %>
-                            <i class="fas fa-trash-alt"></i>
-                          <% end %>
-                        </p>
-                      </div>
-                      <div class="d-flex justify-content-between">
-
-                      <h5>Location: <%= task.location %></h5>
-                      <p class="text-right text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>"><%= task.status.upcase %></p>
-                      </div>
-                      <h6>Due Date: <%= task.due_date %></h6>
-                      <p><%= task.description * 5 %></p>
-                      <% task.tags.each do |tag| %>
-                        <span class="tag card-text"><%= tag.name %></span>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              <%= render 'shared/creator_task_modal',
+                  title: task.title,
+                  taskId: task.id,
+                  description: task.description,
+                  location: task.location,
+                  avatar: "https://picsum.photos/200",
+                  user_name: task.creator.first_name,
+                  photos: ["https://picsum.photos/600", "https://picsum.photos/601", "https://picsum.photos/602", "https://picsum.photos/603"],
+                  tags: task.tags,
+                  due_date: "12h",
+                  task_tags: task.tags,
+                  status: task.status
+              %>
             </div>
           </div>
         </div>
