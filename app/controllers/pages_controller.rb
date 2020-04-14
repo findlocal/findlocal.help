@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @tags = Tag.all
-
+    @tasks = Task.all
+@helps = Help.all
   end
 end
