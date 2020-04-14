@@ -21,6 +21,10 @@ gem "devise"
 gem "faker"
 gem "font-awesome-sass"
 gem "simple_form"
+gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 group :development, :test do
   gem "dotenv-rails" # use a private '.env' file to store your keys
