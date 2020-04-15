@@ -3,9 +3,9 @@
     <div class="container pt-3">
       <div class="row justify-content-center">
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="sign-up-form">
+          <div class="background-form">
             <h2 class="text-center">Local Help</h2>
-            <p>Join us now</p>
+            <h6>Join us now</h6>
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= f.error_notification %>
 
@@ -34,7 +34,7 @@
               </div>
             <% end %>
             <br>
-            <p id="already-member">Already a member? <%= render "devise/shared/links" %></p>
+            <h6>Already a member? <%= render "devise/shared/links" %></h6>
           </div>
         </div>
       </div>

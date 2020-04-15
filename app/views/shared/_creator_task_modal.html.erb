@@ -11,7 +11,7 @@
         <p class="text-right text-<%= status == "pending" ? "secondary" : status == "completed" ? "success" : "primary" %>"><%= status.upcase %></p>
         <h6>Location: <%= location %></h6>
         <h6>Due Date: <%= due_date %></h6>
-        <p><%= description * 5 %></p>
+        <p><%= description %></p>
         <% task_tags.each do |tag| %>
           <span class="tag card-text"><%= tag.name %></span>
         <% end %>
