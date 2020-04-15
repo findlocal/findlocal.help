@@ -21,7 +21,6 @@ gem "devise"
 gem "faker"
 gem "font-awesome-sass"
 gem "simple_form"
-gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem "dotenv-rails" # use a private '.env' file to store your keys
