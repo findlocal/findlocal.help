@@ -7,5 +7,4 @@ require('channels')
 // Packages
 import 'bootstrap'
 
-//= require bootstrap-datepicker // for js
 
