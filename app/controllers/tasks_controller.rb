@@ -2,7 +2,16 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.order(:due_date)
+    if params[:search].present?
+      location = params[:search][:location]
+      due_date = Date.parse(params[:search][:due_date])
+      task_tags = params[:search][:task_tags]
+      @tasks_location_search = Task.where("location ILIKE ?", "%#{location}%")
+      @tasks_tags_search = @tasks_location_search.joins(:tags).where(tags: {name:task_tags})
+      @tasks = @tasks_tags_search.where('due_date > ?', due_date)
+    else
+      @tasks = Task.order(:due_date)
+    end
   end
 
   def new

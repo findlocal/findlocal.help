@@ -6,5 +6,6 @@ require('channels')
 
 // Packages
 import 'bootstrap'
+import "../plugins/flatpickr"
 
 
