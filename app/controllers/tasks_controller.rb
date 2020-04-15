@@ -10,7 +10,7 @@ class TasksController < ApplicationController
       @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
       @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
     else
-      @tasks = Task
+      @tasks = Task.all
     end
     @tasks.order!(:due_date)
   end
