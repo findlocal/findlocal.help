@@ -13,7 +13,7 @@
             title: task.title,
             description: task.description,
             avatar: task.creator.avatar,
-            due_date: "12h",
+            due_date: (task.due_date - Date.today).round,
             tags: task.tags,
             user_name: task.creator.first_name
                %>
@@ -28,7 +28,7 @@
             user_name: task.creator.first_name,
             photos: task.photos,
             tags: task.tags,
-            due_date: "12h"
+            due_date: (task.due_date - Date.today).round
 
             %>
         <% end %>
