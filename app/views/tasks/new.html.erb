@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+
+			<h1>Create New Task</h1>
+			<%= simple_form_for @task do |f|	 %>
+			<%= f.input :title %>
+			<%= f.input :description, as: :text %>
+			<%= f.input :location, label: "Location" %>
+			<%= f.input :due_date, label: "Date due by", as: :datetime %>
+			<%= f.label :photos, "Add Photos" %>
+			<br>
+			<%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
+			<br>
+			<br>
+			<%= f.label :tags, "Add Tags" %>
+			<div class="form-tags">
+				<%= f.association :tags, as: :check_boxes, label: "" %>
+
+			</div>
+			<%= f.button :submit, class: "btn btn-success" %>
+			<% end %>
+		</div>
+	</div>
+
+</div>
