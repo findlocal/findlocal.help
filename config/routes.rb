@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :helps, only: [:create, :update, :destroy]
   end
   resources :tags, only: [:index, :create, :update, :destroy]
+
+  get '/dashboard', to: 'pages#dashboard', as: :dashboard
 end
