@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   # All tasks where the current user was picked to be the helper
   def helper_tasks
-    tasks.where(helper: self)
+    Task.where(helper: self)
+  end
+
+  def applied_to_help
+    Help.where(user: self)
   end
 end
