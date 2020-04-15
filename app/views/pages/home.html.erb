@@ -6,31 +6,33 @@
     <div class="col-8">
       <div class="row row-cols-2">
         <div class="col py-2 my-2">
-        <div> Create a task </div>
+          <div> Create a task </div>
           <% @tasks.each do |task|  %>
           <%= render "shared/card",
-            title: task.title,
-            description: task.description,
-            # avatar: current_user.avatar,
-            due_date: "12h",
-            tags: task.tags,
-            user_name: task.creator.first_name%>
+              photo: task.photos.empty? ? "https://picsum.photos/100" : task.photos[0],
+              title: task.title,
+              description: task.description,
+              avatar: task.creator.avatar,
+              due_date: "12h",
+              tags: task.tags,
+              user_name: task.creator.first_name%>
           <% end %>
         </div>
 
         <div class="col py-2 my-2">
-        <div>Browse</div>
-        <% @tasks.each do |task|  %>
-        <% if task.status == "pending" %>
-        <%= render "shared/card",
-            title: task.title,
-            description: task.description,
-            # avatar: current_user.avatar,
-            due_date: "12h",
-            tags: task.tags,
-            user_name: task.creator.first_name%>
-        <% end %>
-        <% end %>
+          <div>Browse</div>
+          <% @tasks.each do |task|  %>
+            <% if task.status == "pending" %>
+              <%= render "shared/card",
+                photo: task.photos.empty? ? "https://picsum.photos/100" : task.photos[0],
+                title: task.title,
+                description: task.description,
+                avatar: task.creator.avatar,
+                due_date: "12h",
+                tags: task.tags,
+                user_name: task.creator.first_name%>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
