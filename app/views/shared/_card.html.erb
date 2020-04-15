@@ -11,7 +11,11 @@
       <h2><%= title %></h2>
       <p><%= description %></p>
     </div>
-    <%= image_tag avatar, class: "card-trip-user avatar-bordered" %>
+    <% if avatar.attached? %>
+      <%= cl_image_tag avatar.key, class: "card-trip-user avatar-bordered" %>
+    <% else %>
+      <%= image_tag "user-placeholder.png", class: "card-trip-user avatar-bordered" %>
+    <% end %>
     <p class="card-user-name"><%= user_name %></p>
   </div>
   <div class="bottom">
