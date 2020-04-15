@@ -11,11 +11,17 @@
 
 .search-form-control .form-control {
   height: 3.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e7e7e7;
 }
 
 .search-form-control .form-control:focus {
-  border: 1px solid #1EDD88;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #1edd88;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+label {
+  font-size: 32px;
+  font-weight: 600;
+  color: black;
 }

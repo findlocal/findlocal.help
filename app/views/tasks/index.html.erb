@@ -9,7 +9,7 @@
         <% if task.status == "pending"  %>
         <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
             <%= render "shared/card",
-            photo: task.photos.empty? ? "https://picsum.photos/100" : task.photos[0],
+            photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
             title: task.title,
             description: task.description,
             avatar: task.creator.avatar,

@@ -1,10 +1,75 @@
 // Specific CSS for your home-page
 
-.tag {
-  font-size: 10px;
-  color: grey;
-  border: 1px solid grey;
-  background-color: white;
-  padding: 4px;
-  border-radius: 2px;
+//not sure why this was here -sam
+// .tag {
+//   font-size: 10px;
+//   color: grey;
+//   border: 1px solid grey;
+//   background-color: white;
+//   padding: 4px;
+//   border-radius: 2px;
+// }
+
+.main-home-container {
+  background-image: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  @media (max-width: 1139px) {
+    overflow-y: scroll;
+    background: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg") no-repeat center
+      center;
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
+.second-container {
+  height: calc(100vh - 56px);
+  align-items: center;
+  // justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-search-box {
+  background-color: whitesmoke;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  padding: 32px;
+  // height: 450px;
+  // width: 450px;
+  border-radius: 16px;
+
+  margin-left: 20%;
+
+  //on phone
+  @media (max-width: 1139px) {
+    margin: auto;
+    margin-top: 32px;
+  }
+}
+
+.home-tasks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 576px) {
+    width: 90%;
+    margin-top: 32px;
+  }
 }

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @tasks = Task.all.reverse
   end
 
   def dashboard

@@ -13,6 +13,24 @@ abbr {
   display: none;
 }
 
+.fadein-2 {
+  animation: fadein 2s;
+}
+.fadein-3 {
+  animation: fadein 3s;
+}
+.fadein-4 {
+  animation: fadein 4s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 // Your CSS partials
 @import "components/index";
 @import "pages/index";

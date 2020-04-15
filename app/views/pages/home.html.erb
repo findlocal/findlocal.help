@@ -1,8 +1,45 @@
-<%= render "shared/banner" %>
+<%# <%= render "shared/banner" %>
 
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2  py-3 my-3">
-    <div class="col-4"><%= render "shared/search_form" %></div>
+<div class="main-home-container">
+  <%= render 'shared/navbar', nav_color: "text-dark" %>
+
+  <div class="d-flex second-container">
+
+    <div class="home-search-box">
+      <%= render "shared/search_form" %>
     </div>
+
+    <div class="home-tasks">
+      <% @tasks.sample(3).each_with_index do |task, index| %>
+      <%# only showing tasks that are looking for helpers %>
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
+        <div class=<%= "fadein-#{index + 2}"%>>
+
+          <%= render "shared/card",
+            photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
+            title: task.title,
+            description: task.description,
+            avatar: task.creator.avatar,
+            due_date: (task.due_date - Date.today).round,
+            tags: task.tags.max(3),
+            user_name: task.creator.first_name
+               %>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <%= render 'shared/task_modal',
+            title: task.title,
+            taskId: task.id,
+            description: task.description,
+            avatar: task.creator.avatar,
+            user_name: task.creator.first_name,
+            photos: task.photos,
+            tags: task.tags,
+            due_date: (task.due_date - Date.today).round
+            %>
+      <% end %>
+    </div>
+
   </div>
 </div>
