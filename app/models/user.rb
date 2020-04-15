@@ -20,7 +20,7 @@ class User < ApplicationRecord
   # 5. Custom methods
   # All tasks created by the user
   def created_tasks
-    tasks.where(creator: self) # *self* refers to the instance of the user
+    Task.where(creator: self) # *self* refers to the instance of the user
   end
 
   # All tasks where the current user was picked to be the helper

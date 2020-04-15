@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <% if @task.creator == current_user %>
+            <%# temp auth until we implement pundit %>
+
+            <h1>Create New Task</h1>
+            <%= simple_form_for @task do |f|	 %>
+            <%= f.input :title %>
+            <%= f.input :description, as: :text %>
+            <%= f.input :location, label: "Location" %>
+            <%= f.label :due_date, "Due Date" %>
+            <br>
+            <%= f.select :due_date, ((Date.today)...(Date.today + 2.months)).map{ |date| [date.strftime("%d %B %Y"), date] }, {} %>
+            <br><br>
+            <%= f.label :photos, "Add Photos" %>
+            <br>
+            <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
+            <br>
+            <br>
+            <%= f.label :tags, "Add Tags" %>
+            <div class="form-tags">
+                <%= f.association :tags, as: :check_boxes, label: "" %>
+
+            </div>
+            <%= f.button :submit, class: "btn btn-success" %>
+            <% end %>
+
+            <% else %>
+            <h1>You not not have permission to edit this task.</h1>
+            <% end %>
+        </div>
+    </div>
+
+</div>

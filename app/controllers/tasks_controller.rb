@@ -22,11 +22,20 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
   end
 
   def update
-    @task.update(task_params)
-    redirect_to dashboard_path
+    @task = Task.find(params[:id])
+   
+    
+    if @task.update(task_params)
+      flash[:success] = "\"#{@task.title}\" was updated."
+      redirect_to dashboard_path
+    else
+      flash[:error] = "There was an error in updating this task"
+      render :edit
+    end
   end
 
   def destroy
