@@ -1,9 +1,9 @@
 <div class="card-trip">
   <%= image_tag(photo) %>
   <% if due_date == 1 %>
-  <h2 class="card-time-left text-danger">Expires Today</h2>
+    <h2 class="card-time-left text-danger">Expires Today</h2>
   <% else %>
-  <h2 class="card-time-left"><%= due_date %> Days</h2>
+    <h2 class="card-time-left"><%= due_date %> Days</h2>
   <% end %>
 
   <div class="card-trip-infos">
@@ -20,4 +20,3 @@
     <% end %>
   </div>
 </div>
-

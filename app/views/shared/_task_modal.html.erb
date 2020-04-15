@@ -1,4 +1,4 @@
- <div class="modal fade" id=<%= "taskModal#{taskId}" %> data-backdrop="true" tabindex="-1" role="dialog"
+<div class="modal fade" id=<%= "taskModal#{taskId}" %> data-backdrop="true" tabindex="-1" role="dialog"
  	aria-labelledby="taskModalTitle" aria-hidden="true">
  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
  		<div class="modal-content">
@@ -17,18 +17,16 @@
  								data-ride="carousel">
  								<ol class="carousel-indicators">
  									<% photos.each_with_index do |photo, index| %>
- 									<li data-target=<%= "taskCarouselIndicators#{taskId}" %> data-slide-to=<%= index %>
+ 									  <li data-target=<%= "taskCarouselIndicators#{taskId}" %> data-slide-to=<%= index %>
  										class=<%= index == 0 ? "active" : ""  %>></li>
  									<% end %>
-
  								</ol>
  								<div class="carousel-inner">
  									<% photos.each_with_index do |photo, index| %>
- 									<div class="carousel-item <%= index == 0 ? "active" : ""  %>">
- 										<%= cl_image_tag photo.key, class: "d-block carousel-photo" %>
- 									</div>
+ 									  <div class="carousel-item <%= index == 0 ? "active" : ""  %>">
+ 										  <%= cl_image_tag photo.key, class: "d-block carousel-photo" %>
+ 									  </div>
  									<% end %>
-
  								</div>
  								<a class="carousel-control-prev" href=<%= "#taskCarouselIndicators#{taskId}" %>
  									role="button" data-slide="prev">
@@ -54,21 +52,20 @@
  					</div>
  					<div class="row modal-tags">
  						<% tags.each do |tag| %>
- 						<p class="tag shadow-sm"><%= tag.name %></p>
+ 						  <p class="tag shadow-sm"><%= tag.name %></p>
  						<% end %>
  					</div>
  				</div>
  			</div>
  			<div class="modal-footer">
  				<% unless due_date.nil? %>
- 				<h4 class="mr-auto"><%= due_date %> days left</h4>
+ 				  <h4 class="mr-auto"><%= due_date %> days left</h4>
  				<% end %>
  				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
  				<% if current_user.created_tasks.where(id: taskId).empty? %>
- 				<button type="button" class="btn btn-success">Apply for task</button>
-
+ 				  <button type="button" class="btn btn-success">Apply for task</button>
  				<% end %>
  			</div>
  		</div>
  	</div>
- </div>
+</div>
