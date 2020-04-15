@@ -1,24 +1,15 @@
 <div class="container">
-  <%= simple_form_for tasks_path, method: :get do |f| %>
-  <form>
-    <div class="form-group">
-      <label for="location">City</label>
-      <input type='text' class="form-control" placeholder="Your location">
-    </div>
+  <%= simple_form_for tasks_path, method: :get  do |f| %>
 
+  <%= f.input :location, label: "City", class: "form-control", placeholder: "Your location" %>
+  <%= f.input :due_date, as: :date, start_year: Date.today.year,
+                                end_year: Date.today.year,
+                                start_day: Date.today.day, 
+                                order: [:day, :month, :year], label: "Due Date", class: "form-control", placeholder: "Date" %>
+  <%= f.input :task_tags, label: "Task Categories", class: "form-control", placeholder: "Task Category" %>
 
-    <div class="form-group">
-        <label for="due_date">Due Date</label>
-        <input type='text' class="form-control" placeholder="Date">
-    </div>
-    
-    <div class="form-group">
-      <label for="task_tags">Task Tags</label>
-      <input type='text' class="form-control" placeholder="Task Category">
-    </div>
-    <div class="form-actions">
-      <%= f.submit "Search", class: "btn"%>
-    </div>
-    <% end %>
-  </form>
+  <div class="form-actions">
+    <%= f.submit "Search"%>
+  </div>
+  <% end %>
 </div>

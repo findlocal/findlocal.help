@@ -8,6 +8,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// General Rules (applied on all the pages)
+abbr {
+  display: none;
+}
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
