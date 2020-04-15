@@ -38,7 +38,11 @@
 					</div>
 					<div class="row mt-3">
 						<div class="col-lg-4 user-photo-and-name">
-							<%= image_tag(avatar) %>
+							<% if avatar.attached? %>
+					      <%= cl_image_tag avatar.key, class: "card-trip-user avatar-bordered" %>
+					    <% else %>
+					      <%= image_tag "user-placeholder.png", class: "card-trip-user avatar-bordered" %>
+					    <% end %>
 							<h6 class="text-secondary"><%= user_name  %></h6>
 						</div>
 						<div class="col-lg-8">
