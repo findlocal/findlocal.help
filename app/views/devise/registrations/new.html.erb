@@ -27,6 +27,18 @@
                             input_html: { autocomplete: "new-password" },
                             placeholder: "Password confirmation",
                             label: false %>
+                <%= f.input :first_name,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "first_name" },
+                            placeholder: "First name",
+                            label: false %>
+                <%= f.input :last_name,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "last_name" },
+                            placeholder: "Last name",
+                            label: false %>
               </div>
 
               <div class="form-actions">
