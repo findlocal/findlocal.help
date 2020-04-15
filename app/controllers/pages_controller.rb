@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @tasks = Task.all
+    if params[:query].present?
+      @tasks = Task.where("location ILIKE ?", "%#{params[:query]}%")
+    else
+      @tasks = Task.all
+    end  
   end
 
   def dashboard
