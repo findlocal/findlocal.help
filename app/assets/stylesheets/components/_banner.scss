@@ -1,22 +1,29 @@
 .banner {
   background-size: cover;
   background-position: center;
-  margin-top: 24px;
-  padding: 24px 0;
+  padding: 100px 0;
+  background-image: url('AdobeStock_143110026_colorchange.png');
 }
 
 .banner h1 {
   margin-left: 16px;
   color: #03499C;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  text-shadow: 1px 1px 3px white;
+  font-size: 64px;
   font-weight: bold;
+}
+
+.banner h2 {
+  margin-left: 16px;
+  color: #03499C;
+  text-shadow: 1px 1px 3px white;
+  font-size: 40px;
 }
 
 .banner p {
   margin-left: 16px;
-  font-size: 20px;
+  font-size:24px;
   color: #03499C;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px white;
 }
