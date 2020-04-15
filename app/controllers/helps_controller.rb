@@ -1,6 +1,5 @@
 class HelpsController < ApplicationController
   def create
-    
   end
 
   def update
