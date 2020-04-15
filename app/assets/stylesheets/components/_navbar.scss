@@ -19,6 +19,15 @@
   // }
 }
 
+.localhelp-logo {
+  @media (min-width: 1139px) {
+    position: absolute;
+    // top: 50px;
+    left: 50px;
+    width: 400px !important;
+  }
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
