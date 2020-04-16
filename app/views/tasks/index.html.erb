@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="city-title">Available tasks</h1>
+  <h1 class="city-title">Available tasks</h1>
 
     <div class="row">
       <% if @tasks.empty? %>
@@ -10,6 +10,7 @@
             <%= render "shared/card",
               photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
               title: task.title,
+              location: task.location,
               description: task.description,
               avatar: task.creator.avatar,
               due_date: (task.due_date - Date.today).round,
@@ -23,11 +24,13 @@
             title: task.title,
             taskId: task.id,
             description: task.description,
+            location: task.location,
             avatar: task.creator.avatar,
             user_name: task.creator.first_name,
             photos: task.photos,
             tags: task.tags,
-            due_date: (task.due_date - Date.today).round
+            due_date: (task.due_date - Date.today).round,
+            helps: task.helps
           %>
         <% end %>
       <% end %>

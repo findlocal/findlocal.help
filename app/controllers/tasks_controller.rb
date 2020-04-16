@@ -2,7 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.where("due_date > ?", Date.today).where(status: "pending").order(:due_date)
+    @tasks = Task.where("due_date > ?", Date.today)
+                 .where(status: "pending")
+                 .where.not(creator: current_user, helper: current_user)
+                 .order(:due_date)
     return unless params[:search].present?
 
     filter_by_search_params(params[:search])

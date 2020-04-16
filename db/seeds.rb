@@ -12,7 +12,7 @@ TaskTag.destroy_all
 Tag.destroy_all
 
 puts "Creating new users..."
-BASE_URL = "https://randomuser.me/api/portraits/women/"
+BASE_URL = "https://randomuser.me/api/portraits/women"
 10.times do |n|
   user = User.create(
     first_name: Faker::Name.first_name,
@@ -23,7 +23,7 @@ BASE_URL = "https://randomuser.me/api/portraits/women/"
     phone_number: Faker::PhoneNumber.cell_phone
   )
 
-  file = URI.open("#{BASE_URL}#{n + 1}.jpg")
+  file = URI.open("#{BASE_URL}/#{n + 1}.jpg")
   puts "Creating User Avatar..."
 
   user.avatar.attach(io: file, filename: 'avatar.jpg', content_type: 'image/jpeg')
@@ -47,7 +47,7 @@ taskdescription_homerepair = ["I need help with many home projects to fix things
 tasktitle_homerepair = ["Home Repair and Maintenance", "Household Fixes", "Seeking Help"]
 
 taskdescription_shopping = ["need weekly groceries delivered to my parents. They also need some other items picked up as requested", "Food shopping for family who is under quarantine", "Bi-weekly groceries shopping for the next month"]
-tasktitle_shopping = ["Shopping", "Grocery Shopping", "Family Grocery Shopping"] 
+tasktitle_shopping = ["Shopping", "Grocery Shopping", "Family Grocery Shopping"]
 
 taskdescription_transportation = []
 tasktitle_transportation = []
@@ -89,11 +89,11 @@ puts "Creating tasks with helps for shopping..."
     description: taskdescription_shopping.sample,
     due_date: rand(Date.today..Date.civil(2020, 05, 01)),
     location: cities.sample,
-    status: "pending",   
+    status: "pending",
     creator: User.all.sample,
     helper: [User.all.sample, nil].sample # could be not assigned yet, so let's do 50% of the times
   )
-    
+
   rand(1..3).times do |n|
     puts "Creating Task Photo..."
     file = URI.open("https://picsum.photos/500")
