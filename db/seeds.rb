@@ -31,23 +31,21 @@ BASE_URL = "https://randomuser.me/api/portraits/men/"
 
 end
 
-name: technology
-name: shopping
-name: repairs
-name: 
-
 puts "Creating tags..."
 20.times do
   Tag.create(
     name: "computing",
-    name: "repairs",
+    name: "household repairs",
+    name: "cooking",
     name: "cleaning",
     name: "other shopping",
     name: "advice",
-    name: "mobile phone",
+    name: "mobile phone issues",
     name: "food collection",
     name: "groceries",
     name: "moving home",
+    name: "transportation",
+    name: "general technology",
     name: "assembling furniture",
     name: "outdoor maintenance",
     name: "garden",
