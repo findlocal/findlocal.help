@@ -99,7 +99,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.button :submit, class: "btn btn-success" %>
+        <%= f.button :submit, class: "btn btn-success", value: "Send!", data: { disable_with: "Sending..." } %>
         <% end %>
       </div>
     </div>
