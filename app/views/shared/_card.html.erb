@@ -1,10 +1,11 @@
 <div class="card-task">
   <%= image_tag(photo) %>
-
-  <% if due_date == 1 %>
-    <h2 class="card-task-time text-danger">Expires Today</h2>
+  <% if due_date.to_i == 1 %>
+    <h2 class="card-time-left text-danger">Expires Today</h2>
+  <% elsif due_date.to_i <= 7 %>
+    <h2 class="card-time-left text-danger">Expiring in <%= due_date %> days</h2>
   <% else %>
-    <h2 class="card-task-time"><%= due_date %> Days</h2>
+    <h2 class="card-time-left"><%= due_date %> days left</h2>
   <% end %>
 
   <div class="card-task-infos">
