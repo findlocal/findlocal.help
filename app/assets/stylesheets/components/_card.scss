@@ -17,7 +17,13 @@
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  h5 {
+    font-size: 12px;
     font-weight: bold;
     margin: 0;
   }
@@ -77,4 +83,13 @@
   padding: auto;
   display: flex wrap;
   align-items: center;
+}
+
+.expire-tag {
+  background-color: rgba(255,255,255,0.9);
+  padding: 2px;
+  border-radius: 2px;
+  position: absolute;
+  top: 4px;
+  right: 18px;
 }
