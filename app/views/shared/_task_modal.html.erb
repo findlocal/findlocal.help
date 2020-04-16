@@ -67,7 +67,7 @@
 				<!-- Footer button to apply -->
 				<% if current_user %>
 					<% if helps.find_by(user: current_user) %>
-						<%= link_to "Apply for this task", task_helps_path(task_id: taskId), method: "post", class: "btn btn-success" %>
+						<%= link_to "Apply for this task", task_helps_path(task_id: taskId), method: "post", class: "btn btn-success", "data-toggle": "modal", "data-target": "#helpModal#{taskId}" %>
 					<% else %>
 						<p>Already applied</p>
 						<%= link_to "See it in your dashboard", dashboard_path, class: "btn btn-primary" %>
@@ -78,4 +78,30 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
+<!-- Application modal -->
+<div class="modal fade" id='<%= "helpModal#{taskId}" %>' tabindex="-1" role="dialog" aria-labelledby="Help Modal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Apply to help <%= user_name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [task, help] , method: "post" do |f| %>
+        <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit, class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

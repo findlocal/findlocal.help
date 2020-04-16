@@ -34,7 +34,8 @@
           photos: task.photos,
           tags: task.tags,
           due_date: (task.due_date - Date.today).round,
-          helps: task.helps
+          helps: task.helps,
+          task: task
         %>
       <% end %>
     </div>
