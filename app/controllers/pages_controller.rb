@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+  	@location = Task.pluck(:location).uniq
   end
 
   def dashboard

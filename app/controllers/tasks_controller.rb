@@ -2,13 +2,42 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    if params[:search].present?
+    if params[:search][:location].present? && params[:search][:task_tags].present? && params[:search][:due_date].present?
+
       location = params[:search][:location]
       task_tags = params[:search][:task_tags]
       due_date = Date.parse(params[:search][:due_date])
+
       @tasks_location_search = location.empty? ? Task.all : Task.where("location ILIKE ?", "%#{location}%")
       @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
       @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
+
+    elsif 
+      params[:search][:location].present? && params[:search][:task_tags].present?
+
+      location = params[:search][:location]
+      task_tags = params[:search][:task_tags]
+
+      @tasks_location_search = location.empty? ? Task.all : Task.where("location ILIKE ?", "%#{location}%")
+      @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
+      @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
+
+      elsif 
+      params[:search][:task_tags].present? && params[:search][:due_date].present?
+
+       task_tags = params[:search][:task_tags]
+       due_date = Date.parse(params[:search][:due_date])
+
+      @tasks_location_search = location.empty? ? Task.all : Task.where("location ILIKE ?", "%#{location}%")
+      @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
+      @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
+
+      elsif 
+        params[:search][:location].present? && params[:search][:due_date].present?
+
+        location = params[:search][:location]
+        due_date = Date.parse(params[:search][:due_date])
+
     else
       @tasks = Task.all
     end
