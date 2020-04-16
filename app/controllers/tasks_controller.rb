@@ -22,7 +22,7 @@ class TasksController < ApplicationController
       @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
       @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
 
-      elsif 
+    elsif 
       params[:search][:task_tags].present? && params[:search][:due_date].present?
 
        task_tags = params[:search][:task_tags]
@@ -32,15 +32,20 @@ class TasksController < ApplicationController
       @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
       @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
 
-      elsif 
-        params[:search][:location].present? && params[:search][:due_date].present?
+    elsif 
+      params[:search][:location].present? && params[:search][:due_date].present?
 
-        location = params[:search][:location]
-        due_date = Date.parse(params[:search][:due_date])
+      location = params[:search][:location]
+      due_date = Date.parse(params[:search][:due_date])
+
+      @tasks_location_search = location.empty? ? Task.all : Task.where("location ILIKE ?", "%#{location}%")
+      @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
+      @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
 
     else
       @tasks = Task.all
     end
+
     @tasks.order!(:due_date)
   end
 
