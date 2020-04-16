@@ -23,6 +23,7 @@
           </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Modal -->
         <%= render 'shared/task_modal',
           title: task.title,
@@ -37,6 +38,21 @@
           helps: task.helps,
           task: task
         %>
+=======
+      <!-- Modal -->
+      <%= render 'shared/task_modal',
+            task: task,
+            help: @help,
+            title: task.title,
+            taskId: task.id,
+            description: task.description,
+            avatar: task.creator.avatar,
+            user_name: task.creator.first_name,
+            photos: task.photos,
+            tags: task.tags,
+            due_date: (task.due_date - Date.today).round
+            %>
+>>>>>>> implemented ability to add a message to your help
       <% end %>
     </div>
   </div>

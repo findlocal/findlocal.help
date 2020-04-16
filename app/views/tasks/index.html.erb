@@ -24,8 +24,15 @@
             %>
           </div>
 
+<<<<<<< HEAD
           <!-- Modal -->
           <%= render 'shared/task_modal',
+=======
+        <!-- Modal -->
+        <%= render 'shared/task_modal',
+            help: @help,
+            task: task,
+>>>>>>> implemented ability to add a message to your help
             title: task.title,
             taskId: task.id,
             description: task.description,
