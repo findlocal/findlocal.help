@@ -16,33 +16,47 @@
           <h6 class="card-subtitle mb-2 text-muted"><%= task.location %></h6>
           <p class="card-text">Due date: <%= task.due_date %></p>
           <br>
-          <div class="d-flex justify-content-between">
-            <p
-              class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
-              <%= task.status.upcase %></p>
-            <!-- Modal -->
-            <p type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal"
-              data-target="#modal<%= task.id %>">More info</p>
-            <%= render 'shared/creator_task_modal',
-                    title: task.title,
-                    taskId: task.id,
-                    description: task.description,
-                    location: task.location,
-                    avatar: "https://picsum.photos/200",
-                    user_name: task.creator.first_name,
-                    photos: ["https://picsum.photos/600", "https://picsum.photos/601", "https://picsum.photos/602", "https://picsum.photos/603"],
-                    tags: task.tags,
-                    due_date: "12h",
-                    task_tags: task.tags,
-                    status: task.status
-                %>
+          <p
+            class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
+            <%= task.status.upcase %></p>
+          <hr>
+
+          <div class="d-flex justify-content-around">
+            <%= link_to "Edit", edit_task_path(task), class: "btn btn-sm btn-success" %>
+            <%= link_to "Delete", task_path(task), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?"} %>
+            <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
+              data-target="#taskModal<%= task.id %>">
+              Preview</button>
           </div>
+          <% if task.status == "pending"%>
+          <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-3" data-toggle="modal"
+            data-target="#applicationModal<%= task.id %>">
+            Applications <span class="badge badge-dark"><%= task.helps.count %></span></button>
+          <% end %>
+          <!-- Modals -->
+
+          <%= render 'shared/application_modal', task: task %>
+
+          <%= render 'shared/task_modal',
+              help: @help,
+              task: task,
+              title: task.title,
+              taskId: task.id,
+              description: task.description,
+              avatar: task.creator.avatar,
+              user_name: task.creator.first_name,
+              photos: task.photos,
+              tags: task.tags,
+              due_date: (task.due_date - Date.today).round
+            %>
         </div>
       </div>
+
       <% end %>
       <% end %>
     </div>
   </div>
+
 
   <br>
   <hr>

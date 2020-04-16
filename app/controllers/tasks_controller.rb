@@ -42,6 +42,24 @@ class TasksController < ApplicationController
     end
   end
 
+  def assign
+    @help = Help.find(params[:helper_id])
+    @task = Task.find(params[:task_id])
+    @task.helper = @help.user
+    @task.status = "in progress"
+
+    if @task.save
+      flash[:alert] = "#{@help.user.first_name} was assigned to \"#{@task.title}\"!"
+      redirect_to dashboard_path
+
+    else
+      flash[:alert] = "There was an error in assigning #{@help.user.first_name}."
+      render :dashboard
+    end
+  
+    
+  end
+
   def destroy
     @task.destroy
     flash[:alert] = "Task successfully deleted"

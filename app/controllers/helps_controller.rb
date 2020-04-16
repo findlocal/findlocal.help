@@ -14,7 +14,7 @@ class HelpsController < ApplicationController
   def destroy
     @help = Help.find(params[:id].to_i)
     @help.destroy
-    flash[:alert] = "Help successfully deleted"
+    flash[:alert] = "Application successfully deleted"
     redirect_to dashboard_path
   end
 
