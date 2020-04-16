@@ -4,34 +4,59 @@
   <br>
   <h4>Tasks you created</h4>
   <div class="row">
-    <div class="d-flex justify-content-around flex-wrap">
-      <% if @created_tasks.empty? %>
-      <p style="margin-left: 16px">You haven't created any task yet</p>
-      <% else %>
-      <% @created_tasks.each do |task| %>
+
+    <% if @created_tasks.empty? %>
+    <p style="margin-left: 16px">You haven't created any task yet</p>
+    <% else %>
+    <% @created_tasks.each do |task| %>
+    <div class="col-sm-12 col-md-6 col-lg-4 h-100">
       <div class="card m-3" style="width: 22rem;">
         <div class="card-body">
-          <h5 class="card-title"><%= task.title %></h5>
+          <div class="d-flex justify-content-end w-100">
+            <h5 class="mr-auto"><%= task.title %></h5>
+            <%= link_to edit_task_path(task), class: "mr-3 text-dark" do %>
+            <i class="far fa-edit"></i>
+            <% end %>
+
+            <%= link_to task_path(task), method: :delete, class: "mr-3 text-danger", data: { confirm: "Are you sure?"} do %>
+            <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
+
           <hr>
           <h6 class="card-subtitle mb-2 text-muted"><%= task.location %></h6>
           <p class="card-text">Due date: <%= task.due_date %></p>
           <br>
-          <p
-            class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
-            <%= task.status.upcase %></p>
-          <hr>
-
-          <div class="d-flex justify-content-around">
-            <%= link_to "Edit", edit_task_path(task), class: "btn btn-sm btn-success" %>
-            <%= link_to "Delete", task_path(task), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?"} %>
+          <div class="d-flex justify-content-between align-items-center">
+            <p
+              class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
+              <%= task.status.upcase %></p>
             <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
               data-target="#taskModal<%= task.id %>">
               Preview</button>
+
+
           </div>
+          <hr>
+
           <% if task.status == "pending"%>
           <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-3" data-toggle="modal"
             data-target="#applicationModal<%= task.id %>">
             Applications <span class="badge badge-dark"><%= task.helps.count %></span></button>
+          <% else %>
+          <div class="d-flex align-items-center">
+            <% if task.helper.avatar.attached? %>
+            <%= cl_image_tag task.helper.avatar.key, class: "avatar-large" %>
+            <% else %>
+            <%= image_tag "avatar_placeholder.png", class: "avatar-large" %>
+            <% end %>
+            <h5 class=" ml-2"><%= task.helper.first_name %> is your helper!</h5>
+
+          </div>
+
+          <%# TODO: Make a new route to handle the completion of a task %>
+          <%= link_to "Mark as done", edit_task_path(task), class: "btn btn-success btn-sm w-100 mt-2 disabled" %>
+
           <% end %>
           <!-- Modals -->
 
@@ -54,9 +79,9 @@
         </div>
       </div>
 
-      <% end %>
-      <% end %>
     </div>
+    <% end %>
+    <% end %>
   </div>
 
 
@@ -74,7 +99,7 @@
     <% @applied_to_help.each do |help| %>
     <% task = help.task %>
     <% if task.status == 'in progress' || task.status == 'pending' %>
-    <div class="col-sm-12 col-lg-4">
+    <div class="col-sm-12 col-md-6 col-lg-4 h-100">
 
 
       <div class="card m-3" style="width:   22rem;">
