@@ -154,7 +154,11 @@
         <% end %>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-        <% if !current_user.nil? && current_user.created_tasks.where(id: taskId).empty? %>
+        <% if current_user && !current_user.applied_to_help.where(task_id: taskId).empty? %>
+        <button type="button" class="btn btn-success" disabled data-toggle="modal"
+          data-target='<%= "#helpModal#{taskId}" %>'>Applied!</button>
+        <% elsif current_user && current_user.created_tasks.where(id: taskId).empty? %>
+
         <button type="button" class="btn btn-success" data-toggle="modal"
           data-target='<%= "#helpModal#{taskId}" %>'>Apply
           for
@@ -198,7 +202,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.button :submit, class: "btn btn-success" %>
+        <%= f.button :submit, class: "btn btn-success", value: "Send!", data: { disable_with: "Sending..." } %>
         <% end %>
       </div>
     </div>
