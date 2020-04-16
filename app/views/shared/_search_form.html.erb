@@ -1,8 +1,9 @@
 <div class="container">
   <%= simple_form_for :search, url: tasks_path, method: :get  do |f| %>
-  <%= f.input :location, label: "City", class: "form-control", placeholder: "Your location", as: :select %>
+  <%= f.input :location, label: "City", class: "form-control", collection: [@location], as: :select %>
   <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.input :task_tags, label: "Task Categories", class: "form-control", placeholder: "Task Category", as: :select %>
+  <%= f.input :task_tags, label: "Search by task tag", class: "form-control", collection: [@task_tags], as: :select %>
+  <!-- Do we want search by tag, keyword in title/description, or both? -->
 
   <div class="form-actions">
     <%= f.submit "Search"%>
