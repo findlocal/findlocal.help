@@ -56,8 +56,8 @@ class TasksController < ApplicationController
       flash[:alert] = "There was an error in assigning #{@help.user.first_name}."
       render :dashboard
     end
-  
-    
+
+
   end
 
   def destroy

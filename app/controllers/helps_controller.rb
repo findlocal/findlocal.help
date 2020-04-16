@@ -5,7 +5,7 @@ class HelpsController < ApplicationController
     @help.user = current_user
     @help.task = @task
     flash[:alert] = @help.save ? "Applied!" : "Application did not go through"
-    redirect_to tasks_path
+    redirect_to dashboard_path
   end
 
   def update

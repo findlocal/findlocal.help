@@ -47,7 +47,9 @@
               user_name: task.creator.first_name,
               photos: task.photos,
               tags: task.tags,
-              due_date: (task.due_date - Date.today).round
+              due_date: (task.due_date - Date.today).round,
+              location: task.location,
+              helps: task.helps
             %>
         </div>
       </div>
@@ -99,7 +101,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body p-3">
                   <p
                     class="text-right text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
                     <%= task.status.upcase %></p>

@@ -65,15 +65,17 @@
 				<% end %>
 
 				<!-- Footer button to apply -->
-				<% if current_user %>
-					<% if helps.find_by(user: current_user) %>
-						<%= link_to "Apply for this task", task_helps_path(task_id: taskId), method: "post", class: "btn btn-success", "data-toggle": "modal", "data-target": "#helpModal#{taskId}" %>
+				<% unless task.creator == current_user %>
+					<% if current_user %>
+						<% if helps.find_by(user: current_user) %>
+							<p>Already applied</p>
+							<%= link_to "See it in your dashboard", dashboard_path, class: "btn btn-primary" %>
+						<% else %>
+							<%= button_tag "Apply for this task", class: "btn btn-success", "data-toggle": "modal", "data-target": "#helpModal#{taskId}" %>
+						<% end %>
 					<% else %>
-						<p>Already applied</p>
-						<%= link_to "See it in your dashboard", dashboard_path, class: "btn btn-primary" %>
+						<%= link_to "Log in to apply!", new_user_session_path, class: "btn btn-primary" %>
 					<% end %>
-				<% else %>
-					<%= link_to "Log in to apply!", new_user_session_path, class: "btn btn-primary" %>
 				<% end %>
 			</div>
 		</div>
@@ -92,15 +94,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body p-4">
         <% if !help.nil? %>
-        <%= simple_form_for [task, help] , method: "post" do |f| %>
-        <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
+        	<%= simple_form_for [task, help] , method: "post" do |f| %>
+        		<%= f.input :message, placeholder: "Write a short description of why you want to help" %>
 
-        <%= f.button :submit, class: "btn btn-success float-right", value: "Send!", data: { disable_with: "Sending..." } %>
+        		<%= f.button :submit, class: "btn btn-success float-right", value: "Send!", data: { disable_with: "Sending..." } %>
+        	<% end %>
         <% end %>
-        <% end %>
-
       </div>
     </div>
   </div>
