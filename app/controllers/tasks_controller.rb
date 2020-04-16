@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    @help = Help.new
     @tasks = Task.where("due_date > ?", Date.today)
                  .where(status: "pending")
                  .where.not(creator: current_user, helper: current_user)
