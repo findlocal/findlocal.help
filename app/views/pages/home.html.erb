@@ -15,6 +15,7 @@
             <%= render "shared/card",
               photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
               title: task.title,
+              location: task.location,
               description: task.description,
               avatar: task.creator.avatar,
               due_date: (task.due_date - Date.today).round,
@@ -27,6 +28,7 @@
         <!-- Modal -->
         <%= render 'shared/task_modal',
           title: task.title,
+          location: task.location,
           taskId: task.id,
           description: task.description,
           avatar: task.creator.avatar,
