@@ -31,10 +31,27 @@ BASE_URL = "https://randomuser.me/api/portraits/men/"
 
 end
 
+name: technology
+name: shopping
+name: repairs
+name: 
+
 puts "Creating tags..."
 20.times do
   Tag.create(
-    name: Faker::GreekPhilosophers.name
+    name: "computing",
+    name: "repairs",
+    name: "cleaning",
+    name: "other shopping",
+    name: "advice",
+    name: "mobile phone",
+    name: "food collection",
+    name: "groceries",
+    name: "moving home",
+    name: "assembling furniture",
+    name: "outdoor maintenance",
+    name: "garden",
+    name: "other",
   )
 end
 
