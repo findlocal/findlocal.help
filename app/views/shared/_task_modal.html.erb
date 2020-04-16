@@ -95,13 +95,11 @@
         </button>
       </div>
       <div class="modal-body p-4">
-        <% if !help.nil? %>
-        	<%= simple_form_for [task, help] , method: "post" do |f| %>
-        		<%= f.input :message, placeholder: "Write a short description of why you want to help" %>
+      	<%= simple_form_for [task, help] do |f| %>
+      		<%= f.input :message, placeholder: "Write a short description of why you want to help" %>
 
-        		<%= f.button :submit, class: "btn btn-success float-right", value: "Send!", data: { disable_with: "Sending..." } %>
-        	<% end %>
-        <% end %>
+      		<%= f.button :submit, class: "btn btn-success float-right", value: "Send!", data: { disable_with: "Sending..." } %>
+      	<% end %>
       </div>
     </div>
   </div>

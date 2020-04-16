@@ -21,18 +21,15 @@
                 <%= cl_image_tag help.user.avatar.key, class: "avatar-large" %>
                 <div class="ml-3">
                   <% if help.message.nil? %>
-                  <p><i><%= help.user.first_name %> did not provide a message.</i></p>
+                    <p><i><%= help.user.first_name %> did not provide a message.</i></p>
                   <% else %>
-
-
-
-                  <p><%= help.message %></p>
+                    <p><%= help.message %></p>
                   <% end %>
                 </div>
               </div>
               <%= link_to "Assign", task_assign_path(task, help), method: :patch, remote: true, class: "btn btn-sm btn-success mt-2",
                data: { confirm: "Are you sure you want to pick #{help.user.first_name} as your helper?"} %>
-               
+
                 <%= link_to "Decline", task_help_path(task, help), method: :delete, remote: true, class: "btn btn-sm btn-danger mt-2",
                data: { confirm: "Are you sure you want to remove #{help.user.first_name}'s application?"} %>
               <hr>

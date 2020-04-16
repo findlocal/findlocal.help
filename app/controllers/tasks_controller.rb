@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 
     if @task.save
       flash[:success] = "\"#{@task.title}\" was created."
-      redirect_to tasks_path
+      redirect_to dashboard_path
     else
       flash[:error] = "There was an error in creating this task"
       render :new
