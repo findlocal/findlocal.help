@@ -2,17 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    if params[:search].present?
-      location = params[:search][:location]
-      task_tags = params[:search][:task_tags]
-      due_date = Date.parse(params[:search][:due_date])
-      @tasks_location_search = location.empty? ? Task.all : Task.where("location ILIKE ?", "%#{location}%")
-      @tasks_tags_search = task_tags.empty? ? @tasks_location_search : @tasks_location_search.joins(:tags).where(tags: { name: task_tags })
-      @tasks = due_date.to_s.empty? ? @tasks_tags_search : @tasks_tags_search.where("due_date > ?", due_date)
-    else
-      @tasks = Task.all
-    end
-    @tasks.order!(:due_date)
+    @tasks = Task.where("due_date > ?", Date.today).where(status: "pending").order(:due_date)
+    return unless params[:search].present?
+
+    filter_by_search_params(params[:search])
   end
 
   def new
@@ -47,8 +40,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-
-    flash[:alert] = "Task successfully deleted."
+    flash[:alert] = "Task successfully deleted"
     redirect_to dashboard_path
   end
 
@@ -60,5 +52,14 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :due_date, :location, :status, photos: [], tag_ids: [])
+  end
+
+  def filter_by_search_params(params)
+    location = params[:location]
+    task_tags = params[:task_tags]
+    due_date = params[:due_date].present? && Date.parse(params[:due_date])
+    @tasks = @tasks.where("location ILIKE ?", "%#{location}%") unless location.empty?
+    @tasks = @tasks.joins(:tags).where(tags: { name: task_tags }) unless task_tags.empty?
+    @tasks = @tasks.where("due_date < ?", due_date) if due_date
   end
 end
