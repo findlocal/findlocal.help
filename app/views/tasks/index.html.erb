@@ -2,35 +2,34 @@
     <h1 class="city-title">Available tasks</h1>
 
     <div class="row">
+      <% if @tasks.empty? %>
+        <p>Can't find any task with the specified options</p>
+      <% else %>
         <% @tasks.each do |task| %>
-        <%# only showing tasks that are looking for helpers %>
-          <% if task.due_date > Date.yesterday %>
-            <% if task.status == "pending" %>
-              <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
-                <%= render "shared/card",
-                  photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
-                  title: task.title,
-                  description: task.description,
-                  avatar: task.creator.avatar,
-                  due_date: (task.due_date - Date.today).round,
-                  tags: task.tags,
-                  user_name: task.creator.first_name
-                %>
-              </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
+            <%= render "shared/card",
+              photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
+              title: task.title,
+              description: task.description,
+              avatar: task.creator.avatar,
+              due_date: (task.due_date - Date.today).round,
+              tags: task.tags,
+              user_name: task.creator.first_name
+            %>
+          </div>
 
-              <!-- Modal -->
-              <%= render 'shared/task_modal',
-                title: task.title,
-                taskId: task.id,
-                description: task.description,
-                avatar: task.creator.avatar,
-                user_name: task.creator.first_name,
-                photos: task.photos,
-                tags: task.tags,
-                due_date: (task.due_date - Date.today).round
-              %>
-            <% end %>
-          <% end %>
+          <!-- Modal -->
+          <%= render 'shared/task_modal',
+            title: task.title,
+            taskId: task.id,
+            description: task.description,
+            avatar: task.creator.avatar,
+            user_name: task.creator.first_name,
+            photos: task.photos,
+            tags: task.tags,
+            due_date: (task.due_date - Date.today).round
+          %>
         <% end %>
+      <% end %>
     </div>
 </div>

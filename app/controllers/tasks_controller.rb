@@ -54,7 +54,7 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :due_date, :location, :status, photos: [], tag_ids: [])
   end
 
-  def filter_by_search_params(params)
+  def filter_by_search_params(params) # rubocop:disable Metrics/AbcSize
     location = params[:location]
     task_tags = params[:task_tags]
     due_date = params[:due_date].present? && Date.parse(params[:due_date])

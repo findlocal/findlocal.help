@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @tasks = Task.all.reverse
+    @tasks = Task.where("due_date > ?", Date.today).where(status: "pending").order(:due_date)[0..2]
   end
 
   def dashboard

@@ -9,7 +9,7 @@
     </div>
 
     <div class="home-tasks">
-      <% @tasks.sample(3).each_with_index do |task, index| %>
+      <% @tasks.each_with_index do |task, index| %>
         <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
           <div class=<%= "fadein-#{index + 2}"%>>
             <%= render "shared/card",
