@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="modal fade" id='<%= "taskModal#{taskId}" %>' data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
@@ -84,6 +85,90 @@
 
 
 <!-- Application modal -->
+=======
+<div class="modal fade" id='<%= "taskModal#{taskId}" %>' data-backdrop="true" tabindex="-1" role="dialog"
+  aria-labelledby="taskModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><%= title %></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <%# Carousel %>
+          <div class="row">
+            <div class="col-12">
+              <div id='<%= "taskCarouselIndicators#{taskId}" %>' class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <% photos.each_with_index do |photo, index| %>
+                  <li data-target='<%= "taskCarouselIndicators#{taskId}" %>' data-slide-to='<%= index %>'
+                    class='<%= index == 0 ? "active" : "" %>'></li>
+                  <% end %>
+                </ol>
+                <div class="carousel-inner">
+                  <% photos.each_with_index do |photo, index| %>
+                  <div class='carousel-item <%= index == 0 ? "active" : ""  %>'>
+                    <%= cl_image_tag photo.key, class: "d-block carousel-photo" %>
+                  </div>
+                  <% end %>
+                </div>
+                <a class="carousel-control-prev" href='<%= "#taskCarouselIndicators#{taskId}" %>' role="button"
+                  data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href='<%= "#taskCarouselIndicators#{taskId}" %>' role="button"
+                  data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-4 user-photo-and-name">
+              <% if avatar.attached? %>
+              <%= cl_image_tag avatar.key, class: "card-trip-user avatar-bordered" %>
+              <% else %>
+              <%= image_tag "user-placeholder.png", class: "card-trip-user avatar-bordered" %>
+              <% end %>
+              <h6 class="text-secondary"><%= user_name  %></h6>
+            </div>
+            <div class="col-lg-8">
+              <%= description %>
+            </div>
+          </div>
+          <div class="row modal-tags">
+            <% tags.each do |tag| %>
+            <p class="tag shadow-sm"><%= tag.name %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <% unless due_date.nil? %>
+        <h4 class="mr-auto"><%= due_date %> days left</h4>
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        <% if !current_user.nil? && current_user.created_tasks.where(id: taskId).empty? %>
+        <button type="button" class="btn btn-success" data-toggle="modal"
+          data-target='<%= "#helpModal#{taskId}" %>'>Apply
+          for
+          task</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%# Application Modal %>
+
+>>>>>>> implemented ability to add a message to your help
 <div class="modal fade" id='<%= "helpModal#{taskId}" %>' tabindex="-1" role="dialog" aria-labelledby="Help Modal"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -94,6 +179,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+<<<<<<< HEAD
       <div class="modal-body p-4">
       	<%= simple_form_for [task, Help.new] do |f| %>
       		<%= f.input :message, placeholder: "Write a short description of why you want to help" %>
@@ -104,3 +190,18 @@
     </div>
   </div>
 </div>
+=======
+      <div class="modal-body">
+        <%= simple_form_for [task, help] , method: "post" do |f| %>
+        <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit, class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> implemented ability to add a message to your help

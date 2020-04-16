@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     return unless params[:search].present?
 
     filter_by_search_params(params[:search])
+    @help = Help.new
   end
 
   def new
