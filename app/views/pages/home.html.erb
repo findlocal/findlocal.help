@@ -8,9 +8,9 @@
 
     <div class="home-tasks">
       <% @tasks.each_with_index do |task, index| %>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
-          <div class=<%= "fadein-#{index + 2}"%>>
-            <%= render "shared/card",
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
+        <div class=<%= "fadein-#{index + 2}"%>>
+          <%= render "shared/card",
               photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
               title: task.title,
               location: task.location,
@@ -20,12 +20,11 @@
               tags: task.tags.max(3),
               user_name: task.creator.first_name
             %>
-          </div>
         </div>
+      </div>
 
-<<<<<<< HEAD
-        <!-- Modal -->
-        <%= render 'shared/task_modal',
+      <!-- Modal -->
+      <%= render 'shared/task_modal',
           title: task.title,
           location: task.location,
           taskId: task.id,
@@ -38,21 +37,6 @@
           helps: task.helps,
           task: task
         %>
-=======
-      <!-- Modal -->
-      <%= render 'shared/task_modal',
-            task: task,
-            help: @help,
-            title: task.title,
-            taskId: task.id,
-            description: task.description,
-            avatar: task.creator.avatar,
-            user_name: task.creator.first_name,
-            photos: task.photos,
-            tags: task.tags,
-            due_date: (task.due_date - Date.today).round
-            %>
->>>>>>> implemented ability to add a message to your help
       <% end %>
     </div>
   </div>

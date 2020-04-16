@@ -38,6 +38,7 @@
           <%= render 'shared/application_modal', task: task %>
 
           <%= render 'shared/task_modal',
+              help: @help,
               task: task,
               title: task.title,
               taskId: task.id,
