@@ -1,9 +1,10 @@
-<div class="modal fade" id='<%= "taskModal#{taskId}" %>' data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
+<div class="modal fade" id='<%= "taskModal#{taskId}" %>' data-backdrop="true" tabindex="-1" role="dialog"
+	aria-labelledby="taskModalTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<!-- **Header** -->
 			<div class="modal-header">
-				<h3 class="modal-title"><%= title %></h3>
+				<h3 class="modal-title"><%= title %><br><small><%= location %></small></h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -37,10 +38,10 @@
 					<div class="row mt-3">
 						<div class="col-lg-4 modal-user-container">
 							<% if avatar.attached? %>
-					      <%= cl_image_tag avatar.key, class: "card-trip-user avatar-bordered" %>
-					    <% else %>
-					      <%= image_tag "user-placeholder.png", class: "card-trip-user avatar-bordered" %>
-					    <% end %>
+							<%= cl_image_tag avatar.key, class: "card-trip-user avatar-bordered" %>
+							<% else %>
+							<%= image_tag "user-placeholder.png", class: "card-trip-user avatar-bordered" %>
+							<% end %>
 							<h6 class="text-secondary"><%= user_name  %></h6>
 						</div>
 						<div class="col-lg-8">
@@ -49,7 +50,7 @@
 					</div>
 					<div class="modal-tags">
 						<% tags.each do |tag| %>
-							<p class="tag shadow-sm"><%= tag.name %></p>
+						<p class="tag shadow-sm"><%= tag.name %></p>
 						<% end %>
 					</div>
 				</div>
@@ -58,16 +59,16 @@
 			<!-- **Footer** -->
 			<div class="modal-footer">
 				<% unless due_date.nil? %>
-					<h4 class="mr-auto"><%= due_date %> days left</h4>
+				<h4 class="mr-auto"><%= due_date %> days left</h4>
 				<% end %>
 
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
 				<!-- Footer button to apply -->
 				<% if !current_user.nil? && current_user.created_tasks.where(id: taskId).empty? %>
-					<%= link_to task_helps_path(task_id: taskId), method: "post" do %>
-						<button type="button" class="btn btn-success">Apply for task</button>
-					<% end %>
+				<%= link_to task_helps_path(task_id: taskId), method: "post" do %>
+				<button type="button" class="btn btn-success">Apply for task</button>
+				<% end %>
 				<% end %>
 			</div>
 		</div>
