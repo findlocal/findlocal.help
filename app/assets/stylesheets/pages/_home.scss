@@ -1,23 +1,11 @@
-// Specific CSS for your home-page
-
-//not sure why this was here -sam
-// .tag {
-//   font-size: 10px;
-//   color: grey;
-//   border: 1px solid grey;
-//   background-color: white;
-//   padding: 4px;
-//   border-radius: 2px;
-// }
-
-.main-home-container {
+.home-container {
   background-image: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg");
   background-size: cover;
   background-position: center;
+
   @media (max-width: 1139px) {
     overflow-y: scroll;
-    background: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg") no-repeat center
-      center;
+    background: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg") no-repeat center center;
     content: "";
     display: block;
     position: fixed;
@@ -32,26 +20,20 @@
     background-size: cover;
   }
 }
-.second-container {
+
+.home-container-inner {
   height: calc(100vh - 56px);
   align-items: center;
-  // justify-content: center;
   flex-wrap: wrap;
 }
 
 .home-search-box {
   background-color: whitesmoke;
-  -moz-box-shadow: 3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: 3px 3px 5px 6px #ccc;
   padding: 32px;
-  // height: 450px;
-  // width: 450px;
-  // border-radius: 16px;
   width: 400px;
   margin-left: 10%;
 
-  //on phone
   @media (max-width: 1139px) {
     margin: auto;
     margin-top: 32px;
@@ -61,7 +43,7 @@
 .home-tasks {
   display: flex;
   flex-wrap: wrap;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 50%;

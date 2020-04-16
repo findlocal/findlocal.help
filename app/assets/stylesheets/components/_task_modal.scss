@@ -1,13 +1,5 @@
-.user-photo-and-name {
-  text-align: center;
-  h6 {
-    margin-top: 4px;
-  }
-  img {
-    border-radius: 200px;
-    height: 200px;
-    width: 200px;
-  }
+.modal-body {
+  padding: 0;
 }
 
 .carousel-photo {
@@ -16,12 +8,27 @@
   object-fit: cover;
 }
 
-.modal-tags {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
+.modal-user-container {
+  text-align: center;
+
+  h6 {
+    margin-top: 4px;
+  }
+
+  img {
+    border-radius: 200px;
+    height: 200px;
+    width: 200px;
+  }
 }
 
-.modal-body .tag {
-  font-size: 12px;
+.modal-tags {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+
+  .tag {
+    font-size: 12px;
+  }
 }

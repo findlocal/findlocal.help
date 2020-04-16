@@ -1,28 +1,19 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: rgba($color: black, $alpha: 0);
+
   .avatar {
     cursor: pointer;
   }
+
   a {
-    // color: white !important;
     font-weight: 600;
   }
-  // .custom-nav-link-white {
-  //   color: white !important;
-  //   // font-weight: bold;
-  // }
-  // .navbar-brand {
-  //   background-color: rgba($color: white, $alpha: 0.7);
-  //   border-radius: 20px;
-  //   padding: 0 8px !important;
-  // }
 }
 
 .localhelp-logo {
   @media (min-width: 1139px) {
     position: absolute;
-    // top: 50px;
     left: 50px;
     width: 400px !important;
   }

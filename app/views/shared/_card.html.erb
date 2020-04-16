@@ -1,24 +1,25 @@
-<div class="card-trip">
+<div class="card-task">
   <%= image_tag(photo) %>
+
   <% if due_date == 1 %>
-    <h2 class="card-time-left text-danger">Expires Today</h2>
+    <h2 class="card-task-time text-danger">Expires Today</h2>
   <% else %>
-    <h2 class="card-time-left"><%= due_date %> Days</h2>
+    <h2 class="card-task-time"><%= due_date %> Days</h2>
   <% end %>
 
-  <div class="card-trip-infos">
+  <div class="card-task-infos">
     <div>
       <h2><%= title %></h2>
       <p><%= description %></p>
     </div>
     <% if avatar.attached? %>
-      <%= cl_image_tag avatar.key, class: "card-trip-user avatar-bordered" %>
+      <%= cl_image_tag avatar.key, class: "card-task-user avatar-bordered", title: user_name, "data-toggle": "tooltip", "data-placement": "bottom" %>
     <% else %>
-      <%= image_tag "user-placeholder.png", class: "card-trip-user avatar-bordered" %>
+      <%= image_tag "user-placeholder.png", class: "card-task-user avatar-bordered", title: user_name, "data-toggle": "tooltip", "data-placement": "bottom" %>
     <% end %>
-    <p class="card-user-name"><%= user_name %></p>
   </div>
-  <div class="bottom">
+
+  <div class="card-task-footer">
     <% tags.max(8).each do |tag| %>
     <p class="tag shadow-sm"><%= tag.name %></p>
     <% end %>

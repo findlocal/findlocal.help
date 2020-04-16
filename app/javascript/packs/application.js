@@ -6,6 +6,4 @@ require('channels')
 
 // Packages
 import 'bootstrap'
-import "../plugins/flatpickr"
-
-
+import '../components' // no need to specify the /index in js, it's automatic

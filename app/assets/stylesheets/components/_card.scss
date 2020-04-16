@@ -1,12 +1,35 @@
-.card-trip {
+.card-task {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   height: 100%;
   transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  > img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 0;
+  }
 }
 
-.card-time-left {
+.card-task-time {
   position: absolute;
   top: 10px;
   right: 20px;
@@ -16,30 +39,7 @@
   border-radius: 50px;
 }
 
-.card-trip:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-.card-trip > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-trip p {
-  font-size: 12px;
-  opacity: 0.7;
-  margin-top: 0;
-}
-
-.card-trip .card-trip-infos {
+.card-task-infos {
   color: black;
   height: 125px;
   padding: 16px;
@@ -47,44 +47,34 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+
+  p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .card-task-user {
+    position: absolute;
+    right: 16px;
+    top: -20px;
+    width: 40px;
+  }
+
+  .card-task-username {
+    position: absolute;
+    right: 16px;
+    top: 25px;
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
-.card-trip .card-trip-infos p {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
-
-.card-trip-infos .card-user-name {
-  position: absolute;
-  right: 16px;
-  top: 25px;
-  width: 40px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.bottom {
+.card-task-footer {
   margin: 0 16px 16px 16px;
   padding: auto;
   display: flex wrap;
   align-items: center;
-}
-
-.tag {
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 2px 3px;
-  margin: 2px;
-  opacity: 50%;
-  max-width: fit-content;
-  display: inline-flex;
 }
