@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   def home
     @tasks = Task.where("due_date > ?", Date.today).where(status: "pending").order(:due_date)[0..2]
     @help = Help.new
+    @location = Task.pluck(:location).uniq
   end
 
   def dashboard
