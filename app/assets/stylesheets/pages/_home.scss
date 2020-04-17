@@ -1,11 +1,12 @@
 .home-container {
-  background-image: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg");
+  background-image: asset_url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg");
   background-size: cover;
   background-position: center;
 
   @media (max-width: 1139px) {
     overflow-y: scroll;
-    background: url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg") no-repeat center center;
+    background: asset_url("youssef-naddam-iJ2IG8ckCpA-unsplash.jpg") no-repeat
+      center center;
     content: "";
     display: block;
     position: fixed;
