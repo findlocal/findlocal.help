@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     patch "/assign/:helper_id", to: "tasks#assign", as: :assign
   end
 
-  get "/dashboard", to: "pages#dashboard", as: :dashboard
+  get "/dashboard", to: "tasks#dashboard", as: :dashboard
 end

@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
+  before_action :set_and_authorize_task, only: [:edit, :update, :destroy]
 
   def index
     @tasks = filtered_tasks
@@ -10,10 +11,12 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    authorize @task
   end
 
   def create
     @task = Task.new(creator: current_user, status: "pending", **task_params) # `**` is the spread operator
+    authorize @task
     if @task.save
       flash[:success] = task_success_message("created")
       redirect_to dashboard_path
@@ -35,17 +38,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def assign
-    find_and_assign_help(params)
-
-    if @task.save
-      flash[:success] = task_success_message("assigned")
-    else
-      flash[:error] = task_error_message("assign")
-    end
-    redirect_to dashboard_path
-  end
-
   def destroy
     if @task.destroy
       flash[:success] = task_success_message("deleted")
@@ -55,10 +47,28 @@ class TasksController < ApplicationController
     redirect_to dashboard_path
   end
 
+  # Other actions:
+  def assign
+    find_and_assign_help(params)
+    authorize @task
+    if @task.save
+      flash[:success] = task_success_message("assigned")
+    else
+      flash[:error] = task_error_message("assign")
+    end
+    redirect_to dashboard_path
+  end
+
+  def dashboard
+    # No need to send any task, we can retrieve them from current_user
+    authorize Task # if you don't have any instance, call `authorize` on the model
+  end
+
   private
 
-  def set_task
+  def set_and_authorize_task
     @task = Task.find(params[:id])
+    authorize @task
   end
 
   def task_params
@@ -66,10 +76,10 @@ class TasksController < ApplicationController
   end
 
   def filtered_tasks
-    Task.where("due_date > ?", Time.zone.today)
-        .where(status: "pending")
-        .where.not(creator: current_user)
-        .order(:due_date)
+    policy_scope(Task).where("due_date > ?", Time.zone.today) # Date.today
+                      .where(status: "pending")
+                      .where.not(creator: current_user)
+                      .order(:due_date)
   end
 
   def filter_tasks_by_search_params(params)
