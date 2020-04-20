@@ -3,6 +3,7 @@ class PagesController < ApplicationController
     @tasks = Task.where("due_date > ?", Date.today).where(status: "pending").order(:due_date)[0..2]
     @help = Help.new
     @location = Task.pluck(:location).uniq
+    @task_tags = Tag.all.uniq
   end
 
   def dashboard
@@ -10,4 +11,5 @@ class PagesController < ApplicationController
     @helper_tasks = current_user.helper_tasks
     @applied_to_help = current_user.applied_to_help
   end
+
 end
