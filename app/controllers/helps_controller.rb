@@ -3,6 +3,7 @@ class HelpsController < ApplicationController
 
   def create
     @help = Help.new(user: current_user, task: @task, **help_params) # use `**` to flatten the additional params
+    authorize @help
     if @help.save
       flash[:success] = "Successfully applied to #{@task.title}"
     else
@@ -13,6 +14,7 @@ class HelpsController < ApplicationController
 
   def destroy
     @help = Help.find(params[:id])
+    authorize @help
     if @help.destroy
       flash[:success] = "Application successfully removed"
     else

@@ -2,10 +2,12 @@
   <div class="card-body">
     <div class="d-flex justify-content-end w-100">
       <h5 class="mr-auto"><%= task.title %></h5>
-      <% if card_type == "creator" %>
+      <% if policy(task).edit? %>
         <%= link_to edit_task_path(task), class: "mr-3 text-dark" do %>
           <i class="far fa-edit"></i>
         <% end %>
+      <% end %>
+      <% if policy(task).destroy? %>
         <%= link_to task_path(task), method: :delete, class: "mr-3 text-danger", data: { confirm: "Are you sure?"} do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
