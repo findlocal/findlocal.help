@@ -1,34 +1,11 @@
-<div class="banner" style="height: 100vh">
-  <div class="container pt-3">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="background-form">
-          <h2>Welcome back</h2>
-          <h6>Please login to continue</h6>
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="form-inputs">
-              <%= f.input :email,
-                          required: false,
-                          autofocus: true,
-                          input_html: { autocomplete: "email" },
-                          placeholder: "Email",
-                          label: false %>
-              <%= f.input :password,
-                          required: false,
-                          input_html: { autocomplete: "current-password" },
-                          placeholder: "Password",
-                          label: false %>
-              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Log in", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-          <br>
-          <h6>Not registered yet? <%= render "devise/shared/links" %></h6>
-        </div>
+<header class="header-sign-up d-flex justify-content-center align-items-center">
+  <div class="auth_banner">
+    <div class="form-banner">
+      <div>
+        <h1>Local Help</h1>
+        <h3>Sign up and start helping each other out.</h3>
+        <%= render "shared/login_form" %>
       </div>
     </div>
   </div>
-</div>
+</header>
