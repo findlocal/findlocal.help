@@ -5,30 +5,30 @@
               required: true,
               autofocus: true,
               input_html: { autocomplete: "first_name" },
-              placeholder: "First name",
+              placeholder: "First name*",
               label: false %>
   <%= f.input :last_name,
               required: true,
               autofocus: true,
               input_html: { autocomplete: "last_name" },
-              placeholder: "Last name",
+              placeholder: "Last name*",
               label: false %>
   <%= f.input :email,
               required: true,
               autofocus: true,
               input_html: { autocomplete: "email" },
-              placeholder: "Email",
+              placeholder: "Email*",
               label: false %>
   <%= f.input :password,
               required: true,
               hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
               input_html: { autocomplete: "new-password" },
-              placeholder: "Password",
+              placeholder: "Password*",
               label: false %>
   <%= f.input :password_confirmation,
               required: true,
               input_html: { autocomplete: "new-password" },
-              placeholder: "Password confirmation",
+              placeholder: "Password confirmation*",
               label: false %>
   </div>
   <div class="form-actions d-flex justify-content-around mb-3">
