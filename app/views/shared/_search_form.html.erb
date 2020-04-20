@@ -4,7 +4,8 @@
   <div id="location-search">
   <input class="typeahead" type="text" placeholder="Enter your location"> 
   </div>
-  <%= f.input :location, class: "form-control", collection: @location, as: :select, :required => true %>
+  <%= f.input :location, class: "form-control", collection: @location, as: :select, :required => true %> 
+  <!-- Above field being kept until location search properly implemented -->
   <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <div id="tags-search">
   <%= f.input :task_tags, label: "Task Categories", class: "form-control", collection: @task_tags, as: :select %>
