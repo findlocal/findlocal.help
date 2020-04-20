@@ -1,4 +1,21 @@
-.background-form {
-  background-color: rgba(240,240,240,0.8);
-  padding: 24px;
+.header-sign-up {
+  height: 100vh;
+  background-image: $green-gradient;
+  opacity: 0.8;
+}
+
+.auth_banner {
+  height: 80vh;
+  width: 85vw;
+  background-image: asset_url('auth_banner.jpg');
+  background-size: 100% 100%;
+  border-radius: 4px;
+}
+
+.form-banner {
+  height: 100%;
+  width: 48%;
+  background-color: rgba(255,255,255,0.8);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
