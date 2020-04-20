@@ -1,9 +1,17 @@
-$red: #fd1015;
+// COLOR VARIABLES
+
+$green: #28B485; // Primary green
+$light-green: #7ED56F; // Secondary green
+$red: #BE1C11;
+$green-gradient: linear-gradient(122.01deg, $light-green 0%, $green 100%);
+$white: #FFF;
+$gray: #C4C4C4;
+$black: #000000;
+
+// EXTRA COLORS
+
 $burgundy: #9c2f31;
 $blue: #03499c;
-$black: #000000;
 $yellow: #ffc65a;
 $orange: #e67e22;
-$green: #09ab29;
-$gray: #b5b5b5;
 $light-gray: #f4f4f4;
