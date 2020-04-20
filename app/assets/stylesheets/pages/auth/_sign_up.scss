@@ -10,6 +10,7 @@
   background-image: asset_url('auth_banner.jpg');
   background-size: 100% 100%;
   border-radius: 4px;
+  position: relative;
 }
 
 .form-banner {
@@ -29,4 +30,47 @@
     color: $light-green;
     text-shadow: rgba(0,0,0,0.2);
   }
+}
+
+.quote {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.quote-position {
+  position: absolute;
+  top: 22%;
+  right: 8%;
+  left: 58%;
+}
+
+h1, h3, p {
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 14px;
+}
+
+.form-padding {
+  padding: 10px 50px;
+}
+
+.form-heading-padding {
+  padding: 15px 15px;
+}
+
+.form-heading-padding-login {
+  padding: 30px 15px;
 }
