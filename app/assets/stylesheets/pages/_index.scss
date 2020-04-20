@@ -1,5 +1,6 @@
-// Import page-specific CSS files here.
+// Import page-specific SCSS files here
+@import "dashboard";
 @import "home";
-@import "sign_up";
-@import "tasks_index";
-@import "task_new";
+@import "auth/index";
+@import "tasks/index";
+@import "tasks/new";

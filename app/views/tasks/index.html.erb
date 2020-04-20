@@ -3,44 +3,18 @@
 
   <div class="row">
     <% if @tasks.empty? %>
-    <div>
-      <p>Can't find any task with the specified options</p>
-      <br>
-      <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
-      <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
-    </div>
+      <div>
+        <p class="my-2">Can't find any task with the specified options</p>
+        <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
+        <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
+      </div>
     <% else %>
-    <% @tasks.each do |task| %>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
-      <%= render "shared/card",
-              photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
-              title: task.title,
-              location: task.location,
-              description: task.description,
-              avatar: task.creator.avatar,
-              due_date: (task.due_date - Date.today).round,
-              tags: task.tags,
-              user_name: task.creator.first_name
-            %>
-    </div>
-
-    <!-- Modal -->
-    <%= render 'shared/task_modal',
-            help: @help,
-            task: task,
-            title: task.title,
-            taskId: task.id,
-            description: task.description,
-            location: task.location,
-            avatar: task.creator.avatar,
-            user_name: task.creator.first_name,
-            photos: task.photos,
-            tags: task.tags,
-            due_date: (task.due_date - Date.today).round,
-            task: task,
-            helps: task.helps
-          %>
-    <% end %>
+      <% @tasks.each do |task| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
+          <%= render "shared/task_card", task: task %>
+        </div>
+        <%= render "shared/task_modal", task: task %>
+      <% end %>
     <% end %>
   </div>
 </div>

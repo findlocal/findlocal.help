@@ -1,11 +1,11 @@
-// Import Google fonts
+// Import external fonts
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 
 // Define fonts for body and headers
 $body-font: "Open Sans", "sans-serif";
 $headers-font: "Open Sans", "sans-serif";
 
-// To use a font file (.woff) uncomment following lines
+// To use a custom font file uncomment the following lines:
 // @font-face {
 //   font-family: "Font Name";
 //   src: font-url('FontFile.eot');

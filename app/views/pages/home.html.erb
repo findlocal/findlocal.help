@@ -1,6 +1,4 @@
 <div class="home-container">
-  <%= render 'shared/navbar', nav_color: "text-dark" %>
-
   <div class="d-flex home-container-inner">
     <div class="home-search-box">
       <%= render "shared/search_form" %>
@@ -8,35 +6,12 @@
 
     <div class="home-tasks">
       <% @tasks.each_with_index do |task, index| %>
-      <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
-        <div class=<%= "fadein-#{index + 2}"%>>
-          <%= render "shared/card",
-              photo: task.photos.empty? ? "https://picsum.photos/500" : task.photos[0],
-              title: task.title,
-              location: task.location,
-              description: task.description,
-              avatar: task.creator.avatar,
-              due_date: (task.due_date - Date.today).round,
-              tags: task.tags.max(3),
-              user_name: task.creator.first_name
-            %>
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
+          <div class=<%= "fadein-#{index + 2}"%>>
+            <%= render "shared/task_card", task: task %>
+          </div>
         </div>
-      </div>
-
-      <!-- Modal -->
-      <%= render 'shared/task_modal',
-          title: task.title,
-          location: task.location,
-          taskId: task.id,
-          description: task.description,
-          avatar: task.creator.avatar,
-          user_name: task.creator.first_name,
-          photos: task.photos,
-          tags: task.tags,
-          due_date: (task.due_date - Date.today).round,
-          helps: task.helps,
-          task: task
-        %>
+        <%= render "shared/task_modal", task: task %>
       <% end %>
     </div>
   </div>

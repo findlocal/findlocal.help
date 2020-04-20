@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# Fix deprecation warnings
+# Don't show deprecation warnings
 Warning[:deprecated] = false
 
 # Load Rails

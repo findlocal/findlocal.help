@@ -1,21 +1,25 @@
-<!-- REMOVE OPTIONAL BLOCKS WHEN UNUSED! -->
+<!-- ⚠️ Remove optional blocks and comments when unused! -->
 
 ## Overview
 
-<!-- *REQUIRED* Short description of the feature -->
+<!-- *Required* - short description of the feature -->
+
+<!-- Optional:
 
 ## Configuration
 
-<!-- OPTIONAL Is there any new service/configuration the other team members should be aware of? If so, explain it details and warn them -->
+Is there any new service/configuration the other team members should be aware of? If so, explain it details and tag them here
 
 ## Details
 
-<!-- OPTIONAL List the key features/highlights as bullet points, and explain how you implemented them -->
+List the key features/highlights as bullet points, and explain how you implemented them
 
 ## Notes
 
-<!-- OPTIONAL List additional notes/references as bullet points -->
+List additional notes/references as bullet points
 
 ## Screenshots
 
-<!-- OPTIONAL Provide supporting images/gifs/videos -->
+Provide supporting images/gifs/videos
+
+-->

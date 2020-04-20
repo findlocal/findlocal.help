@@ -1,3 +1,5 @@
+require: rubocop-rails
+
 AllCops:
   Include:
     - Rakefile
@@ -38,13 +40,12 @@ Lint/RaiseException:
 Lint/StructNewOverride:
   Enabled: false
 
-Style/HashEachMethods:
-  Enabled: false
-Style/HashTransformKeys:
-  Enabled: false
-Style/HashTransformValues:
-  Enabled: false
+Rails:
+  Enabled: true
+
 Style/ClassAndModuleChildren:
+  Enabled: false
+Style/CommentedKeyword:
   Enabled: false
 Style/Documentation:
   Enabled: false
@@ -52,12 +53,18 @@ Style/EachWithObject:
   Enabled: false
 Style/EmptyMethod:
   Enabled: false
+Style/FormatStringToken:
+  Enabled: false
 Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
   Enabled: false
 Style/Lambda:
   EnforcedStyle: literal
-Style/CommentedKeyword:
-  Enabled: false
 Style/MethodCallWithArgsParentheses: # always use parentheses when you call a method, except:
   Enabled: true
   IgnoredMethods:

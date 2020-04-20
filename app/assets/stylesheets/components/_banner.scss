@@ -2,28 +2,28 @@
   background-size: cover;
   background-position: center;
   padding: 100px 0;
-  background-image: asset_url("AdobeStock_143110026_colorchange.png");
-}
+  background-image: asset_url("banner.png");
 
-.banner h1 {
-  margin-left: 16px;
-  color: #03499c;
-  text-shadow: 1px 1px 3px white;
-  font-size: 64px;
-  font-weight: bold;
-}
+  h1 {
+    margin-left: 16px;
+    color: #03499c;
+    text-shadow: 1px 1px 3px white;
+    font-size: 64px;
+    font-weight: bold;
+  }
 
-.banner h2 {
-  margin-left: 16px;
-  color: #03499c;
-  text-shadow: 1px 1px 3px white;
-  font-size: 40px;
-}
+  h2 {
+    margin-left: 16px;
+    color: #03499c;
+    text-shadow: 1px 1px 3px white;
+    font-size: 40px;
+  }
 
-.banner p {
-  margin-left: 16px;
-  font-size: 24px;
-  color: #03499c;
-  opacity: 0.7;
-  text-shadow: 1px 1px 3px white;
+  p {
+    margin-left: 16px;
+    font-size: 24px;
+    color: #03499c;
+    opacity: 0.7;
+    text-shadow: 1px 1px 3px white;
+  }
 }
