@@ -1,19 +1,20 @@
 <%= simple_form_for task do |f|	 %>
-  <%= f.input :title %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :location, label: "Location" %>
-  <%= f.label :due_date, "Due Date" %>
-  <br>
-  <%= f.select :due_date, ((Date.today)...(Date.today + 2.months)).map{ |date| [date.strftime("%d %B %Y"), date] }, {} %>
-  <br><br>
-  <%= f.label :photos, "Add Photos" %>
-  <br>
-  <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
-  <br>
-  <br>
-  <%= f.label :tags, "Add Tags" %>
-  <div class="form-tags">
-    <%= f.association :tags, as: :check_boxes, label: "" %>
+  <%= f.input :title, class: "form-control" %>
+  <%= f.input :description, as: :text, class: "form-control" %>
+  <%= f.input :location, label: "Location", class: "form-control" %>
+  <div class="form-group">
+    <%= f.label :due_date, "Due Date", class: "d-block" %>
+    <%= f.select :due_date, (Time.zone.today...(Time.zone.today + 2.months)).map{ |date| [date.strftime("%d %B %Y"), date] }, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :photos, "Add Photos", class: "d-block" %>
+    <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tags, "Add Tags" %>
+    <div class="form-tags">
+      <%= f.association :tags, as: :check_boxes, label: "" %>
+    </div>
   </div>
   <%= f.button :submit, class: "btn btn-success" %>
 <% end %>

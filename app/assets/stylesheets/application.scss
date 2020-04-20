@@ -13,8 +13,8 @@
 @import "flatpickr/dist/flatpickr";
 
 // 3. General Rules (applied to all pages)
-abbr {
-  display: none;
+form label abbr {
+  display: none; // hide star next to form labels
 }
 
 // 4. CSS partials

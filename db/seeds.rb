@@ -1,6 +1,6 @@
 require 'open-uri'
 
-# this prevents URI.open from creating STRINGIO's for small files, which does not work with activestorage
+# This prevents URI.open from creating StringIO's for small files, which does not work with Active Storage
 OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
 OpenURI::Buffer.const_set 'StringMax', 0
 
@@ -12,7 +12,6 @@ TaskTag.destroy_all
 Tag.destroy_all
 
 puts "Creating new users..."
-BASE_URL = "https://randomuser.me/api/portraits/women"
 10.times do |n|
   user = User.create(
     first_name: Faker::Name.first_name,
@@ -22,58 +21,47 @@ BASE_URL = "https://randomuser.me/api/portraits/women"
     address: Faker::Address.full_address,
     phone_number: Faker::PhoneNumber.cell_phone
   )
-
-  file = URI.open("#{BASE_URL}/#{n + 1}.jpg")
-  puts "Creating User Avatar..."
-
+  file = URI.open("https://randomuser.me/api/portraits/women/#{n + 1}.jpg")
   user.avatar.attach(io: file, filename: 'avatar.jpg', content_type: 'image/jpeg')
   user.save
 end
 
-
-
-tags = ["#help", "#corona", "#chores", "#home-help", "#other"]
-
 puts "Creating tags..."
-tags.each do |tag|
-  Tag.create(
-    name: tag
-  )
+["help", "corona", "chores", "home-help", "other"].each do |tag|
+  Tag.create(name: tag)
 end
 
 cities = ["Ahmedabad, India",	"Baghdad, Iraq",	"Bangalore, India",	"Bangkok, Thailand",	"Beijing, China",	"Bogotá, Colombia",	"Boston, United States",	"Buenos Aires, Argentina",	"Cairo, Egypt",	"Chengdu, China",	"Chennai, India",	"Chicago, United States",	"Chongqing, China",	"Dallas, United States",	"Delhi, India",	"Dhaka, Bangladesh",	"Dongguan, China",	"Düsseldorf, Germany",	"Guangzhou, China",	"Hangzhou, China",	"Hanoi, Vietnam",	"Ho Chi Minh City, Vietnam",	"Hong Kong, China",	"Houston, United States",	"Hyderabad, India",	"Istanbul, Turkey",	"Jakarta, Indonesia",	"Johannesburg, South Africa",	"Karachi, Pakistan",	"Kinshasa, DR Congo",	"Kolkata, India",	"Kuala Lumpur, Malaysia",	"Lagos, Nigeria",	"Lahore, Pakistan",	"Lima, Peru",	"London, United Kingdom",	"Los Angeles, United States",	"Luanda, Angola",	"Madrid, Spain",	"Manila, Philippines",	"Mexico City, Mexico",	"Moscow, Russia",	"Mumbai, India",	"Nagoya, Japan",	"Nanjing, China",	"New York City, United States",	"Onitsha, Nigeria",	"Osaka, Japan",	"Paris, France",	"Pune, India",	"Quanzhou, China",	"Rio de Janeiro, Brazil",	"Riyadh, Saudi Arabia",	"San Francisco, United States",	"Santiago, Chile",	"São Paulo, Brazil",	"Seoul, South Korea",	"Shanghai, China",	"Shenyang, China",	"Shenzhen, China",	"Surat, India",	"Taipei, Taiwan",	"Tehran, Iran",	"Tianjin, China",	"Tokyo, Japan",	"Toronto, Canada",	"Washington, D.C., United States",	"Wuhan, China",	"Xi'an, China",	"Zhengzhou, China"]
 
-taskdescription_homerepair = ["I need help with many home projects to fix things inside and outside of my house. Would prefer someone who has handyman experience", "My roof is leaking, please contact me if you have experience working on roof repair. Professionals preferred. Happy to negotiate payment", "Need yard work and tree triming help and small fixes to faucets and door handles in home"]
-tasktitle_homerepair = ["Home Repair and Maintenance", "Household Fixes", "Seeking Help"]
+home_descriptions = ["I need help with many home projects to fix things inside and outside of my house. Would prefer someone who has handyman experience", "My roof is leaking, please contact me if you have experience working on roof repair. Professionals preferred. Happy to negotiate payment", "Need yard work and tree triming help and small fixes to faucets and door handles in home"]
+home_titles = ["Home Repair and Maintenance", "Household Fixes", "Seeking Help"]
 
-taskdescription_shopping = ["need weekly groceries delivered to my parents. They also need some other items picked up as requested", "Food shopping for family who is under quarantine", "Bi-weekly groceries shopping for the next month"]
-tasktitle_shopping = ["Shopping", "Grocery Shopping", "Family Grocery Shopping"]
+shopping_descriptions = ["need weekly groceries delivered to my parents. They also need some other items picked up as requested", "Food shopping for family who is under quarantine", "Bi-weekly groceries shopping for the next month"]
+shopping_titles = ["Shopping", "Grocery Shopping", "Family Grocery Shopping"]
 
-taskdescription_transportation = []
-tasktitle_transportation = []
-
-puts "Creating tasks with helps for homerepair..."
+puts "Creating tasks with helps..."
 3.times do
   task = Task.create(
-    title: tasktitle_homerepair.sample,
-    description: taskdescription_homerepair.sample,
-    due_date: rand(Date.today..Date.civil(2020, 05, 01)),
+    title: home_titles.sample,
+    description: home_descriptions.sample,
+    due_date: rand((Time.zone.today + 3.days)..(Time.zone.today + 1.months)),
     location: cities.sample,
     status: "pending",
     creator: User.all.sample,
-    helper: [User.all.sample, nil].sample # could be not assigned yet, so let's do 50% of the times
   )
 
+  # Photos
   rand(1..3).times do |n|
-    puts "Creating Task Photo..."
     file = URI.open("https://picsum.photos/500")
-    task.photos.attach(io: file, filename: "photo#{n + 1}", content_type: 'image/jpeg')
+    task.photos.attach(io: file, filename: "task1.#{n + 1}", content_type: 'image/jpeg')
   end
 
+  # Tags
   Tag.all.sample(rand(1..5)).each do |tag|
     TaskTag.create(task: task, tag: tag)
   end
 
+  # Helps
   rand(0..10).times do
     Help.create(
       user: User.all.sample,
@@ -82,22 +70,19 @@ puts "Creating tasks with helps for homerepair..."
   end
 end
 
-puts "Creating tasks with helps for shopping..."
 3.times do
-  task = Task.create(
-    title: tasktitle_shopping.sample,
-    description: taskdescription_shopping.sample,
-    due_date: rand(Date.today..Date.civil(2020, 05, 01)),
+  task = Task.new(
+    title: shopping_titles.sample,
+    description: shopping_descriptions.sample,
+    due_date: rand((Time.zone.today + 3.days)..(Time.zone.today + 1.months)),
     location: cities.sample,
     status: "pending",
     creator: User.all.sample,
-    helper: [User.all.sample, nil].sample # could be not assigned yet, so let's do 50% of the times
   )
 
   rand(1..3).times do |n|
-    puts "Creating Task Photo..."
     file = URI.open("https://picsum.photos/500")
-    task.photos.attach(io: file, filename: "photo#{n + 1}", content_type: 'image/jpeg')
+    task.photos.attach(io: file, filename: "task2.#{n + 1}", content_type: 'image/jpeg')
   end
 
   Tag.all.sample(rand(1..5)).each do |tag|

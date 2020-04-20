@@ -1,12 +1,9 @@
 class PagesController < ApplicationController
   def home
-    @tasks = Task.where("due_date > ?", Date.today).where(status: "pending").order(:due_date)[0..2]
-    @help = Help.new
+    @tasks = Task.where("due_date > ?", Time.zone.today).where(status: "pending").order(:due_date)[0..2]
   end
 
   def dashboard
-    @created_tasks = current_user.created_tasks
-    @helper_tasks = current_user.helper_tasks
-    @applied_to_help = current_user.applied_to_help
+    # No need to send any task, we can retrieve them from current_user
   end
 end

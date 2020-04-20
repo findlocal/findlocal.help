@@ -4,6 +4,19 @@ require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')
 
-// Packages
+// ----------------------------------------------------
+// Note: ABOVE IS RAILS DEFAULT CONFIGURATION
+// WRITE CUSTOM JS STARTING FROM HERE 👇
+// ----------------------------------------------------
+
+// External imports
 import 'bootstrap'
-import '../components' // no need to specify the /index in js, it's automatic
+
+// Internal imports
+import { initDatepicker, initTooltips } from '../components' // no need for `/index` in JS
+
+document.addEventListener('turbolinks:load', () => {
+  // Call all the custom functions here or they won't load correctly:
+  initDatepicker()
+  initTooltips()
+})

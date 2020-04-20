@@ -9,11 +9,12 @@ class Task < ApplicationRecord
 
   # Validations
   validates :title, :description, :location, :status, presence: true
+  validates :status, inclusion: { in: ["pending", "in progress", "completed"], message: "%{value} is not a valid status" }
   validate :due_date_cannot_be_in_the_past
 
   private
 
   def due_date_cannot_be_in_the_past
-    errors.add(:due_date, "can't be in the past") if due_date.present? && due_date < Date.today
+    errors.add(:due_date, "must be in the future") if due_date.present? && due_date <= Time.zone.today
   end
 end

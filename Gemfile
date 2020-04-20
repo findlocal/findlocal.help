@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.1"
 
-# Default
+# Core
 gem "rails", "~> 6.0.2", ">= 6.0.2.2"
 gem "pg", ">= 0.18", "< 2.0" # postgresql as database
 gem "puma", "~> 4.1" # app server
@@ -14,11 +14,13 @@ gem "jbuilder", "~> 2.7" # build an api and render json
 gem "redis", "~> 4.0" # run action cable
 gem "bootsnap", ">= 1.4.2", require: false # helps caching
 
-# Custom
-gem "autoprefixer-rails" # adds prefixes to css rules
+# Extensions
 gem "cloudinary", "~> 1.12.0"
 gem "devise"
 gem "faker"
+
+# Frontend
+gem "autoprefixer-rails" # adds prefixes to css rules
 gem "font-awesome-sass"
 gem "simple_form"
 
@@ -27,6 +29,7 @@ group :development, :test do
   gem "pry-byebug" # call 'binding.pry' anywhere in the code to stop the execution and get a debugger console
   gem "pry-rails"
   gem "rubocop"
+  gem "rubocop-rails"
 end
 
 group :development do

@@ -1,29 +1,21 @@
-.navbar-lewagon {
+.navbar-localhelp {
   justify-content: space-between;
   background: rgba($color: black, $alpha: 0);
+
+  a {
+    font-weight: 600;
+  }
 
   .avatar {
     cursor: pointer;
   }
 
-  a {
-    font-weight: 600;
+  .navbar-collapse {
+    flex-grow: 0;
   }
-}
 
-.localhelp-logo {
-  @media (min-width: 1139px) {
-    position: absolute;
-    left: 50px;
-    width: 400px !important;
+  .logo {
+    width: 120px;
+    margin: 0;
   }
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 120px;
-  margin: 0;
 }

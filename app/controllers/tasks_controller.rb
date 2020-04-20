@@ -2,14 +2,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.where("due_date > ?", Date.today)
-                 .where(status: "pending")
-                 .where.not(creator: current_user, helper: current_user)
-                 .order(:due_date)
-    return unless params[:search].present?
+    @tasks = filtered_tasks
+    return if params[:search].blank?
 
-    filter_by_search_params(params[:search])
-    @help = Help.new
+    filter_tasks_by_search_params(params[:search])
   end
 
   def new
@@ -17,15 +13,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.creator = current_user
-    @task.status = "pending"
-
+    @task = Task.new(creator: current_user, status: "pending", **task_params) # `**` is the spread operator
     if @task.save
-      flash[:success] = "\"#{@task.title}\" was created."
+      flash[:success] = task_success_message("created")
       redirect_to dashboard_path
     else
-      flash[:error] = "There was an error in creating this task"
+      flash[:error] = task_error_message("create")
       render :new
     end
   end
@@ -34,35 +27,31 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:success] = "\"#{@task.title}\" was updated"
+      flash[:success] = task_success_message("updated")
       redirect_to dashboard_path
     else
-      flash[:error] = "There was an error in updating this task"
+      flash[:error] = task_error_message("update")
       render :edit
     end
   end
 
   def assign
-    @help = Help.find(params[:helper_id])
-    @task = Task.find(params[:task_id])
-    @task.helper = @help.user
-    @task.status = "in progress"
+    find_and_assign_help(params)
 
     if @task.save
-      flash[:alert] = "#{@help.user.first_name} was assigned to \"#{@task.title}\"!"
-      redirect_to dashboard_path
-
+      flash[:success] = task_success_message("assigned")
     else
-      flash[:alert] = "There was an error in assigning #{@help.user.first_name}."
-      render :dashboard
+      flash[:error] = task_error_message("assign")
     end
-
-
+    redirect_to dashboard_path
   end
 
   def destroy
-    @task.destroy
-    flash[:alert] = "Task successfully deleted"
+    if @task.destroy
+      flash[:success] = task_success_message("deleted")
+    else
+      flash[:error] = task_error_message("delete")
+    end
     redirect_to dashboard_path
   end
 
@@ -76,12 +65,34 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :due_date, :location, :status, photos: [], tag_ids: [])
   end
 
-  def filter_by_search_params(params)
+  def filtered_tasks
+    Task.where("due_date > ?", Time.zone.today)
+        .where(status: "pending")
+        .where.not(creator: current_user)
+        .order(:due_date)
+  end
+
+  def filter_tasks_by_search_params(params)
     location = params[:location]
     task_tags = params[:task_tags]
     due_date = params[:due_date].present? && Date.parse(params[:due_date])
     @tasks = @tasks.where("location ILIKE ?", "%#{location}%") unless location.empty?
     @tasks = @tasks.joins(:tags).where(tags: { name: task_tags }) unless task_tags.empty?
     @tasks = @tasks.where("due_date < ?", due_date) if due_date
+  end
+
+  def find_and_assign_help(params)
+    @help = Help.find(params[:helper_id])
+    @task = Task.find(params[:task_id])
+    @task.helper = @help.user
+    @task.status = "in progress"
+  end
+
+  def task_success_message(action)
+    "Task \"#{@task.title}\" successfully #{action}"
+  end
+
+  def task_error_message(action)
+    "Can't #{action} task, please check the errors and try again"
   end
 end

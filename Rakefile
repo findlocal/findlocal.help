@@ -2,15 +2,17 @@ require_relative "config/application"
 
 Rails.application.load_tasks
 
-task :rubocop do
+desc "Look for Ruby style offenses in your code"
+task rubocop: :environment do
   puts "---"
-  puts "Analyzing your ruby style..."
+  puts "Looking for Ruby style offenses in your code..."
   puts "All good! 👌" if system "rubocop --format simple"
 end
 
-task :eslint do
+desc "Look for JavaScript style offenses in your code"
+task eslint: :environment do
   puts "---"
-  puts "Analyzing your javascript style..."
+  puts "Looking for JavaScript style offenses in your code..."
   puts "All good! 👌" if system "./node_modules/.bin/eslint app/javascript/packs/**/*.js"
 end
 

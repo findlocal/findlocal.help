@@ -22,6 +22,4 @@ Create an `.env` file at the root of the repository, then copy and paste your `C
 
 ### Lint
 
-One default task has been defined in the `Rakefile`, executing `rubocop` and `eslint`. Launch it with just `rake`.
-
-
+One default task has been defined in the `Rakefile`, executing `rubocop` and `eslint`. Launch it with `rake`.

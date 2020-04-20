@@ -1,157 +1,35 @@
-<div class="container">
-  <br>
-  <h1 class="text-center">Hi <%= current_user.first_name.capitalize %>!</h1>
-  <br>
+<div class="container mb-2">
+  <h1 class="text-center my-3">Hi <%= current_user.first_name.capitalize %>!</h1>
+
   <h4>Tasks you created</h4>
-  <div class="row">
-
-    <% if @created_tasks.empty? %>
-    <p style="margin-left: 16px">You haven't created any task yet</p>
+  <div class="row mb-2">
+    <% if current_user.created_tasks.empty? %>
+      <p class="ml-3">You haven't created any task yet.</p>
     <% else %>
-    <% @created_tasks.each do |task| %>
-    <div class="col-sm-12 col-md-6 col-lg-4 h-100">
-      <div class="card m-3" style="width: 22rem;">
-        <div class="card-body">
-          <div class="d-flex justify-content-end w-100">
-            <h5 class="mr-auto"><%= task.title %></h5>
-            <%= link_to edit_task_path(task), class: "mr-3 text-dark" do %>
-            <i class="far fa-edit"></i>
-            <% end %>
-
-            <%= link_to task_path(task), method: :delete, class: "mr-3 text-danger", data: { confirm: "Are you sure?"} do %>
-            <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
-
-          <hr>
-          <h6 class="card-subtitle mb-2 text-muted"><%= task.location %></h6>
-          <p class="card-text">Due date: <%= task.due_date %></p>
-          <br>
-          <div class="d-flex justify-content-between align-items-center">
-            <p
-              class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
-              <%= task.status.upcase %></p>
-            <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-              data-target="#taskModal<%= task.id %>">
-              Preview</button>
-
-
-          </div>
-          <hr>
-
-          <% if task.status == "pending"%>
-          <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-3" data-toggle="modal"
-            data-target="#applicationModal<%= task.id %>">
-            Applications <span class="badge badge-dark"><%= task.helps.count %></span></button>
-          <% else %>
-          <div class="d-flex align-items-center">
-            <% if task.helper.avatar.attached? %>
-            <%= cl_image_tag task.helper.avatar.key, class: "avatar-large" %>
-            <% else %>
-            <%= image_tag "avatar_placeholder.png", class: "avatar-large" %>
-            <% end %>
-            <h5 class=" ml-2"><%= task.helper.first_name %> is your helper!</h5>
-
-          </div>
-
-          <%# TODO: Make a new route to handle the completion of a task %>
-          <%= link_to "Mark as done", edit_task_path(task), class: "btn btn-success btn-sm w-100 mt-2 disabled" %>
-
-          <% end %>
-          <!-- Modals -->
-
-          <%= render 'shared/application_modal', task: task %>
-
-          <%= render 'shared/task_modal',
-              help: @help,
-              task: task,
-              title: task.title,
-              taskId: task.id,
-              description: task.description,
-              avatar: task.creator.avatar,
-              user_name: task.creator.first_name,
-              photos: task.photos,
-              tags: task.tags,
-              due_date: (task.due_date - Date.today).round,
-              location: task.location,
-              helps: task.helps
-            %>
+      <% current_user.created_tasks.each do |task| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 h-100">
+          <%= render "shared/task_card_small", task: task, card_type: "creator" %>
         </div>
-      </div>
-
-    </div>
-    <% end %>
+        <%= render 'shared/task_modal', task: task %>
+        <%= render 'shared/helps_modal', task: task %>
+      <% end %>
     <% end %>
   </div>
 
-
-  <br>
-  <hr>
-  <br>
-
   <h4>Tasks you applied for</h4>
   <div class="row">
-    <% if @applied_to_help.empty? %>
-    <div class="mr-3">
-      <p style="margin-left: 16px">You haven't applied to any task yet.</p>
-    </div>
+    <% if current_user.helps.empty? %>
+      <p class="ml-3">You haven't applied to any task yet.</p>
     <% else %>
-    <% @applied_to_help.each do |help| %>
-    <% task = help.task %>
-    <% if task.status == 'in progress' || task.status == 'pending' %>
-    <div class="col-sm-12 col-md-6 col-lg-4 h-100">
-
-
-      <div class="card m-3" style="width:   22rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= task.title %></h5>
-          <hr>
-          <h6 class="card-subtitle mb-2 text-muted"><%= task.location %></h6>
-          <p class="card-text">Due date: <%= task.due_date %></p>
-          <br>
-
-          <p
-            class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
-            <%= task.status.upcase %></p>
-
-          <!-- Large modal -->
-          <p type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal"
-            data-target="#modal<%= task.id %>">More info</p>
-          <div class="modal" id="modal<%= task.id %>" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title"><%= task.title %></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body p-3">
-                  <p
-                    class="text-right text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
-                    <%= task.status.upcase %></p>
-                  <h6>Location: <%= task.location %></h6>
-                  <h6>Due Date: <%= task.due_date %></h6>
-                  <p><%= task.description %></p>
-                  <% task.tags.each do |tag| %>
-                  <span class="tag card-text"><%= tag.name %></span>
-                  <% end %>
-                </div>
-                <div class="modal-footer">
-
-                  <%= link_to task_help_path(task, help), method: "delete", data: { confirm: "Are you sure?"} do %>
-                  <button type="button" class="btn btn-danger">Undo application</button>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+      <% current_user.helps.each do |help| %>
+        <% task = help.task %>
+        <% if ["in progress", "pending"].include?(task.status) %>
+          <div class="col-sm-12 col-md-6 col-lg-4 h-100">
+            <%= render "shared/task_card_small", task: task, card_type: "helper" %>
+            <%= render "shared/task_modal", task: task %>
           </div>
-        </div>
-
-      </div>
-    </div>
-    <% end %>
-    <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
