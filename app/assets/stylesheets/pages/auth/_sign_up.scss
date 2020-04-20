@@ -19,3 +19,14 @@
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+
+.text-green {
+  color: $green;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: none;
+    color: $light-green;
+    text-shadow: rgba(0,0,0,0.2);
+  }
+}
