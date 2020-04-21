@@ -1,16 +1,3 @@
-<header class="home-container header-sign-up d-flex justify-content-center align-items-center">
-  <div class="auth_banner d-flex">
-    <div class="form-banner">
-      <div class="form-heading-padding-login text-center">
-        <h1>Welcome back!</h1>
-        <h3>Sign in to your account, we've missed you.</h3>
-      </div>
-      <div class="form-padding">
-        <%= render "shared/login_form" %>
-      </div>
-    </div>
-    <div class="quote-position">
-      <p class="quote">Every small act of kindness makes a difference.</p>
-    </div>
-  </div>
+<header class="auth-header d-flex justify-content-center align-items-center">
+  <%= render "devise/shared/banner", type: "sign_in" %>
 </header>

@@ -1,17 +1,15 @@
-// COLOR VARIABLES
-
-$green: #28B485; // Primary green
-$light-green: #7ED56F; // Secondary green
-$red: #BE1C11;
-$green-gradient: linear-gradient(122.01deg, $light-green 0%, $green 100%);
-$white: #FFF;
-$gray: #C4C4C4;
+// Palette
+$red-dark: #9c2f31;
+$red: #be1c11;
+$orange: #e67e22;
+$yellow: #ffc65a;
+$green: #28b485;
+$green-light: #7ed56f;
+$blue: #03499c;
+$white: #fff;
+$gray: #c4c4c4;
+$gray-light: #f4f4f4;
 $black: #000000;
 
-// EXTRA COLORS
-
-$burgundy: #9c2f31;
-$blue: #03499c;
-$yellow: #ffc65a;
-$orange: #e67e22;
-$light-gray: #f4f4f4;
+// Gradients
+$green-gradient: linear-gradient(120deg, $green-light 0%, $green 100%);

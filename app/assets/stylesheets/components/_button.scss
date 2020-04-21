@@ -1,17 +1,20 @@
 .btn-gradient {
   background: $green-gradient;
   background-color: $green;
+  background-size: 100% 100%;
   border-radius: 4px;
-  padding: 8px 16px;
-  text-transform: uppercase;
+  border: 0;
+  box-shadow: 0 16px 32px 0 rgba(0, 40, 120, 0.35);
   color: white;
   font-weight: 600;
-  font-size: 16px;
-  transition: .3s;
+  margin-top: 8px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-out;
 
   &:hover {
-    text-decoration: none;
-    color: white;
-    background: $green;
+    background-size: 200% 200%;
+    box-shadow: 0 0px 0px 0 rgba(0, 40, 120, 0);
+    color: $white;
   }
 }

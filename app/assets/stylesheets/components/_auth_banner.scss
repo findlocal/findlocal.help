@@ -1,0 +1,76 @@
+.auth-banner {
+  background-image: asset_url("auth-banner.jpg");
+  background-size: cover;
+  border-radius: 4px;
+  position: relative;
+  width: 65vw;
+
+  @media (max-width: 1300px) {
+    width: 85vw;
+  }
+}
+
+.auth-banner-inner {
+  height: 100%;
+  width: 48%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .auth-message {
+    padding: 15px 15px;
+  }
+
+  .auth-message-login {
+    padding: 30px 15px;
+  }
+
+  .auth-form-container {
+    padding: 10px 50px;
+  }
+
+  form {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.auth-quote-container {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.auth-quote {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: lighter;
+  top: 6%;
+  left: 52%;
+  right: 4%;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 700px) {
+  .auth-banner-inner {
+    width: 100%;
+  }
+
+  .auth-quote {
+    display: none;
+  }
+}

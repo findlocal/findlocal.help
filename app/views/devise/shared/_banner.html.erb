@@ -1,0 +1,18 @@
+<div class="auth-banner <%= type == 'sign_up' ? 'd-flex' : '' %>">
+  <div class="auth-banner-inner">
+    <div class="auth-message<%= type == 'sign_in' ? '-login' : '' %> text-center">
+      <h1 class="mt-2"><%= type == "sign_up" ? "Local Help" : "Welcome back!" %></h1>
+      <h3><%= type == "sign_up" ? "Sign up and let's start helping each other out." : "Sign in to your account, we've missed you." %></h3>
+    </div>
+    <div class="auth-form-container">
+      <% if type == "sign_up" %>
+        <%= render "devise/shared/sign_up_form" %>
+      <% else %>
+        <%= render "devise/shared/sign_in_form" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="auth-quote-container">
+    <p class="auth-quote">Every small act of kindness makes a difference.</p>
+  </div>
+</div>

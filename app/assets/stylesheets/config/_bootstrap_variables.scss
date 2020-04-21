@@ -1,9 +1,9 @@
-// Check all the variables here -> https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss
+// Check all the variables you can override -> https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss
 
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family: $headers-font;
-$body-bg: $light-gray;
+$body-bg: $gray-light;
 $font-size-base: 1rem;
 
 // Colors
@@ -14,9 +14,12 @@ $info: $yellow;
 $danger: $red;
 $warning: $orange;
 
-// Buttons & inputs' radius
+// Buttons & inputs radius
 $border-radius: 2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
-// Override other variables below!
+// Input focus
+$input-transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+$input-focus-border-color: $green;
+$input-focus-box-shadow: 0 0 0 0.2rem lighten($green, 25%);
