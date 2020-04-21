@@ -11,4 +11,5 @@ resources :tasks
   resources :tags, only: [:index, :create, :update, :destroy]
 
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
+  get 'search_location/:q' => 'pages#search_location'
 end

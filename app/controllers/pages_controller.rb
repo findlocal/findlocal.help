@@ -12,4 +12,9 @@ class PagesController < ApplicationController
     @applied_to_help = current_user.applied_to_help
   end
 
+  def search_location
+    @task_location = Task.where('location_code LIKE ?', "%#{params[:q]}%")
+    render json: @task_location
+  end
+
 end

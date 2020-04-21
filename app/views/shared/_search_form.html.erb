@@ -1,11 +1,8 @@
 <div class="container">
   <%= simple_form_for :search, url: tasks_path, method: :get  do |f| %>
-
-  <div id="location-search">
-  <input class="typeahead" type="text" placeholder="Enter your location"> 
+  <div id= "search-data"  class="form-search search-data" data-skills="<%= @location.to_json %>">
+    <%= f.input nil, autocomplete: :off, class: "form-control search-input", placeholder: "Search by city", label: "Location" %>
   </div>
-  <%= f.input :location, class: "form-control", collection: @location, as: :select, :required => true %> 
-  <!-- Above field being kept until location search properly implemented -->
   <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <div id="tags-search">
   <%= f.input :task_tags, label: "Task Categories", class: "form-control", collection: @task_tags, as: :select %>
@@ -16,3 +13,7 @@
   </div>
   <% end %>
 </div>
+
+<%= form_tag(root_path, method: 'get', class: "form-inline") do %>
+  
+<% end %>

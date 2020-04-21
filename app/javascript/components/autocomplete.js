@@ -1,62 +1,22 @@
-const locationMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, locationRegex;
-
-    matches = [];
-
-    locationRegex = new RegExp(q, 'i');
-
-    
-    $.each(strs, function(i, str) {
-      if (locationRegex.test(str)) {
-        matches.push(str);
-      }
+import 'js-autocomplete/auto-complete.css';
+import autocomplete from 'js-autocomplete';
+const autocompleteSearch = function() {
+  console.log('test')
+  const skills = JSON.parse(document.getElementById('search-data').dataset.skills)
+  const searchInput = document.getElementById('search_');
+  if (skills && searchInput) {
+    new autocomplete({
+      selector: searchInput,
+      minChars: 1,
+      source: function(term, suggest){
+          term = term.toLowerCase();
+          const choices = skills;
+          const matches = [];
+          for (let i = 0; i < choices.length; i++)
+              if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+          suggest(matches);
+      },
     });
-
-    cb(matches);
-  };
+  }
 };
-
-const location_list = (:location)
-
-$('#location-search.typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'location-list',
-  source: locationMatcher(location)
-});
-
-const tagMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches_tag, tagRegex;
-
-    matches_tag = [];
-
-    tagRegex = new RegExp(q, 'i');
-
-    
-    $.each(strs, function(i, str) {
-      if (tagRegex.test(str)) {
-        matches_tag.push(str);
-      }
-    });
-
-    cb(matches_tag);
-  };
-};
-
-const tags_list = (tag:)
-
-$('#tags-search.typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'tags-list',
-  source: tagMatcher(tag)
-});
-
+export { autocompleteSearch };

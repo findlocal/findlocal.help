@@ -10,6 +10,8 @@
     "flatpickr": "^4.6.3",
     "jquery": "^3.5.0",
     "jquery-typeahead": "^2.11.0",
+    "js-autocomplete": "^1.0.4",
+    "places.js": "^1.18.1",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0"
   },

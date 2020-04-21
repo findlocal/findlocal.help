@@ -32,7 +32,7 @@ end
 
 
 
-tags = ["#help", "#corona", "#chores", "#home-help", "#other"]
+tags = ["health and pharmacy", "corona", "chores", "general help", "shopping", "technology", "home repairs", "cleaning", "other"]
 
 puts "Creating tags..."
 tags.each do |tag|

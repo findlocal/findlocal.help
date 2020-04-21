@@ -21,10 +21,10 @@ gem "devise"
 gem "faker"
 gem "font-awesome-sass"
 gem "simple_form"
-gem 'searchkick'
 gem 'jquery-rails'
+gem 'hogan_assets'
 gem 'oj'
-gem 'twitter-typeahead-rails'
+gem 'bootstrap-typeahead-rails'
 
 group :development, :test do
   gem "dotenv-rails" # use a private '.env' file to store your keys
