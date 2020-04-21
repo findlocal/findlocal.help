@@ -17,8 +17,4 @@ class Task < ApplicationRecord
     errors.add(:due_date, "can't be in the past") if due_date.present? && due_date < Date.today
   end
 
-  def reindex
-    Task.reindex
-  end
-
 end
