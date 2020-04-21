@@ -14,7 +14,7 @@
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
   <div class="form-actions d-flex justify-content-center mb-3">
-    <%= f.button :submit, "Log in", class: "btn btn-gradient", data: { disable_with: "Signing in..." } %>
+    <%= f.button :submit, "Log in", class: "btn btn-gradient", data: { disable_with: "Signing in" } %>
   </div>
 <% end %>
 <p class="text-center">Not registered yet? <%= render "devise/shared/links" %></p>

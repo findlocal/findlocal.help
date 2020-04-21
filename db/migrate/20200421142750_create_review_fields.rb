@@ -3,7 +3,7 @@ class CreateReviewFields < ActiveRecord::Migration[6.0]
     create_table :review_fields do |t|
       t.string(:name)
       t.text(:content)
-      t.float(:rating)
+      t.integer(:rating)
       t.references(:review, null: false, foreign_key: true)
 
       t.timestamps

@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   has_many :helps, dependent: :destroy
   has_many :task_tags, dependent: :destroy
   has_many :tags, through: :task_tags
-  has_many :reviews
+  has_many :reviews, dependent: :nullify
   has_many_attached :photos, dependent: :destroy
 
   # Validations
