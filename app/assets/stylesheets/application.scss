@@ -12,15 +12,9 @@
 @import "font-awesome";
 @import "flatpickr/dist/flatpickr";
 
-// 3. General Rules (applied to all pages)
-form label abbr {
-  display: none; // hide star next to form labels
-}
+// 3. General rules
+@import "base";
 
-.uppercase {
-  text-transform: uppercase;
-}
-
-// 4. CSS partials
+// 4. Partials
 @import "components/index";
 @import "pages/index";

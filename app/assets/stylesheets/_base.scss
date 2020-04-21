@@ -1,0 +1,16 @@
+// General rules and classes used in all pages
+
+// Style applied on text highlight
+::selection {
+  background: $green-light;
+  color: $white;
+}
+
+// Hide star next to form labels
+form label abbr {
+  display: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
