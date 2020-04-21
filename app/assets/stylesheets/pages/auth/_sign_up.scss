@@ -1,16 +1,29 @@
 .header-sign-up {
-  height: 100vh;
+  min-height: calc(100vh - 56px);
   background-image: $green-gradient;
   opacity: 0.8;
 }
 
 .auth_banner {
-  height: 80vh;
   width: 85vw;
   background-image: asset_url('auth_banner.jpg');
-  background-size: 100% 100%;
+  background-size: cover;
   border-radius: 4px;
   position: relative;
+}
+
+.quote {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.quote-position {
+  position: absolute;
+  top: 22%;
+  right: 8%;
+  left: 58%;
 }
 
 .form-banner {
@@ -19,10 +32,20 @@
   background-color: rgba(255,255,255,0.8);
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-}
 
-.small-container {
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+  }
 
+  h3 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 14px;
+  }
 }
 
 .text-green {
@@ -36,33 +59,6 @@
   }
 }
 
-.quote {
-  color: white;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.quote-position {
-  position: absolute;
-  top: 22%;
-  right: 8%;
-  left: 58%;
-}
-
-.form-banner h1 {
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.form-banner h3 {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.form-banner p {
-  font-size: 14px;
-}
-
 .form-padding {
   padding: 10px 50px;
 }
@@ -73,4 +69,14 @@
 
 .form-heading-padding-login {
   padding: 30px 15px;
+}
+
+@media screen and (max-width: 700px) {
+  .form-banner {
+    width: 100%;
+  }
+
+  .quote {
+    display: none;
+  }
 }
