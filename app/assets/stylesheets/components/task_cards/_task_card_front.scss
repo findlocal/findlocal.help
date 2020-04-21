@@ -1,0 +1,7 @@
+&--front {
+  position: relative;
+
+  @import "task_card_front_header";
+  @import "task_card_front_middle";
+  @import "task_card_front_bottom";
+}

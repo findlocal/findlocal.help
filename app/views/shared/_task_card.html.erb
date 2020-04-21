@@ -1,24 +1,47 @@
-<div class="card-task">
-  <%= image_tag(task.photos.empty? ? "https://picsum.photos/500" : task.photos[0]) %>
+<div class="card">
+  <div class="card__side card__side--front card__side--front">
 
- 
+    <header>
+      <div class="task-card-white-box">
+        <h2>Help <%=task.creator.first_name%>
+      </div>
+    </header>
 
-  <div class="card-task-infos">
-    <div>
+    <div class="separator"></div>
+
+    <div class="card__description">
       <h2><%= task.title %></h2>
-      <p><%= task.location %></p>
-      <p><%= task.description %></p>
+
+      <div class="card-task-tags">
+        <% task.tags.max(3).each do |tag| %>
+        <p class="tag shadow-sm">#<%= tag.name.truncate(10, separator: /\s/) %></p>
+        <% end %>
+      </div>
     </div>
+
+    <div class="card-task-user-block">
+      <h2><%= task.creator.first_name%> <%= task.creator.last_name%></h2>
+      <h3><%= task.location %></h3>
+    </div>
+
     <% if task.creator.avatar.attached? %>
-      <%= cl_image_tag task.creator.avatar.key, class: "card-task-user avatar-bordered", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
+    <%= cl_image_tag task.creator.avatar.key, class: "card-task-user avatar-bordered", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
     <% else %>
-      <%= image_tag "avatar-placeholder.png", class: "card-task-user avatar-bordered", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
+    <%= image_tag "avatar-placeholder.png", class: "card-task-user avatar-bordered", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
     <% end %>
   </div>
 
-  <div class="card-task-footer">
-    <% task.tags.max(8).each do |tag| %>
-      <p class="tag shadow-sm">#<%= tag.name %></p>
-    <% end %>
+  <div class="card__side card__side--back card__side--back">
+    <div class="task-card-back-title">
+      <%= task.title%>
+    </div>
+
+    <div class="card__description_back">
+      <p><%= task.description.truncate(80, separator: /\s/) %></p>
+    </div>
+
+    <div class="card-back-botton">
+      See Details
+    </div>
   </div>
 </div>
