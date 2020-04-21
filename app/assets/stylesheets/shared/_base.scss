@@ -1,4 +1,4 @@
-// General rules and classes used in all pages
+// General rules applied to all pages
 
 // Style applied on text highlight
 ::selection {
@@ -9,8 +9,4 @@
 // Hide star next to form labels
 form label abbr {
   display: none;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }

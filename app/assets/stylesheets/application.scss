@@ -1,20 +1,17 @@
 // The order here is important, we must respect CSS specificity!
 
 // 1. Graphical variables
-@import "config/fonts";
 @import "config/colors";
-@import "config/animations";
+@import "config/fonts";
 @import "config/bootstrap_variables";
 
 // 2. External libraries
 @import "bootstrap/scss/bootstrap";
+@import "flatpickr/dist/flatpickr";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "flatpickr/dist/flatpickr";
 
-// 3. General rules
-@import "base";
-
-// 4. Partials
+// 3. Partials
+@import "shared/index";
 @import "components/index";
 @import "pages/index";
