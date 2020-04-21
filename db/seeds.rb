@@ -5,13 +5,12 @@ OpenURI::Buffer.send(:remove_const, "StringMax") if OpenURI::Buffer.const_define
 OpenURI::Buffer.const_set("StringMax", 0)
 
 puts "Destroying all records..."
+Review.destroy_all
 User.destroy_all
 Task.destroy_all
 Help.destroy_all
 TaskTag.destroy_all
 Tag.destroy_all
-Review.destroy_all
-ReviewField.destroy_all
 
 puts "Creating new users..."
 10.times do |n|
@@ -142,9 +141,6 @@ Task.all.each do |task|
     review: helpers_review
   )
 
-  average_helpers_rating = Review.find(helpers_review.id).review_field.where.not(rating: nil).average(:rating)
-  helpers_review.update(rating: average_helpers_rating)
-
   # REVIEW: from the task creator
   creators_review = Review.create(
     user: task.creator,
@@ -185,9 +181,6 @@ Task.all.each do |task|
     rating: rand(1..5),
     review: creators_review
   )
-
-  average_creators_rating = Review.find(creators_review.id).review_field.where.not(rating: nil).average(:rating)
-  creators_review.update(rating: average_creators_rating)
 end
 
 puts "Done! 🎉"

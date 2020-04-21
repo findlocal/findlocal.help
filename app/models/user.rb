@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # 3. Associations
   has_many :helps, dependent: :destroy
   has_many :tasks, through: :helps
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, dependent: :nullify # makes review.user_id nil when the user is destroyed
   has_one_attached :avatar, dependent: :destroy
 
   # 4. Validations
