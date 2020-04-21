@@ -17,6 +17,10 @@ form label abbr {
   display: none; // hide star next to form labels
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 // 4. CSS partials
 @import "components/index";
 @import "pages/index";
