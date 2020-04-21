@@ -1,4 +1,28 @@
 .footer {
-  height: 100px;
-  background: $green;
+  height: 108px;
+  background: linear-gradient(90deg, #7CD28D 0%, rgba(40, 180, 133, 0.8) 97.49%);
+  color: $white;
+  font-weight: 500;
+  border-top: 1px solid $white;
+
+  p {
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      text-decoration: none;
+      color: white;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+      font-weight: 600;
+    }
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
 }
