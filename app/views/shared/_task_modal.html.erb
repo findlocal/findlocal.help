@@ -69,10 +69,10 @@
                 <%= link_to "See it in your dashboard", dashboard_path, class: "btn btn-primary" %>
               <% end %>
             <% else %>
-              <%= button_tag "Apply to this task", class: "btn btn-success", "data-toggle": "modal", "data-target": "#helpModal#{task.id}" %>
+              <%= button_tag "Apply to this task", class: "btn-gradient", "data-toggle": "modal", "data-target": "#helpModal#{task.id}" %>
             <% end %>
           <% else %>
-            <%= link_to "Log in to apply!", new_user_session_path, class: "btn btn-primary" %>
+            <%= link_to "Log in to apply!", new_user_session_path, class: "btn-gradient" %>
           <% end %>
         <% end %>
       </div>
@@ -94,7 +94,7 @@
         <div class="modal-body p-4">
           <%= simple_form_for [task, Help.new] do |f| %>
             <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
-            <%= f.button :submit, class: "btn btn-success float-right", value: "Send", data: { disable_with: "Sending..." } %>
+            <%= f.button :submit, class: "btn-gradient float-right", value: "Send", data: { disable_with: "Sending..." } %>
           <% end %>
         </div>
       </div>

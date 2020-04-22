@@ -6,7 +6,7 @@
 
   <ul class="navbar-search">
     <%= simple_form_for :search, url: tasks_path, method: :get  do |f| %>
-    <li> <%= f.input :location, label: "", class: "navbar-search-box form-control", placeholder: "Location" %> </li>
+    <li> <%= f.input :location, label: "", class: "navbar-search-box", placeholder: "Location" %> </li>
     <li> <%= f.submit "Search", class: "navbar-search-btn btn-gradient"%> </li>
     <% end %>
   </ul>
