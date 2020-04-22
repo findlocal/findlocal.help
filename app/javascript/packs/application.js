@@ -13,10 +13,16 @@ require('channels')
 import 'bootstrap'
 
 // Internal imports
-import { initDatepicker, initTooltips } from '../components' // no need for `/index` in JS
+import { initDatepicker, initTooltips, initUpdateNavbarOnScroll  } from '../components' // no need for `/index` in JS
+
+
+initUpdateNavbarOnScroll();
 
 document.addEventListener('turbolinks:load', () => {
   // Call all the custom functions here or they won't load correctly:
   initDatepicker()
   initTooltips()
+  initUpdateNavbarOnScroll()
+
+
 })
