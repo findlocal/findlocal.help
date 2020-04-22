@@ -1,41 +1,110 @@
-.home-container {
-  background-image: asset_url("hands.jpg");
+.banner-home {
+  min-height: calc(100vh - 56px);
+  background: linear-gradient(
+              to right bottom,
+              rgba(40,180,131,0.6),
+              rgba(40,180,131,0.6)),
+              url(banner.png);
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: 100%;
 }
 
-.home-container-inner {
-  align-items: center;
-  flex-wrap: wrap;
+.green-polygon {
+  min-height: calc(100vh - 56px);
+  background-color: $green;
+  clip-path: polygon(0 0, 50% 0, 20% 100%, 0 100%);
 }
+
+.banner-heading {
+  text-transform: uppercase;
+  color: $white;
+  max-width: 40%;
+  text-align: center;
+
+  h1 {
+    font-size: 65px;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+}
+
+.quote-position {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.quote {
+  color: $white;
+  max-width: 40%;
+}
+
+.second-section {
+  background-color: $white;
+}
+
+.third-section {
+  background-color: $white;
+  text-align: center;
+}
+
+
+
+
+
+// .home-container {
+//   background-image: asset_url("hands.jpg");
+//   background-size: cover;
+//   background-position: center;
+
+//   @media (max-width: 1139px) {
+//     overflow-y: scroll;
+//     background: asset_url("hands.jpg") no-repeat center center;
+//     content: "";
+//     display: block;
+//     width: 100%;
+//     height: 100%;
+//     background-size: cover;
+//   }
+// }
+
+// .home-container-inner {
+//   height: calc(100vh - 56px);
+//   align-items: center;
+//   flex-wrap: wrap;
+// }
 
 .home-search-box {
-  background-color: whitesmoke;
-  box-shadow: 3px 3px 5px 6px #ccc;
-  padding: 32px;
-  width: 400px;
-  margin-left: 10%;
-
-  @media (max-width: 1139px) {
-    margin: auto;
-    margin-top: 32px;
-  }
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  padding: 32px 24px;
+  width: 25%;
+  display: inline-block;
+  text-align: center;
 }
 
-.home-tasks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+//   @media (max-width: 1139px) {
+//     margin: auto;
+//     margin-top: 32px;
+//   }
+// }
 
-  @media (max-width: 576px) {
-    width: 90%;
-    margin-top: 32px;
-  }
-}
+// .home-tasks {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100%;
+//   width: 50%;
+//   margin-left: auto;
+//   margin-right: auto;
+
+//   @media (max-width: 576px) {
+//     width: 90%;
+//     margin-top: 32px;
+//   }
+// }
