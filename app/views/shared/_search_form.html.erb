@@ -1,7 +1,7 @@
 <div class="container">
   <%= simple_form_for :search, url: tasks_path, class: "search-form", method: :get  do |f| %>
     <%= f.input :location, label: "City", class: "form-control", placeholder: "Your location" %>
-    <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+    <%# <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
     <%= f.input :task_tags, label: "Task Categories", class: "form-control", placeholder: "Task Category" %>
     <div class="form-actions">
       <%= f.submit "Search", class: "btn btn-dark"%>
