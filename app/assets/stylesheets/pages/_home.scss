@@ -43,15 +43,12 @@
   position: absolute;
   left: 4%;
   top: 35%;
-
-  p {
-    font-size: 20px;
-  }
 }
 
 .banner-home-quote {
   color: $white;
   margin: 0;
+  font-size: 18px;
 }
 
 .banner-home-first-paragraph {
@@ -114,7 +111,6 @@
   border: 2px solid $green;
   border-radius: 4px;
   margin: 50px 20px;
-  min-height: 250px;
 }
 
 .banner-home-card-polygon {
