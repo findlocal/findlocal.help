@@ -1,9 +1,9 @@
 <header class="banner-home">
   <div class="banner-home-polygon">
-    <div class="banner-home-heading">
-      <h1>Local Help</h1>
-      <h3>Help each other out</h3>
-    </div>
+  </div>
+  <div class="banner-home-heading">
+    <h1>Local Help</h1>
+    <h3>Help each other out</h3>
   </div>
   <div class="home-search-box">
     <%= render "shared/search_form" %>
@@ -23,10 +23,43 @@
       <path class="a3" d="M0 40 L30 72 L60 40"></path>
   </svg>
 </header>
-<div class="container second-section">
-  <h1>What is Local Help?</h1>
+
+<div class="banner-home-second-section">
+  <div class="row">
+    <div class="col-12 d-flex">
+      <div class="banner-home-left-side">
+        <h1>What is Local Help?</h1>
+        <p>Whether you need someone to help you fix your roof, clean your house or help build your garden. Here, you can find top rated volunteers to help you take on any project as well as become a volunteer and help someone in your community.</p>
+        <div class="d-flex justify-content-around">
+          <%= link_to 'See available tasks', tasks_path, class: 'btn-gradient' %>
+        </div>
+      </div>
+      <div class="banner-home-right-side">
+
+      </div>
+    </div>
+  </div>
 </div>
-<div class="third-section">
-  <h1>How does it work?</h1>
-  <p>When you sign up, you can both create a new task and apply to help someone out</p>
+
+<div class="banner-home-third-section">
+  <div class="row">
+    <div class="col-12">
+      <h1>How does it work?</h1>
+      <p>When you sign up, you can both create a new task or apply to help someone out.</p>
+      <div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-around">
+        <%= link_to 'Sign up for free', new_user_registration_path, class: 'btn-gradient' %>
+      </div>
+    </div>
+  </div>
 </div>
