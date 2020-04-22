@@ -1,7 +1,9 @@
 .navbar-localhelp {
   min-height: $navbar-height;
   justify-content: space-between;
-  background: rgba($color: black, $alpha: 0);
+  // background: rgba($color: black, $alpha: 0);
+  transition: 0.5s background-color ease;
+  background: transparent;
 
   a {
     font-weight: 600;
@@ -19,4 +21,8 @@
     width: 120px;
     margin: 0;
   }
+}
+
+.navbar-localhelp-white {
+  background-color: white;
 }
