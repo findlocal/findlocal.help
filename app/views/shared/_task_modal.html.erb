@@ -60,7 +60,6 @@
 
       <!-- Footer -->
       <div class="modal-footer">
-        <h4 class="mr-auto"><%= (task.due_date - Time.zone.today).to_i %> days left</h4>
         <!-- Footer: apply button -->
         <% unless task.creator == current_user %>
           <% if current_user %>
