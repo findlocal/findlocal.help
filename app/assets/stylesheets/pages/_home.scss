@@ -130,3 +130,12 @@
     font-size: 16px;
   }
 }
+
+#card-image {
+  height: 350px;
+  width: 300px;
+  background-image: url(card.jpg);
+  background-size: cover;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  margin-right: -10px;
+}
