@@ -11,5 +11,5 @@ class Task < ApplicationRecord
   # Validations
   validates :title, :description, :location, :status, presence: true
   validates :status, inclusion: { in: ["pending", "in progress", "completed"], message: "%{value} is not a valid status" }
-  validates :tags, length: { maximum: 3 }
+  validates :tags, length: { maximum: 3, message: "can be maximum 3 for a task" }
 end
