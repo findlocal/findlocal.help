@@ -3,10 +3,7 @@
   backface-visibility: hidden;
   background-color: white;
   overflow: hidden;
-
-
-   @extend .shadow;
-
+  @extend .task-card-shadow;
 
   @import "front_header";
   @import "front_middle";

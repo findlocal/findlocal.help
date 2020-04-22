@@ -3,10 +3,9 @@
   padding: 10%;
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  @extend .shadow;
   background-color: white;
   overflow: hidden;
-
+  @extend .task-card-shadow;
 
   .title {
     background-color: $white;
@@ -30,7 +29,7 @@
     color: white;
   }
 
-  .btn {
+  .button {
     cursor: pointer;
     display: block;
     transition: all 0.2s ease-in-out;
