@@ -1,21 +1,21 @@
-<nav class="navbar navbar-expand-sm navbar-localhelp fixed-top">
-  <%= link_to root_path, class: "navbar-brand p-0" do %>
-    <%= image_tag "logo.png", class: "logo" %>
+<nav class="navbar navbar-expand-md navbar-local-help fixed-top">
+  <%= link_to root_path do %>
+    <%= image_tag "logo.png", class: "nav-logo" %>
   <% end %>
 
-  <ul class="navbar-search">
-    <%= simple_form_for :search, url: tasks_path, method: :get  do |f| %>
-      <li><%= f.input :location, label: "", class: "navbar-search-box form-control", placeholder: "Location" %></li>
-      <li><%= f.submit "Search", class: "navbar-search-btn btn-gradient"%></li>
-    <% end %>
-  </ul>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fas fa-bars"></i>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <div class="nav-form-container">
+      <form action="/tasks" method="get" class="form-inline my-2 my-lg-0">
+        <input class="form-control" type="search" placeholder="Location" aria-label="Location">
+        <button class="btn-gradient my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+
+    <ul class="navbar-nav">
       <li class="nav-item">
         <%= link_to "Browse Tasks", tasks_path, class: "nav-link" %>
       </li>

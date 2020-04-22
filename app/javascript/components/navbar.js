@@ -1,17 +1,15 @@
-const initUpdateNavbarOnScroll = () => {
-  const navbar = document.querySelector('.navbar-localhelp');
+const updateNavbarOnScroll = () => {
+  const navbar = document.querySelector('.navbar-local-help')
+
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 100) {
-        // if (window.scrollY >= window.innerHeight) {
-        console.log('hello')
-        navbar.classList.add('navbar-localhelp-white');
-        console.log('event')
+      if (window.scrollY >= navbar.scrollHeight) {
+        navbar.classList.add('navbar-local-help-white')
       } else {
-        navbar.classList.remove('navbar-localhelp-white');
+        navbar.classList.remove('navbar-local-help-white')
       }
-    });
+    })
   }
-};
+}
 
-export { initUpdateNavbarOnScroll };
+export default updateNavbarOnScroll

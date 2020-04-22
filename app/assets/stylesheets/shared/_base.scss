@@ -8,6 +8,11 @@ main#content {
   min-height: calc(100vh - #{$navbar-height} - #{$footer-height});
 }
 
+// Button focus
+button:focus {
+  outline: 5px auto $primary;
+}
+
 // Text highlight
 ::selection {
   background: $secondary;
