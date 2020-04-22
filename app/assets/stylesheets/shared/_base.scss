@@ -8,10 +8,17 @@ main#content {
   min-height: calc(100vh - #{$navbar-height} - #{$footer-height});
 }
 
-// Style applied on text highlight
+// Text highlight
 ::selection {
   background: $secondary;
   color: $white;
+}
+
+// Caret color
+input,
+textarea,
+[contenteditable] {
+  caret-color: $primary;
 }
 
 // Hide star next to form labels
