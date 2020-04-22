@@ -1,47 +1,45 @@
-<div class="card">
-  <div class="card__side card__side--front card__side--front">
-
+<div class="task-card">
+  <div class="task-card__side task-card__side--front">
     <header>
-      <div class="task-card-white-box">
-        <h2>Help <%=task.creator.first_name%>
+      <div class="white-box">
+        <h2>Help <%= task.creator.first_name %>
       </div>
     </header>
 
     <div class="separator"></div>
 
-    <div class="card__description">
+    <div class="description">
       <h2><%= task.title %></h2>
+      <p>Posted <%= distance_of_time_in_words(task.created_at, Time.zone.now) %> ago</p>
 
-      <div class="card-task-tags">
+      <div class="tags">
         <% task.tags.max(3).each do |tag| %>
-        <p class="tag shadow-sm">#<%= tag.name.truncate(10, separator: /\s/) %></p>
+          <p class="tag shadow-sm">#<%= tag.name.truncate(10, separator: /\s/) %></p>
         <% end %>
       </div>
     </div>
 
-    <div class="card-task-user-block">
-      <h2><%= task.creator.first_name%> <%= task.creator.last_name%></h2>
+    <div class="user-details">
+      <h2><%= task.creator.shortname %></h2>
       <h3><%= task.location %></h3>
     </div>
 
     <% if task.creator.avatar.attached? %>
-    <%= cl_image_tag task.creator.avatar.key, class: "card-task-user avatar-bordered", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
+      <%= cl_image_tag task.creator.avatar.key, class: "avatar user-avatar", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
     <% else %>
-    <%= image_tag "avatar-placeholder.png", class: "card-task-user avatar-bordered", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
+      <%= image_tag "avatar-placeholder.png", class: "avatar user-avatar", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
     <% end %>
   </div>
 
-  <div class="card__side card__side--back card__side--back">
-    <div class="task-card-back-title">
-      <%= task.title%>
+  <div class="task-card__side task-card__side--back">
+    <div class="title">
+      <%= task.title %>
     </div>
 
-    <div class="card__description_back">
+    <div class="description">
       <p><%= task.description.truncate(80, separator: /\s/) %></p>
     </div>
 
-    <div class="card-back-botton">
-      See Details
-    </div>
+    <%= button_tag "See details", class: "btn", "data-toggle": "modal", "data-target": "#taskModal#{task.id}" %>
   </div>
 </div>

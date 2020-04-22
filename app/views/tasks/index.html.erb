@@ -3,18 +3,18 @@
 
   <div class="row">
     <% if @tasks.empty? %>
-    <div>
-      <p class="my-2">Can't find any task with the specified options</p>
-      <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
-      <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
-    </div>
+      <div>
+        <p class="my-2">Can't find any task with the specified options</p>
+        <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
+        <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
+      </div>
     <% else %>
-    <% @tasks.each do |task| %>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3" data-toggle="modal" data-target=<%= "#taskModal#{task.id}" %>>
-      <%= render "shared/task_card", task: task%>
-    </div>
-    <%= render "shared/task_modal", task: task %>
-    <% end %>
+      <% @tasks.each do |task| %>
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+          <%= render "shared/task_card", task: task %>
+        </div>
+        <%= render "shared/task_modal", task: task %>
+      <% end %>
     <% end %>
   </div>
 </div>
