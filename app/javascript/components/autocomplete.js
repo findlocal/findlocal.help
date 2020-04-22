@@ -2,6 +2,8 @@ import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
 const autocompleteSearch = function() {
   console.log('test')
+  const s = document.getElementById('search-data')
+  console.log(s)
   const skills = JSON.parse(document.getElementById('search-data').dataset.skills)
   const searchInput = document.getElementById('search_');
   if (skills && searchInput) {

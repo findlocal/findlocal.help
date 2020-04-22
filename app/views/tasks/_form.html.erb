@@ -2,9 +2,6 @@
   <%= f.input :title %>
   <%= f.input :description, as: :text %>
   <%= f.input :location, label: "Location"%>
-  <%= f.label :due_date, "Due Date" %>
-  <br>
-  <%= f.select :due_date, ((Date.today)...(Date.today + 2.months)).map{ |date| [date.strftime("%d %B %Y"), date] }, {} %>
   <br><br>
   <%= f.label :photos, "Add Photos" %>
   <br>
