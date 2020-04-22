@@ -5,6 +5,10 @@
   left: 50%;
   margin-left: -30px;
   bottom: 20px;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
 }
 
 .arrows path {

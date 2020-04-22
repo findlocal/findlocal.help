@@ -1,7 +1,6 @@
 .banner-home {
   min-height: calc(100vh - 56px);
   background: linear-gradient(
-              to right bottom,
               rgba(40,180,131,0.6),
               rgba(40,180,131,0.6)),
               url(banner.png);
@@ -14,6 +13,10 @@
   min-height: calc(100vh - 56px);
   background-color: $green;
   clip-path: polygon(0 0, 50% 0, 20% 100%, 0 100%);
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
 }
 
 .banner-home-heading {
@@ -22,7 +25,9 @@
   max-width: 40%;
   padding-top: 4%;
   font-weight: 600;
-  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 90px;
 
   h1 {
     font-size: 64px;
@@ -48,38 +53,46 @@
 
 .banner-home-second-section {
   background-color: $white;
+  padding: 70px;
+
+  h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    width: 100%;
+    font-size: 20px;
+    text-align: justify;
+    margin-bottom: 50px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.banner-home-left-side {
+  width: 50%;
+}
+
+.banner-home-right-side {
+  width: 50%;
 }
 
 .banner-home-third-section {
   background-color: $white;
-  text-align: center;
+  padding: 70px;
+
+  h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 20px;
+  }
 }
-
-
-
-
-
-// .home-container {
-//   background-image: asset_url("hands.jpg");
-//   background-size: cover;
-//   background-position: center;
-
-//   @media (max-width: 1139px) {
-//     overflow-y: scroll;
-//     background: asset_url("hands.jpg") no-repeat center center;
-//     content: "";
-//     display: block;
-//     width: 100%;
-//     height: 100%;
-//     background-size: cover;
-//   }
-// }
-
-// .home-container-inner {
-//   height: calc(100vh - 56px);
-//   align-items: center;
-//   flex-wrap: wrap;
-// }
 
 .home-search-box {
   background-color: rgba(255,255,255,0.9);
@@ -93,25 +106,3 @@
   bottom: 100px;
   left: 100px;
 }
-
-//   @media (max-width: 1139px) {
-//     margin: auto;
-//     margin-top: 32px;
-//   }
-// }
-
-// .home-tasks {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100%;
-//   width: 50%;
-//   margin-left: auto;
-//   margin-right: auto;
-
-//   @media (max-width: 576px) {
-//     width: 90%;
-//     margin-top: 32px;
-//   }
-// }
