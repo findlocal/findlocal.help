@@ -106,3 +106,28 @@
   bottom: 100px;
   left: 100px;
 }
+
+.banner-home-card {
+  border: 2px solid $green;
+  border-radius: 4px;
+  margin: 50px 20px;
+  min-height: 250px;
+}
+
+.banner-home-card-polygon {
+
+  h5 {
+    color: $white;
+    background-color: $green;
+    padding: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  p {
+    padding: 8px 16px;
+    text-align: justify;
+    font-size: 16px;
+  }
+}
