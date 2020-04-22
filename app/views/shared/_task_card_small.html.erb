@@ -15,7 +15,6 @@
     </div>
     <hr>
     <h6 class="card-subtitle mb-2 text-muted"><%= task.location %></h6>
-    <p class="card-text mb-2">Due date: <%= task.due_date %></p>
     <div class="d-flex justify-content-between align-items-center">
       <p class="text-<%= task.status == "pending" ? "secondary" : task.status == "completed" ? "success" : "primary" %>">
         <%= task.status.upcase %>

@@ -1,18 +1,7 @@
 <div class="card-task">
   <%= image_tag(task.photos.empty? ? "https://picsum.photos/500" : task.photos[0]) %>
 
-  <div class="expire-tag">
-    <% days_to_expiration = (task.due_date - Time.zone.today).to_i %>
-    <% if days_to_expiration == 0 %>
-      <h5 class="card-time-left text-danger">Expires today</h5>
-      <% elsif days_to_expiration == 1 %>
-      <h5 class="card-time-left text-danger">Expires tomorrow</h5>
-    <% elsif days_to_expiration < 7 %>
-      <h5 class="card-time-left text-danger">Expiring in <%= days_to_expiration %> days</h5>
-    <% else %>
-      <h5 class="card-time-left"><%= days_to_expiration %> days left</h5>
-    <% end %>
-  </div>
+ 
 
   <div class="card-task-infos">
     <div>

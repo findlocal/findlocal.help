@@ -72,23 +72,23 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date, :location, :status, photos: [], tag_ids: [])
+    params.require(:task).permit(:title, :description, :location, :status, photos: [], tag_ids: [])
   end
 
   def filtered_tasks
-    policy_scope(Task).where("due_date > ?", Time.zone.today) # Date.today
-                      .where(status: "pending")
-                      .where.not(creator: current_user)
-                      .order(:due_date)
+    policy_scope(Task)
+      .where(status: "pending")
+      .where.not(creator: current_user)
+      .order(:created_at)
   end
 
   def filter_tasks_by_search_params(params)
     location = params[:location]
     task_tags = params[:task_tags]
-    due_date = params[:due_date].present? && Date.parse(params[:due_date])
+    # due_date = params[:due_date].present? && Date.parse(params[:due_date])
     @tasks = @tasks.where("location ILIKE ?", "%#{location}%") unless location.empty?
     @tasks = @tasks.joins(:tags).where(tags: { name: task_tags }) unless task_tags.empty?
-    @tasks = @tasks.where("due_date < ?", due_date) if due_date
+    # @tasks = @tasks.where("due_date < ?", due_date) if due_date
   end
 
   def find_and_assign_help(params)

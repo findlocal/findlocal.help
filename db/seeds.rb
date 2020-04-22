@@ -45,7 +45,7 @@ puts "Creating tasks with helps..."
   task = Task.create(
     title: home_titles.sample,
     description: home_descriptions.sample,
-    due_date: rand((Time.zone.today + 3.days)..(Time.zone.today + 1.month)),
+    # due_date: rand((Time.zone.today + 3.days)..(Time.zone.today + 1.month)),
     location: cities.sample,
     status: "pending",
     creator: User.all.sample
@@ -75,7 +75,7 @@ end
   task = Task.new(
     title: shopping_titles.sample,
     description: shopping_descriptions.sample,
-    due_date: rand((Time.zone.today + 3.days)..(Time.zone.today + 1.month)),
+    # due_date: rand((Time.zone.today + 3.days)..(Time.zone.today + 1.month)),
     location: cities.sample,
     status: ["in progress", "completed"].sample,
     creator: User.all.sample,
