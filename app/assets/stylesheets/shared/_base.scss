@@ -25,3 +25,8 @@ textarea,
 form label abbr {
   display: none;
 }
+
+// Loading bar
+.turbolinks-progress-bar {
+  background-color: $primary;
+}
