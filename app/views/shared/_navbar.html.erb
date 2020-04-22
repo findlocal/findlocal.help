@@ -4,12 +4,12 @@
   <%= image_tag "logo.png", class: "logo" %>
   <% end %>
 
-<ul class="navbar-search">
-   <%= simple_form_for :search, url: tasks_path, method: :get  do |f| %>
-  <li>   <%= f.input :location, label: "", class: "navbar-search-box form-control", placeholder: "Location" %> </li>
-   <li>     <%= f.submit "Search", class: "navbar-search-btn btn-gradient"%> </li>
-      <% end %>
-      </ul>
+  <ul class="navbar-search">
+    <%= simple_form_for :search, url: tasks_path, method: :get  do |f| %>
+    <li> <%= f.input :location, label: "", class: "navbar-search-box form-control", placeholder: "Location" %> </li>
+    <li> <%= f.submit "Search", class: "navbar-search-btn btn-gradient"%> </li>
+    <% end %>
+  </ul>
 
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
