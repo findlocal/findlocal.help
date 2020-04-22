@@ -6,13 +6,17 @@ $yellow: #ffc65a;
 $green: #28b485;
 $green-light: #7ed56f;
 $blue: #03499c;
+$blue-light: #3ea1fb;
 $white: #fff;
+$gray-dark: #717171;
 $gray: #c4c4c4;
-$dark-gray: #717171;
 $gray-light: #f4f4f4;
 $black: #000000;
-$dark-gray: #717171;
+
+// Scheme
+$primary: $green;
+$secondary: $green-light;
 
 
 // Gradients
-$green-gradient: linear-gradient(120deg, $green-light 0%, $green 100%);
+$primary-gradient: linear-gradient(120deg, $secondary 0%, $primary 100%);

@@ -1,4 +1,4 @@
-.card__description {
+.description {
   margin-top: -30px;
   text-align: center;
 
@@ -9,6 +9,11 @@
     overflow-wrap: break-word;
   }
 
+  h5 {
+    font-size: 16px;
+    margin-top: 5px;
+    overflow-wrap: break-word;
+  }
 }
 
 .tag {

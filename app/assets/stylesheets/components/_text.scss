@@ -1,10 +1,10 @@
 .text-green-hover {
-  color: $green;
+  color: $primary;
   font-weight: 600;
   transition: 300ms;
 
   &:hover {
-    color: $green;
+    color: $primary;
     text-shadow: rgba(0, 0, 0, 0.2);
   }
 }

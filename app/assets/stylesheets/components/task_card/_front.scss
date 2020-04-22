@@ -1,0 +1,7 @@
+&--front {
+  position: relative;
+
+  @import "front_header";
+  @import "front_middle";
+  @import "front_footer";
+}
