@@ -25,9 +25,9 @@
     </div>
 
     <% if task.creator.avatar.attached? %>
-      <%= cl_image_tag task.creator.avatar.key, class: "avatar user-avatar", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
+      <%= cl_image_tag task.creator.avatar.key, class: "avatar user-avatar" %>
     <% else %>
-      <%= image_tag "avatar-placeholder.png", class: "avatar user-avatar", title: task.creator.shortname, "data-toggle": "tooltip", "data-placement": "bottom" %>
+      <%= image_tag "avatar-placeholder.png", class: "avatar user-avatar" %>
     <% end %>
   </div>
 

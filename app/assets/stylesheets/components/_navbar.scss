@@ -1,110 +1,83 @@
-.navbar-localhelp {
+.navbar-local-help {
   min-height: $navbar-height;
   justify-content: space-between;
   background: transparent;
-  transition: 0.2s background-color ease;
-  position: fixed;
-  top: 0px;
+  transition: 0.3s background-color ease;
   width: 100%;
-  height: 65px;
+  padding: 0.8rem 1.2rem;
+
+  .navbar-toggler {
+    display: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid $gray;
+
+    i {
+      color: $gray;
+    }
+  }
+
+  .nav-logo {
+    width: 3rem;
+  }
 
   .navbar-collapse {
-    flex-grow: 0;
-  }
-
-  .logo {
-    margin-top: 3px;
-    width: 17%;
-    height: auto;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .logo:hover {
-    transform: scale(1.05);
-  }
-
-  .navbar-search li {
-    display: inline-block;
-    border-color: $green;
-    right: 0px;
-  }
-  .navbar-search-box {
-    padding: 8px 64px;
-    border-radius: 8px;
-    border-right-color: $green;
-    margin: 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    border: 1px solid $green;
-  }
-
-  .navbar-search-btn {
-    cursor: pointer;
-    padding: 8px 24px;
-    margin: -5px;
-    border-radius: 0px 4px 4px 0px;
-    box-shadow: none;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  }
-
-  .navbar-search-btn:hover {
-    transform: scale(1.05);
+    justify-content: center;
   }
 
   .nav-item {
     display: inline-block;
     margin: 0px 10px;
-    // padding: 10px 10px;
-    box-sizing: border-box;
-    border-radius: 8px;
     font-weight: 600;
     list-style-type: none;
     transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
-  .nav-item:hover {
-    transform: scale(1.1);
-  }
-
-  a {
-    // color: $secondary;
+  .nav-link {
     color: $white;
-    // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    // text-shadow: white 0px 0px 10px;
   }
 
   .avatar {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
-  .avatar:hover {
-    transform: scale(1.1);
+  .nav-form-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-control {
+    margin-right: -1px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn-gradient {
+    padding: 7px 24px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
-.navbar-localhelp-white {
+.navbar-local-help-white {
   background: $white;
-  top: 0px;
-  width: 100%;
-  box-shadow: 0px 1px $green;
 
-  .navbar-search-btn {
-    padding: 8px 24px;
-    background: $primary-gradient;
-    color: $white;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  .nav-link {
+    color: $primary;
   }
 
-  .navbar-search-btn:hover {
-    transform: scale(1.05);
-  }
-
-  a {
-    font-weight: 600;
-    text-shadow: none;
-    color: $secondary;
-    text-shadow: white 0px 0px 10px;
+  @include media-breakpoint-down(sm) {
+    .navbar-toggler {
+      display: block;
+    }
   }
 }
