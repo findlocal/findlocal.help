@@ -1,18 +1,26 @@
-<div class="home-container">
-  <div class="d-flex home-container-inner">
+<header class="banner-home">
+  <div class="green-polygon">
+    <div class="banner-heading">
+      <h1>Local Help</h1>
+      <h3>Help each other out</h3>
+    </div>
     <div class="home-search-box">
       <%= render "shared/search_form" %>
     </div>
-
-    <div class="home-tasks">
-      <% @tasks.each_with_index do |task, index| %>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-          <div class=<%= "fadein-#{index + 2}"%>>
-            <%= render "shared/task_card", task: task %>
-          </div>
-        </div>
-        <%= render "shared/task_modal", task: task %>
-      <% end %>
-    </div>
   </div>
+  <div class="quote-position">
+    <p class="quote">
+      WE RISE BY LIFTING OTHERS
+      Connecting volunteers with people who could use a hand.
+      <br>
+      Find someone in your area to help you with grocery shopping, home repair or household duties.
+    </p>
+  </div>
+</header>
+<div class="container second-section">
+  <h1>What is Local Help?</h1>
+</div>
+<div class="third-section">
+  <h1>How does it work?</h1>
+  <p>When you sign up, you can both create a new task and apply to help someone out</p>
 </div>
