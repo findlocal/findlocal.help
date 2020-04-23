@@ -4,11 +4,11 @@
   <%= f.input :location, label: "Location", class: "form-control" %>
   
   <div class="form-group">
-    <%= f.label :photos, "Add Photos", class: "d-block" %>
+    <%= f.label :photos, "Add Task Photos (Optional)", class: "d-block" %>
     <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
   </div>
   <div class="form-group">
-    <%= f.label :tags, "Add Tags" %>
+    <%= f.label :tags, "Add Tags (Maximum 3)" %>
     <div class="form-tags">
       <%= f.association :tags, as: :check_boxes, label: "" %>
     </div>
