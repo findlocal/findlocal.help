@@ -13,10 +13,4 @@ $gray: #c4c4c4;
 $gray-light: #f4f4f4;
 $black: #000000;
 
-// Scheme
-$primary: $green;
-$secondary: $green-light;
-
-
-// Gradients
-$primary-gradient: linear-gradient(120deg, $secondary 0%, $primary 100%);
+// Check the other variables in _bootstrap_variables.scss

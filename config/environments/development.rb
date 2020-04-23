@@ -40,8 +40,8 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # Debug mode disables concatenation and preprocessing of assets (faster)
-  config.assets.debug = false
-  config.assets.check_precompiled_asset = false
+  config.assets.debug = true
+  config.assets.check_precompiled_asset = true
 
   # Suppress logger output for asset requests
   config.assets.quiet = true
