@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LocalHelp</title>
+    <title>Local Help</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload", defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <% unless devise_controller? %>
-      <%= render 'shared/footer' %>
-    <% end %>
+    <div id="root">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <main id="content">
+        <%= yield %>
+      </main>
+      <% unless devise_controller? %>
+        <%= render "shared/footer" %>
+      <% end %>
+    </div>
   </body>
 </html>

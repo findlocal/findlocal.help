@@ -2,20 +2,11 @@
   background-image: asset_url("hands.jpg");
   background-size: cover;
   background-position: center;
-
-  @media (max-width: 1139px) {
-    overflow-y: scroll;
-    background: asset_url("hands.jpg") no-repeat center center;
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-  }
+  width: 100%;
+  height: 100%;
 }
 
 .home-container-inner {
-  height: calc(100vh - 56px);
   align-items: center;
   flex-wrap: wrap;
 }
