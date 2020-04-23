@@ -1,5 +1,13 @@
 // General rules applied to all pages
 
+#root {
+  min-height: 100vh;
+}
+
+main#content {
+  min-height: calc(100vh - #{$navbar-height} - #{$footer-height});
+}
+
 // Style applied on text highlight
 ::selection {
   background: $secondary;
