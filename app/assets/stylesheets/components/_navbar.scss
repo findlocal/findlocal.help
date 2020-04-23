@@ -1,19 +1,3 @@
-// /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-// @media screen and (max-width: 600px) {
-//   .topnav a, .topnav input[type=text] {
-//     float: none;
-//     display: block;
-//     text-align: left;
-//     width: 100%;
-//     margin: 0;
-//     padding: 14px;
-//   }
-//   .topnav input[type=text] {
-//     border: 1px solid #ccc;
-//   }
-// }
-
-
 .navbar-localhelp {
   min-height: $navbar-height;
   justify-content: space-between;
@@ -24,41 +8,48 @@
   width: 100%;
   height: 65px;
 
-  .navbar-search li {
-    display: inline-block;
-    border-color: green;
-    right: 0px;
-  
+  .navbar-collapse {
+    flex-grow: 0;
   }
-  .navbar-search-box {
-    padding: 8px 64px;
-    border-radius: 8px;
-    border-right-color: green;
-    margin: 0;
-    // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    border: 1px solid green;
-  
+
+  .logo {
+    margin-top: 3px;
+    width: 17%;
+    height: auto;
+    transition: all 0.3s ease-in-out;
   }
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  // .navbar-search li {
+  //   display: inline-block;
+  //   border-color: $green;
+  //   right: 0px;
+  // }
+  // .navbar-search-box {
+  //   padding: 8px 64px;
+  //   border-radius: 8px;
+  //   border-right-color: $green;
+  //   margin: 0;
+  //   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  //   border: 1px solid $green;
+  // }
 
   .navbar-search-btn {
     cursor: pointer;
     padding: 8px 24px;
     margin: -5px;
-    background: $white;
-    background-color: $white;
     border-radius: 0px 4px 4px 0px;
-  
-    color: $green;
     box-shadow: none;
     transition: all 0.2s ease-in-out;
-    // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
 
   .navbar-search-btn:hover {
     transform: scale(1.05);
   }
-
-
 
   .nav-item {
     display: inline-block;
@@ -68,52 +59,27 @@
     border-radius: 8px;
     font-weight: 600;
     list-style-type: none;
-    // transition: all .2s ease-in-out;
-  }
-
-  a {
     transition: all 0.3s ease-in-out;
-    color: $green;
-    // color: $white;
-    // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-
-    // text-shadow: white 0px 0px 10px;
-  }
-
-  a:hover {
-    transform: scale(1.1);
   }
 
   .nav-item:hover {
-    // transform: scale(1.1);
-    // background-size: 200% 200%;
-    // background: $white; opacity: 60%;
-    // text-shadow: white 100px 100px 100px 100px;
+    transform: scale(1.1);
   }
 
-  // .header {
-  //   width: 100%;
-  //   height: 1000px;
-  //   background-image: url(back.jpg);
-  //   background-size: cover;
-  // }
-  // * {
-  //   padding: 0px;
-  //   margin: 0px;
-  //   box-sizing: border-box;
-  // }
+  a {
+    // color: $secondary;
+    color: $white;
+    // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    // text-shadow: white 0px 0px 10px;
+  }
 
   .avatar {
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
   }
 
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-
-  .logo {
-    width: 120px;
-    margin: 0;
+  .avatar:hover {
+    transform: scale(1.1);
   }
 }
 
@@ -123,7 +89,6 @@
   width: 100%;
   box-shadow: 0px 1px $green;
 
-  // background-color: #fff;
   .navbar-search-btn {
     padding: 8px 24px;
     background: $primary-gradient;
@@ -139,13 +104,7 @@
   a {
     font-weight: 600;
     text-shadow: none;
-    // padding: 0px;
-    // margin: 0px;
-    // box-sizing: border-box;
-  }
-
-  a:hover {
-    // color: $green;
-    // text-shadow: white 0px 0px 10px;
+    color: $secondary;
+    text-shadow: white 0px 0px 10px;
   }
 }
