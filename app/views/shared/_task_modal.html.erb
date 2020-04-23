@@ -5,8 +5,7 @@
       <!-- Header -->
       <div class="modal-header">
         <div>
-          <h3 class="modal-title-green"><%= task.title %></h3>
-          <p><i class="fas fa-map-pin"></i> <%= task.location %></p>
+          <h3 class="modal-title-green"><%= task.title.capitalize %></h3>
         </div>
         <button type="button" class="close green-on-hover" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -20,21 +19,24 @@
           <div class="row mt-3">
             <div class="col-lg-4 modal-user-container">
               <% if task.creator.avatar.attached? %>
-                <%= cl_image_tag task.creator.avatar.key, class: "card-trip-user avatar-bordered" %>
+                <%= cl_image_tag task.creator.avatar.key, class: "card-trip-user avatar-shadow" %>
               <% else %>
-                <%= image_tag "avatar-placeholder.png", class: "card-trip-user avatar-bordered" %>
+                <%= image_tag "avatar-placeholder.png", class: "card-trip-user avatar-shadow" %>
               <% end %>
-              <h6 class="text-secondary"><%= task.creator.shortname %></h6>
+              <h6 class="text-primary"><%= task.creator.shortname %></h6>
             </div>
             <div class="col-lg-8">
               <h5>DESCRIPTION</h5>
               <%= task.description %>
+              <hr class="text-primary">
+              <h5>LOCATION</h5>
+              <p><i class="fas fa-map-pin"></i> <%= task.location %></p>
+              <div class="modal-tags">
+                <% task.tags.each do |tag| %>
+                  <p class="tag shadow-sm">#<%= tag.name %></p>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <div class="modal-tags">
-            <% task.tags.each do |tag| %>
-              <p class="tag shadow-sm">#<%= tag.name %></p>
-            <% end %>
           </div>
         </div>
 
@@ -67,8 +69,7 @@
           <% if current_user %>
             <% if task.helps.find_by(user: current_user) %>
               <% unless current_page?(dashboard_path) %>
-                <p>Already applied</p>
-                <%= link_to "See it in your dashboard", dashboard_path, class: "btn-gradient" %>
+                <%= link_to "Already applied - Go to dashboard", dashboard_path, class: "btn-gradient" %>
               <% end %>
             <% else %>
               <%= button_tag "Apply to this task", class: "btn-gradient", "data-toggle": "modal", "data-target": "#helpModal#{task.id}" %>

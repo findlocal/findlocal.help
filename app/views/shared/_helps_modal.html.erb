@@ -30,7 +30,7 @@
                   </div>
                 </div>
                 <!-- Actions -->
-                <%= link_to "Assign", task_assign_path(task, help), method: :patch, remote: true, class: "btn btn-sm btn-success mt-2",
+                <%= link_to "Assign", task_assign_path(task, help), method: :patch, remote: true, class: "btn btn-sm btn-primary mt-2",
                     data: { confirm: "Are you sure you want to pick #{help.user.shortname} as your helper?"} %>
                 <%= link_to "Decline", task_help_path(task, help), method: :delete, remote: true, class: "btn btn-sm btn-danger mt-2",
                     data: { confirm: "Are you sure you want to remove #{help.user.shortname}'s application?"} %>
