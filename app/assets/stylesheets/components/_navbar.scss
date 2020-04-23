@@ -23,19 +23,19 @@
     transform: scale(1.05);
   }
 
-  // .navbar-search li {
-  //   display: inline-block;
-  //   border-color: $green;
-  //   right: 0px;
-  // }
-  // .navbar-search-box {
-  //   padding: 8px 64px;
-  //   border-radius: 8px;
-  //   border-right-color: $green;
-  //   margin: 0;
-  //   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  //   border: 1px solid $green;
-  // }
+  .navbar-search li {
+    display: inline-block;
+    border-color: $green;
+    right: 0px;
+  }
+  .navbar-search-box {
+    padding: 8px 64px;
+    border-radius: 8px;
+    border-right-color: $green;
+    margin: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: 1px solid $green;
+  }
 
   .navbar-search-btn {
     cursor: pointer;
