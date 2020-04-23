@@ -19,6 +19,7 @@ gem "cloudinary", "~> 1.12.0"
 gem "devise"
 gem "faker"
 gem "pundit"
+gem "geocoder"
 
 # Frontend
 gem "autoprefixer-rails" # adds prefixes to css rules
