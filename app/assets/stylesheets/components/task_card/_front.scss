@@ -1,5 +1,12 @@
 &--front {
   position: relative;
+  backface-visibility: hidden;
+  background-color: white;
+  overflow: hidden;
+
+
+   @extend .shadow;
+
 
   @import "front_header";
   @import "front_middle";

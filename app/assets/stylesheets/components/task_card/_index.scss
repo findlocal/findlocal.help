@@ -1,11 +1,15 @@
 .task-card {
-  background: $white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  // background: $white;
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   perspective: 150em;
   position: relative;
   transition: all 0.2s ease-in-out;
+  // perspective: 40rem;
+  box-sizing: border-box;
+  border-radius: 4px;
 
   *,
   *::after,
@@ -16,7 +20,8 @@
   }
 
   &__side {
-    box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+    // box-shadow: 1em 1em 2em rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
@@ -24,6 +29,7 @@
     height: 25em;
     backface-visibility: hidden;
     transition: all 0.6s ease;
+    // @extend .shadow;
 
     // Front and back of the card are too long, it's better to split them
     @import "front"; // the front is further broken down into 3 sections
@@ -41,4 +47,10 @@
   &:hover &__side--back {
     transform: rotate(0);
   }
+}
+
+.shadow {
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.04),
+    0 4px 4px rgba(0, 0, 0, 0.04), 0 8px 8px rgba(0, 0, 0, 0.04),
+    0 16px 16px rgba(0, 0, 0, 0.04);
 }
