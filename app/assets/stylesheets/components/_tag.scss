@@ -1,12 +1,19 @@
 .tag {
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 4px 6px;
+  border: 1px solid $primary;
+  color: $primary;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 4px;
   margin: 4px;
-  opacity: 50%;
   max-width: fit-content;
   display: inline-flex;
   white-space: pre;
+
+  &:hover {
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .expire-tag {
