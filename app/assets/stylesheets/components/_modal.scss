@@ -1,11 +1,15 @@
 .modal-body {
-  padding: 0;
+  padding-bottom: 16px;
 
   .carousel-photo {
     margin: 20px;
     width: 95%;
     height: 300px;
     object-fit: cover;
+  }
+
+  h5 {
+    text-transform: uppercase;
   }
 }
 
@@ -47,4 +51,14 @@
 
 .modal-header {
   padding: 16px 16px 4px 16px;
+}
+
+.helps-modal {
+  width: 100%;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $primary;
+}
+
+.helps-modal-message {
+  flex-grow: 1;
 }
