@@ -8,18 +8,17 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $black;
-$primary: $blue;
-$success: $primary;
+$primary: $green;
+$success: $green-light;
 $info: $yellow;
 $danger: $red;
 $warning: $orange;
 
-// Buttons & inputs radius
-$border-radius: 2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+// Custom
+$secondary: $green-light;
+$primary-gradient: linear-gradient(120deg, $secondary 0%, $primary 100%);
 
 // Buttons and inputs focus
-$input-transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+$input-transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
 $input-focus-border-color: $primary;
 $input-focus-box-shadow: 0 0 0 0.2rem lighten($primary, 25%);
