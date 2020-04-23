@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_120826) do
   create_table "review_fields", force: :cascade do |t|
     t.string "name"
     t.text "content"
-    t.float "rating"
+    t.integer "rating"
     t.bigint "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2020_04_22_120826) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.float "rating"
     t.bigint "task_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
