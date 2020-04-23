@@ -27,21 +27,24 @@
 .modal-tags {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  padding: 12px;
-
-  .tag {
-    font-size: 12px;
-  }
 }
 
 .modal-title-green {
   color: $primary;
-  padding-left: 16px;
 }
 
 .green-on-hover {
   &:hover {
     color: $primary;
   }
+}
+
+.modal-footer {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.modal-header {
+  padding: 16px 16px 4px 16px;
 }
