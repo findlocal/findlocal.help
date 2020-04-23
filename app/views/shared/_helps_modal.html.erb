@@ -2,8 +2,8 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Applications for "<%= task.title %>"</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h3 class="modal-title-green"><%= task.title.capitalize %></h3>
+        <button type="button" class="close green-on-hover" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -12,36 +12,36 @@
           <div class="row">
             <% if task.helps.empty? %>
               <h6>No one has applied for this task yet.</h6>
-            <% end %>
-            <% task.helps.each_with_index do |help, index| %>
-              <div class="col-12">
-                <div class="d-flex align-items-center">
-                  <% if help.user.avatar.attached? %>
-                    <%= cl_image_tag help.user.avatar.key, class: "avatar-large" %>
-                  <% else %>
-                    <%= image_tag "avatar-placeholder.png", class: "avatar-large" %>
-                  <% end %>
-                  <div class="ml-3">
-                    <% if help.message.nil? %>
-                      <p><i><%= help.user.first_name %> did not provide a message.</i></p>
+            <% else %>
+              <h5>Manage applications (<%= task.helps.count %>)</h5>
+              <% task.helps.each_with_index do |help, index| %>
+                <div class="helps-modal col-12 d-flex justify-content-between">
+                  <div class="helps-modal-message d-flex align-items-center">
+                    <% if help.user.avatar.attached? %>
+                      <%= cl_image_tag help.user.avatar.key, class: "avatar-large" %>
                     <% else %>
-                      <p><%= help.message %></p>
+                      <%= image_tag "avatar-placeholder.png", class: "avatar-large" %>
                     <% end %>
+                    <div class="ml-3">
+                      <% if help.message.nil? %>
+                        <p><i><%= help.user.first_name %> did not provide a message.</i></p>
+                      <% else %>
+                        <p><%= help.message %></p>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!-- Actions -->
+                  <div class="d-flex flex-column">
+                    <%= link_to "Assign", task_assign_path(task, help), method: :patch, remote: true, class: "btn btn-sm btn-primary mt-2",
+                        data: { confirm: "Are you sure you want to pick #{help.user.shortname} as your helper?"} %>
+                    <%= link_to "Decline", task_help_path(task, help), method: :delete, remote: true, class: "btn btn-sm btn-danger mt-2",
+                        data: { confirm: "Are you sure you want to remove #{help.user.shortname}'s application?"} %>
                   </div>
                 </div>
-                <!-- Actions -->
-                <%= link_to "Assign", task_assign_path(task, help), method: :patch, remote: true, class: "btn btn-sm btn-primary mt-2",
-                    data: { confirm: "Are you sure you want to pick #{help.user.shortname} as your helper?"} %>
-                <%= link_to "Decline", task_help_path(task, help), method: :delete, remote: true, class: "btn btn-sm btn-danger mt-2",
-                    data: { confirm: "Are you sure you want to remove #{help.user.shortname}'s application?"} %>
-                <hr>
-              </div>
+              <% end %>
             <% end %>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-gradient" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
