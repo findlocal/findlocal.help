@@ -1,8 +1,8 @@
 <%= simple_form_for task do |f|	 %>
-  <%= f.input :title, class: "form-control" %>
-  <%= f.input :description, as: :text, class: "form-control" %>
-  <%= f.input :location, label: "Location", class: "form-control" %>
-  
+  <%= f.input :title, label: "Title*", class: "form-control" %>
+  <%= f.input :description, label: "Description*", as: :text, class: "form-control" %>
+  <%= f.input :location, label: "Location*", class: "form-control" %>
+
   <div class="form-group">
     <%= f.label :photos, "Add Task Photos (Optional)", class: "d-block" %>
     <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
@@ -13,5 +13,7 @@
       <%= f.association :tags, as: :check_boxes, label: "" %>
     </div>
   </div>
-  <%= f.button :submit, class: "btn btn-success" %>
+  <div class="d-flex justify-content-center">
+  <%= f.button :submit, class: "btn-gradient" %>
+  </div>
 <% end %>
