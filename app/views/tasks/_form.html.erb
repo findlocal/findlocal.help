@@ -1,14 +1,14 @@
 <%= simple_form_for task do |f|	 %>
-  <%= f.input :title, label: "Title*", class: "form-control" %>
-  <%= f.input :description, label: "Description*", as: :text, class: "form-control" %>
-  <%= f.input :location, label: "Location*", class: "form-control" %>
+  <%= f.input :title, label: "TITLE*", class: "form-control" %>
+  <%= f.input :description, label: "DESCRIPTION*", as: :text, class: "form-control" %>
+  <%= f.input :location, label: "LOCATION*", class: "form-control" %>
 
   <div class="form-group">
-    <%= f.label :photos, "Add Task Photos (Optional)", class: "d-block" %>
+    <%= f.label :photos, "ADD TASK PHOTOS (Optional)", class: "d-block" %>
     <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>
   </div>
   <div class="form-group">
-    <%= f.label :tags, "Add Tags (Maximum 3)" %>
+    <%= f.label :tags, "ADD TAGS (Maximum 3)" %>
     <div class="form-tags">
       <%= f.association :tags, as: :check_boxes, label: "" %>
     </div>
