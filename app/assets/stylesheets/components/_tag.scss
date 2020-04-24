@@ -1,14 +1,16 @@
 .tag {
-  border: 1px solid $primary;
+  border: 1.5px solid $primary;
   color: $primary;
   text-transform: uppercase;
   border-radius: 4px;
-  padding: 2px 4px;
+  padding: 4px 6px;
   margin: 4px;
   max-width: fit-content;
   display: inline-flex;
   white-space: pre;
-  font-size: 12px;
+  font-size: 13px;
+  transition: 200ms;
+  font-weight: 500;
 
   &:hover {
     background-color: $primary;
