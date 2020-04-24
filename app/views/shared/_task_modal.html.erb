@@ -4,42 +4,14 @@
     <div class="modal-content">
       <!-- Header -->
       <div class="modal-header">
-        <div>
-          <h3 class="modal-title-green"><%= task.title.capitalize %></h3>
-        </div>
-        <button type="button" class="close green-on-hover" data-dismiss="modal" aria-label="Close">
+        <h3 class="modal-title"><%= task.title.capitalize %></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <!-- Body -->
       <div class="modal-body">
-        <!-- Body: description -->
-        <div class="container-fluid">
-          <div class="row mt-3">
-            <div class="col-lg-4 modal-user-container">
-              <% if task.creator.avatar.attached? %>
-                <%= cl_image_tag task.creator.avatar.key, class: "card-trip-user avatar-shadow" %>
-              <% else %>
-                <%= image_tag "avatar-placeholder.png", class: "card-trip-user avatar-shadow" %>
-              <% end %>
-              <h6 class="text-primary"><%= task.creator.shortname %></h6>
-            </div>
-            <div class="col-lg-8">
-              <h5>DESCRIPTION</h5>
-              <%= task.description %>
-              <hr class="text-primary">
-              <h5>LOCATION</h5>
-              <p><i class="fas fa-map-pin"></i> <%= task.location %></p>
-              <div class="modal-tags">
-                <% task.tags.each do |tag| %>
-                  <p class="tag shadow-sm">#<%= tag.name %></p>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Body: carousel -->
         <div id='<%= "taskCarouselIndicators#{task.id}" %>' class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -49,7 +21,7 @@
               </div>
             <% end %>
           </div>
-          <% if task.photos.length > 1 # show controls only if there is more than 1 photo %>
+          <% if task.photos.length > 1 # show controls only if there's more than 1 photo %>
             <a class="carousel-control-prev" href='<%= "#taskCarouselIndicators#{task.id}" %>' role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -60,12 +32,39 @@
             </a>
           <% end %>
         </div>
+
+        <!-- Body: description -->
+        <div class="container-fluid">
+          <div class="row mt-3">
+            <div class="col-lg-2">
+              <div class="modal-user-container">
+                <% if task.creator.avatar.attached? %>
+                  <%= cl_image_tag task.creator.avatar.key, class: "card-trip-user avatar-shadow" %>
+                <% else %>
+                  <%= image_tag "avatar-placeholder.png", class: "card-trip-user avatar-shadow" %>
+                <% end %>
+                <h6><%= task.creator.shortname %></h6>
+              </div>
+            </div>
+            <div class="col-lg-10 pl-4">
+              <%= task.description %>
+              <hr>
+              <div class="modal-location">
+                <p><i class="fas fa-map-pin pin-icon"></i> <%= task.location %></p>
+              </div>
+              <div class="modal-tags">
+                <% task.tags.each do |tag| %>
+                  <p class="tag shadow-sm">#<%= tag.name %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Footer -->
-      <div class="modal-footer">
-        <!-- Footer: apply button -->
-        <% unless task.creator == current_user %>
+      <% unless task.creator == current_user %>
+        <div class="modal-footer">
           <% if current_user %>
             <% if task.helps.find_by(user: current_user) %>
               <% unless current_page?(dashboard_path) %>
@@ -77,8 +76,8 @@
           <% else %>
             <%= link_to "Log in to apply!", new_user_session_path, class: "btn-gradient" %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

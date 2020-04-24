@@ -1,35 +1,37 @@
-<div class="container mb-2">
-  <h1 class="text-center my-3">Hi <%= current_user.first_name.capitalize %>!</h1>
+<section class="dashboard">
+  <div class="container mb-2">
+    <h1 class="text-center my-3">Hi <%= current_user.first_name.capitalize %>!</h1>
 
-  <h4>Tasks you have created</h4>
-  <div class="row mb-2">
-    <% if current_user.created_tasks.empty? %>
+    <h4>Tasks you have created</h4>
+    <div class="row mb-2">
+      <% if current_user.created_tasks.empty? %>
       <p class="ml-3">You haven't created any tasks yet.</p>
-    <% else %>
+      <% else %>
       <% current_user.created_tasks.each do |task| %>
-        <div class="col-sm-12 col-md-6 col-lg-4 h-100">
-          <%= render "shared/task_card_small", task: task, card_type: "creator" %>
-        </div>
-        <%= render 'shared/task_modal', task: task %>
-        <%= render 'shared/helps_modal', task: task %>
+      <div class="col-sm-12 col-md-6 col-lg-4 h-100">
+        <%= render "shared/task_card_small", task: task, card_type: "creator" %>
+      </div>
+      <%= render 'shared/task_modal', task: task %>
+      <%= render 'shared/helps_modal', task: task %>
       <% end %>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <h4>Tasks you have applied for</h4>
-  <div class="row">
-    <% if current_user.helps.empty? %>
+    <h4>Tasks you have applied for</h4>
+    <div class="row">
+      <% if current_user.helps.empty? %>
       <p class="ml-3">You haven't applied for any tasks yet.</p>
-    <% else %>
+      <% else %>
       <% current_user.helps.each do |help| %>
-        <% task = help.task %>
-        <% if ["in progress", "pending"].include?(task.status) %>
-          <div class="col-sm-12 col-md-6 col-lg-4 h-100">
-            <%= render "shared/task_card_small", task: task, card_type: "helper" %>
-            <%= render "shared/task_modal", task: task %>
-          </div>
-        <% end %>
+      <% task = help.task %>
+      <% if ["in progress", "pending"].include?(task.status) %>
+      <div class="col-sm-12 col-md-6 col-lg-4 h-100">
+        <%= render "shared/task_card_small", task: task, card_type: "helper" %>
+        <%= render "shared/task_modal", task: task %>
+      </div>
       <% end %>
-    <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+</section>

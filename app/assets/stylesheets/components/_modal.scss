@@ -1,30 +1,62 @@
+.modal-header {
+  padding: 16px 16px 12px 16px;
+  background: $primary-gradient;
+
+  .modal-title {
+    color: $white;
+  }
+
+  button.close {
+    transition: 300ms;
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 .modal-body {
   padding-bottom: 16px;
 
-  .carousel-photo {
-    margin: 20px;
-    width: 95%;
-    height: 300px;
-    object-fit: cover;
+  .carousel {
+    margin: -17px -16px 24px;
   }
 
-  h5 {
-    text-transform: uppercase;
+  .carousel-photo {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
 .modal-user-container {
-  text-align: center;
+  width: 110px;
 
   h6 {
-    margin-top: 4px;
+    margin-top: 6px;
+    text-align: center;
+    color: $gray-dark;
+    font-size: 0.8rem;
   }
 
   img {
     border-radius: 50%;
-    height: 150px;
-    width: 150px;
+    height: 110px;
+    width: 110px;
     object-fit: cover;
+  }
+}
+
+.modal-location {
+  color: $gray-dark;
+  font-size: 0.9rem;
+
+  .pin-icon {
+    color: $red;
   }
 }
 
@@ -33,32 +65,22 @@
   display: flex;
 }
 
-.modal-title-green {
-  color: $primary;
-}
-
-.green-on-hover {
-  &:hover {
-    color: $primary;
-  }
-}
-
 .modal-footer {
   a:hover {
     text-decoration: none;
   }
 }
 
-.modal-header {
-  padding: 16px 16px 4px 16px;
-}
-
-.helps-modal {
+.modal-help {
   width: 100%;
-  padding-bottom: 8px;
-  border-bottom: 1px solid $primary;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid $gray;
+
+  &:last-child {
+    border-bottom: 0;
+  }
 }
 
-.helps-modal-message {
+.modal-help-message {
   flex-grow: 1;
 }
