@@ -1,8 +1,8 @@
 // Start Rails services
-require('@rails/ujs').start()
-require('turbolinks').start()
-require('@rails/activestorage').start()
-require('channels')
+require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("channels");
 
 // ----------------------------------------------------
 // Note: ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -10,14 +10,20 @@ require('channels')
 // ----------------------------------------------------
 
 // External imports
-import 'bootstrap'
+import "bootstrap";
 
 // Internal imports
-import { initDatepicker, initTooltips, updateNavbarOnScroll } from '../components'
+import {
+  initDatepicker,
+  initTooltips,
+  updateNavbarOnScroll,
+  updateNavbarWhiteOnScroll,
+} from "../components";
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener("turbolinks:load", () => {
   // Call all the custom functions here or they won't load correctly:
-  initDatepicker()
-  initTooltips()
-  updateNavbarOnScroll()
-})
+  initDatepicker();
+  initTooltips();
+  updateNavbarOnScroll();
+  updateNavbarWhiteOnScroll();
+});

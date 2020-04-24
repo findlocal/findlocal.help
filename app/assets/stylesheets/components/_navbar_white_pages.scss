@@ -1,7 +1,7 @@
-.navbar-local-help {
+.navbar-local-help-white-pages {
   min-height: $navbar-height;
   justify-content: space-between;
-  background: transparent;
+  background-color: white;
   transition: 0.3s background-color ease;
   width: 100%;
   padding: 0.8rem 1.2rem;
@@ -33,7 +33,7 @@
   }
 
   .nav-link {
-    color: $white;
+    color: $primary;
     font-weight: 600;
   }
 
@@ -76,12 +76,22 @@
   }
 }
 
-.navbar-local-help-white {
-  background: $white;
+.navbar-local-help-green {
+  background: $primary-gradient;
   box-shadow: 0 0px 8px 0 rgba(0, 40, 120, 0.25);
 
+  .navbar-toggler {
+    display: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid $white;
+
+    i {
+      color: $white;
+    }
+  }
+
   .nav-link {
-    color: $primary;
+    color: $white;
     font-weight: 600;
   }
 
