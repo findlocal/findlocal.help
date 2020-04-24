@@ -12,4 +12,10 @@ class Task < ApplicationRecord
   validates :title, :description, :location, :status, presence: true
   validates :status, inclusion: { in: ["pending", "in progress", "completed"], message: "%{value} is not a valid status" }
   validates :tags, length: { maximum: 3, message: "can be maximum 3 for a task" }
+
+  # Geolocation
+  geocoded_by :location
+  after_validation :geocode
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
 end
