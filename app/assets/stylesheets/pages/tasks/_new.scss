@@ -3,3 +3,15 @@
   overflow: auto;
   margin-bottom: 16px;
 }
+
+.new-task-background {
+  min-height: calc(100vh - 56px);
+  background-image: $primary-gradient;
+  opacity: 0.8;
+}
+
+.new-task-form {
+  background-color: rgba(255,255,255,0.8);
+  margin: 40px 0;
+  padding: 40px;
+}
