@@ -18,8 +18,8 @@ gem "bootsnap", ">= 1.4.2", require: false # helps caching
 gem "cloudinary", "~> 1.12.0"
 gem "devise"
 gem "faker"
-gem "pundit"
 gem "geocoder"
+gem "pundit"
 
 # Frontend
 gem "autoprefixer-rails" # adds prefixes to css rules
