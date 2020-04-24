@@ -1,0 +1,28 @@
+<svg class="arrows-icon">
+  <style>
+    .arrows-icons {
+      stroke: #FFF;
+      fill: transparent;
+      stroke-width: 1px;
+      animation: arrow 2s infinite;
+    }
+    @keyframes arrow {
+      0% { opacity: 0 }
+      40% { opacity: 1 }
+      80% { opacity: 0 }
+      100% { opacity: 0 }
+    }
+    .arrow-path:first-child {
+      animation-delay: -1s;
+    }
+    .arrow-path:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+    .arrow-path:nth-child(3) {
+      animation-delay: 0;
+    }
+  </style>
+  <path class="arrow-path" d="M0 0 L30 32 L60 0"></path>
+  <path class="arrow-path" d="M0 20 L30 52 L60 20"></path>
+  <path class="arrow-path" d="M0 40 L30 72 L60 40"></path>
+</svg>

@@ -1,79 +1,44 @@
-<header class="banner-home">
-  <div class="banner-home-polygon">
-  </div>
-  <div class="banner-home-heading">
-    <h1>Local Help</h1>
-    <h3>Help each other out</h3>
-  </div>
-  <div class="home-search-box">
-    <%= render "shared/search_form" %>
-  </div>
-  <div class="banner-home-quote-position">
-    <div class="banner-home-quote">
-      <p class="banner-home-first-paragraph">
-        Local Help is a community-driven task exchange. We connect people who could use a hand with someone nearby who can help them get it done.
-      </p>
-      <p class="banner-home-second-paragraph">
-        Find someone in your area to help you with home repairs, shopping trips, or anything else you might need.
-      </p>
-    </div>
-  </div>
-  <svg class="arrows">
-      <path class="a1" d="M0 0 L30 32 L60 0"></path>
-      <path class="a2" d="M0 20 L30 52 L60 20"></path>
-      <path class="a3" d="M0 40 L30 72 L60 40"></path>
-  </svg>
-</header>
+<%= render "shared/home_banner" %>
 
-<div class="banner-home-second-section">
+<section class="section-home pb-5">
   <div class="container">
     <div class="row">
-      <div class="d-flex">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8">
-          <h1>Local Help explained</h1>
-          <p>Whether you need someone to help you assemble some furniture, build your garden, or even just a friendly voice to talk you through getting your printer back up and running, Local Help has a wide range of top-rated volunteers to help you solve any issue. We also have paid tasks too, so you can support your community members and make a new friend in the process.</p>
-          <div class="d-flex justify-content-around">
-            <%= link_to 'See available tasks', tasks_path, class: 'btn-gradient' %>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-              <div id="card-image"></div>
-            </div>
-          </div>
-        </div>
+      <div class="col-12 col-md-8">
+        <h1>Local Help explained</h1>
+        <p>Whether you need someone to help you assemble some furniture, build your garden, or even just a friendly voice to talk you through getting your printer back up and running, Local Help has a wide range of top-rated volunteers to help you solve any issue. We also have paid tasks too, so you can support your community members and make a new friend in the process.</p>
+        <%= link_to 'See available tasks', tasks_path, class: 'btn-gradient' %>
+      </div>
+      <div class="col-12 col-md-4">
+        <%= image_tag "card.png", id: "home-card-image" %>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="banner-home-third-section">
-  <div class="row">
-    <div class="col-12">
-      <h1>Create an account</h1>
-      <p>With your Local Help account, you can list your issue or apply to help someone out. Manage all your messages in our built-in dashboard!</p>
-      <div class="d-flex justify-content-around">
-        <div class="banner-home-card" style="width: 20rem;">
-          <div class="banner-home-card-polygon">
-            <div class="banner-home-card-polygon">
-              <h5>Create a new task</h5>
-            </div>
-            <p>Explain what you need done. Not sure if it's clear? You can upload photos too!</p>
-          </div>
-        </div>
-        <div class="banner-home-card" style="width: 20rem;">
-          <div class="banner-home-card-polygon">
-            <div class="banner-home-card-polygon">
-              <h5>Apply for a task</h5>
-            </div>
-            <p>Introduce yourself and explain how you can help (e.g. experience)</p>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-around">
-        <%= link_to 'Sign up for free', new_user_registration_path, class: 'btn-gradient' %>
+<section class="section-home pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Create an account</h1>
+        <p class="mb-4">With your Local Help account, you can list your issue or apply to help someone out. Manage all your messages in our built-in dashboard!</p>
       </div>
     </div>
+    <div class="row justify-content-around">
+      <div class="col-12 col-md-4">
+        <div class="home-card">
+          <h5>Create a new task</h5>
+          <p>Explain what you need done. Not sure if it's clear? You can upload photos too!</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="home-card">
+          <h5>Apply for a task</h5>
+          <p>Introduce yourself and explain how you can help (e.g. experience)</p>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around">
+      <%= link_to "Sign up for free", new_user_registration_path, class: "btn-gradient" %>
+    </div>
   </div>
-</div>
+</section>
