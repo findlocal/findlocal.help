@@ -1,4 +1,4 @@
-// General rules applied to all pages
+// Write here general CSS rules applied to all pages
 
 body {
   min-height: 100vh;
@@ -13,6 +13,7 @@ body {
   position: absolute;
 }
 
+// Min main content
 main#content {
   min-height: calc(100vh - #{$footer-height});
   width: 100%;
@@ -36,7 +37,7 @@ textarea,
   caret-color: $primary;
 }
 
-// Hide star next to form labels
+// Hide ugly star next to form labels
 form label abbr {
   display: none;
 }
