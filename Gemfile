@@ -20,7 +20,6 @@ gem "devise"
 gem "faker"
 gem "pundit"
 gem "geocoder"
-gem 'algolia_places'
 
 # Frontend
 gem "autoprefixer-rails" # adds prefixes to css rules
