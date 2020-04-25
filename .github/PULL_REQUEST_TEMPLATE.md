@@ -1,5 +1,3 @@
-<!-- ⚠️ Remove optional blocks and comments when unused! -->
-
 ## Overview
 
 <!-- *Required* - short description of the feature -->
@@ -8,18 +6,14 @@
 
 ## Configuration
 
-Is there any new service/configuration the other team members should be aware of? If so, explain it details and tag them here
+Is there any new service/configuration the other team members should be aware of? If so, explain it details
 
 ## Details
 
-List the key features/highlights as bullet points, and explain how you implemented them
-
-## Notes
-
-List additional notes/references as bullet points
+If this is a long pr, list the key features/highlights as bullet points, and explain how you implemented them
 
 ## Screenshots
 
-Provide supporting images/gifs/videos
+Provide supporting images/gifs/videos/asciinemas
 
 -->
