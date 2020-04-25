@@ -4,7 +4,9 @@
     <title>Local Help</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= render "layouts/favicon_tags" %>
+    <% if Rails.env.production? %>
+      <%= render "layouts/favicon_tags" %>
+    <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload", defer: true %>
