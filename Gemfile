@@ -20,12 +20,13 @@ gem "devise"
 gem "faker"
 gem "geocoder"
 gem "pundit"
+gem "money-rails"
+gem "stripe"
 
 # Frontend
 gem "autoprefixer-rails" # adds -webkit- and similar prefixes to css rules
 gem "font-awesome-sass"
 gem "simple_form"
-gem "money-rails"
 
 # Tasks
 gem "paint" # colors for terminal

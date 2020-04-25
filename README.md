@@ -19,6 +19,7 @@ rails db:migrate db:seed
 You need to connect a [Cloudinary](https://cloudinary.com/users/register/free) account in order to store and fetch images with Active Storage.
 
 Create an `.env` file at the root of the repository, then copy and paste your `CLOUDINARY_URL` there.
+You will also need a `STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY` to process payments.
 
 ### Lint
 
