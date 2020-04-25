@@ -75,7 +75,7 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
     Help.create(
       user: User.all.sample,
       message: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 2),
-      bid: rand(10..200),
+      bid_cents: rand(1000..20_000),
       task: task
 >>>>>>> added bid to help model
     )
@@ -232,7 +232,7 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
   Help.create(
     user: task.helper,
     message: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 2),
-    bid: rand(10..200),
+    bid_cents: rand(1000..20_000),
     task: task
   )
 end

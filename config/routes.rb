@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :tasks, except: [:show] do
     # Everything below is related to a specific task 👇
-    resources :helps, only: [:create, :update, :destroy]
+    resources :helps, only: [:create, :update, :destroy] do
+      resources :payments, only: [:new]
+    end
     patch "/assign/:helper_id", to: "tasks#assign", as: :assign
   end
 

@@ -49,14 +49,46 @@ class TasksController < ApplicationController
 
   # Other actions:
   def assign
-    find_and_assign_help(params)
+    # find_and_assign_help(params)
+    @task = Task.find(params[:task_id])
+    @help = Help.find(params[:helper_id])
+
     authorize @task
-    if @task.save
-      flash[:success] = task_success_message("assigned")
-    else
-      flash[:error] = task_error_message("assign")
-    end
-    redirect_to dashboard_path
+    # @task.status = "in progress"
+
+    session = Stripe::Checkout::Session.create(
+      {
+        payment_method_types: ["card"],
+        customer_email: current_user.email,
+        line_items: [{
+          name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
+          # TODO: Add avatar of helper here
+          amount: @help.bid_cents,
+          currency: "eur",
+          quantity: 1
+        }],
+        payment_intent_data: {
+          application_fee_amount: (@help.bid_cents * 0.05).round,
+          transfer_data: {
+            # TODO: Add actual stripe account of helper
+            destination: "acct_1Gbq6OBGE20DL2Et"
+          }
+        },
+        success_url: dashboard_url,
+        cancel_url: dashboard_url
+      }
+    )
+
+    # Once we implement a chat feature we should redirect there instead of directly to the payment
+    @task.update(checkout_session_id: session.id)
+
+    # if @task.save
+    #   flash[:success] = task_success_message("assigned")
+
+    # else
+    #   flash[:error] = task_error_message("assign")
+    # end
+    redirect_to new_task_help_payment_path(@task, @help)
   end
 
   def dashboard
@@ -95,7 +127,6 @@ class TasksController < ApplicationController
     @help = Help.find(params[:helper_id])
     @task = Task.find(params[:task_id])
     @task.helper = @help.user
-    @task.status = "in progress"
   end
 
   def task_success_message(action)

@@ -22,7 +22,8 @@
                     <% else %>
                       <%= image_tag "avatar-placeholder.png", class: "avatar-large" %>
                     <% end %>
-                    <div class="ml-3 d-flex align-items-center">
+                    <div class="ml-3 d-flex align-items-center flex-wrap">
+                      <p class="w-100 m-0">Bid: <%= humanized_money_with_symbol(help.bid) %></p>
                       <% if help.message.nil? %>
                         <p class="m-0"><i><%= help.user.first_name %> did not provide a message.</i></p>
                       <% else %>
@@ -33,7 +34,7 @@
                   <!-- Actions -->
                   <div class="d-flex align-items-center">
                     <%= link_to "Assign", task_assign_path(task, help), method: :patch, remote: true, class: "btn btn-sm btn-primary mr-2",
-                        data: { confirm: "Are you sure you want to pick #{help.user.shortname} as your helper?"} %>
+                        data: { confirm: "Are you sure you want to pick #{help.user.shortname} as your helper?", disable_with: "Please wait..."} %>
                     <%= link_to "Decline", task_help_path(task, help), method: :delete, remote: true, class: "btn btn-sm btn-danger",
                         data: { confirm: "Are you sure you want to remove #{help.user.shortname}'s application?"} %>
                   </div>
