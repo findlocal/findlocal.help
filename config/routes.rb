@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "pages#home"
 
+  mount(StripeEvent::Engine, at: "/stripe-webhooks")
   devise_for :users # DON'T REMOVE, user routes are managed by devise!
 
   resources :tasks, except: [:show] do
