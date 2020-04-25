@@ -58,6 +58,7 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
       user.save
     end
   end
+<<<<<<< HEAD
   # Men
   10.times do |n|
     user = User.create(
@@ -67,6 +68,16 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
       password: "password",
       address: locations.sample,
       phone_number: Faker::PhoneNumber.cell_phone
+=======
+
+  # Helps
+  rand(0..10).times do
+    Help.create(
+      user: User.all.sample,
+      message: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 2),
+      bid: rand(10..200),
+      task: task
+>>>>>>> added bid to help model
     )
     unless skip_assets?
       file = URI.open("https://randomuser.me/api/portraits/men/#{n + 1}.jpg")
@@ -215,4 +226,100 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
     # Clear and print stop message specified before
     Whirly.status = ""
   end
+<<<<<<< HEAD
+=======
+
+  Help.create(
+    user: task.helper,
+    message: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 2),
+    bid: rand(10..200),
+    task: task
+  )
+end
+
+Task.all.each do |task|
+  next unless task.status == "completed"
+
+  # REVIEW: from the helper
+  helpers_review = Review.create(
+    user: task.helper,
+    task: task
+  )
+
+  ReviewField.create(
+    name: "Public Review",
+    content: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 5),
+    rating: nil,
+    review: helpers_review
+  )
+
+  ReviewField.create(
+    name: "Private Suggestions or Feedback",
+    content: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 5),
+    rating: nil,
+    review: helpers_review
+  )
+
+  ReviewField.create(
+    name: "Communication",
+    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 2),
+    rating: rand(1..5),
+    review: helpers_review
+  )
+
+  ReviewField.create(
+    name: "Accuracy of Task Description",
+    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 2),
+    rating: rand(1..5),
+    review: helpers_review
+  )
+
+  ReviewField.create(
+    name: "Availability",
+    content: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 5),
+    rating: rand(1..5),
+    review: helpers_review
+  )
+
+  # REVIEW: from the task creator
+  creators_review = Review.create(
+    user: task.creator,
+    task: task
+  )
+
+  ReviewField.create(
+    name: "Public Review",
+    content: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 5),
+    rating: nil,
+    review: creators_review
+  )
+
+  ReviewField.create(
+    name: "Private Suggestions or Feedback",
+    content: Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 5),
+    rating: nil,
+    review: creators_review
+  )
+
+  ReviewField.create(
+    name: "Communication",
+    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 2),
+    rating: rand(1..5),
+    review: creators_review
+  )
+
+  ReviewField.create(
+    name: "Quality of Service",
+    content: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 2),
+    rating: rand(1..5),
+    review: creators_review
+  )
+
+  ReviewField.create(
+    name: "Professionalism",
+    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 2),
+    rating: rand(1..5),
+    review: creators_review
+  )
+>>>>>>> added bid to help model
 end
