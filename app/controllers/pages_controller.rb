@@ -7,8 +7,4 @@ class PagesController < ApplicationController
     @task_tags = Tag.all.uniq
   end
 
-   def search_location
-    @task_location = Task.where('location_code LIKE ?', "%#{params[:q]}%")
-    render json: @task_location
-  end
 end

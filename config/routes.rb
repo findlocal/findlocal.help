@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   get "/oauth", to: "payments#oauth", as: :oauth
 
   get "/dashboard", to: "tasks#dashboard", as: :dashboard
-  get 'search_location/:q' => 'pages#search_location'
 end
