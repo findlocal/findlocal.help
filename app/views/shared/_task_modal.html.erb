@@ -9,7 +9,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <!-- Body -->
       <div class="modal-body">
         <!-- Body: carousel -->
@@ -32,7 +31,6 @@
             </a>
           <% end %>
         </div>
-
         <!-- Body: description -->
         <div class="container-fluid">
           <div class="row mt-3">
@@ -61,7 +59,6 @@
           </div>
         </div>
       </div>
-
       <!-- Footer -->
       <% unless task.creator == current_user %>
         <div class="modal-footer">
@@ -81,7 +78,6 @@
     </div>
   </div>
 </div>
-
 <% unless task.creator == current_user && task.helps.find_by(user: current_user) %>
   <!-- Help request modal -->
   <div class="modal fade" id='<%= "helpModal#{task.id}" %>' tabindex="-1" role="dialog" aria-labelledby="Help Modal" aria-hidden="true">
@@ -96,6 +92,7 @@
         <div class="modal-body p-4">
           <%= simple_form_for [task, Help.new] do |f| %>
             <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
+            <%= f.input :bid, default: "" %>
             <%= f.button :submit, class: "btn-gradient float-right", value: "Send", data: { disable_with: "Sending..." } %>
           <% end %>
         </div>

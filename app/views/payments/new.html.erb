@@ -1,0 +1,21 @@
+<%# This is just a basic view, feel free to completely change it %>
+<div class="container">
+  <div class="row py-4">
+    <%# <div class="col-md-3"><%= image_tag @order.teddy.photo_url, width: '100%' </div> %>
+    <div class="col mt-5">
+      <h1>Payment summary</h1>
+      <p>Payment of <strong><%= humanized_money_with_symbol @help.bid %></strong> to <%= @help.user.first_name %> <%= @help.user.last_name %> for <%= @task.title %></p>
+      <button id="pay" class="btn btn-primary">Pay</button>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @task.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div>
