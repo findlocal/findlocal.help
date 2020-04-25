@@ -145,6 +145,7 @@ GEM
     nokogiri (1.10.9-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    paint (2.2.0)
     parallel (1.19.1)
     parser (2.7.1.0)
       ast (~> 2.4.0)
@@ -316,6 +317,8 @@ GEM
     websocket-driver (0.7.1-java)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    whirly (0.2.6)
+      unicode-display_width (~> 1.1)
     zeitwerk (2.3.0)
 
 PLATFORMS
@@ -336,6 +339,7 @@ DEPENDENCIES
   geocoder
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  paint
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
@@ -354,6 +358,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
+  whirly
 
 RUBY VERSION
    ruby 2.7.1p83

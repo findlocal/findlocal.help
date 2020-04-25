@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  after_update :mark_as_in_progress!
+
   # Associations
   belongs_to :creator, class_name: "User"
   belongs_to :helper, class_name: "User", optional: true
@@ -17,4 +19,8 @@ class Task < ApplicationRecord
   geocoded_by :location
   reverse_geocoded_by :latitude, :longitude, address: :location
   after_validation :reverse_geocode
+
+  def mark_as_in_progress!
+    update!(status: "in progress") if status == "pending" && helper.present?
+  end
 end

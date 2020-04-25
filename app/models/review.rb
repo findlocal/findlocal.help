@@ -2,7 +2,6 @@ class Review < ApplicationRecord
   belongs_to :task
   belongs_to :user
   has_many :review_fields, dependent: :destroy
-
   alias_attribute :fields, :review_fields
 
   validates :user, presence: true
