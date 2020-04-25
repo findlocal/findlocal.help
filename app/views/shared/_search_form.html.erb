@@ -1,9 +1,16 @@
 <div class="container">
   <%= simple_form_for :search, url: tasks_path, class: "search-form", method: :get  do |f| %>
-    <%= f.input :location, label: false, class: "form-control", placeholder: "Enter city" %>
-    <%= f.input :task_tags, label: false, class: "form-control", placeholder: "Filter by tags" %>
+  <div id= "search-data"  class="form-search search-data" data-skills="<%= @location.to_json %>">
+  <input class="form-control string required" placeholder="Search by city" type="text" id="search_" autocomplete="off" name= "search[location]">
+  </div>
+  <div id="tags-search">
+  <%= f.input :task_tags, label: "Task Categories", class: "form-control", collection: @task_tags, input_html: {:multiple => true}, as: :select %>
+  </div>
     <div class="form-actions">
       <%= f.submit "Search", class: "btn-gradient mt-3"%>
     </div>
   <% end %>
 </div>
+<%= form_tag(root_path, method: 'get', class: "form-inline") do %>
+
+<% end %>
