@@ -102,7 +102,8 @@
           <div class="modal-body p-4">
             <%= simple_form_for [task, Help.new] do |f| %>
               <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
-              <%= f.input :bid, default: "" %>
+              <%# TODO: This bid input needs to be deisgned better, and I was also having some issues with the bid appearing as 0 when it was not supposed to be %>
+              <%= f.input :bid, required: true %>
               <%= f.button :submit, class: "btn-gradient float-right", value: "Send", data: { disable_with: "Sending..." } %>
             <% end %>
           </div>

@@ -1,9 +1,9 @@
-<%# This is just a basic view, feel free to completely change it %>
+<%# TODO: This is just a basic view, feel free to completely change it %>
 <div class="container">
   <div class="row py-4">
-    <%# <div class="col-md-3"><%= image_tag @order.teddy.photo_url, width: '100%' </div> %>
     <div class="col mt-5">
       <h1>Payment summary</h1>
+      <%= cl_image_tag @payment.help.user.avatar.key, class: "avatar-large"%>
       <p>Payment of <strong><%= humanized_money_with_symbol @payment.help.bid %></strong> to <%= @payment.help.user.first_name %> <%= @payment.help.user.last_name %> for <%= @payment.task.title %></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
