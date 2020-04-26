@@ -8,4 +8,9 @@ class PaymentPolicy < ApplicationPolicy
   def show?
     user && user.created_tasks.where(status: "pending").include?(record.task) && record.completed == false
   end
+
+  def oauth?
+    # TODO: add more rules
+    user
+  end
 end

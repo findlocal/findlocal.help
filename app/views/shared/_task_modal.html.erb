@@ -89,13 +89,23 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body p-4">
-          <%= simple_form_for [task, Help.new] do |f| %>
-            <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
-            <%= f.input :bid, default: "" %>
-            <%= f.button :submit, class: "btn-gradient float-right", value: "Send", data: { disable_with: "Sending..." } %>
-          <% end %>
-        </div>
+        <% if current_user && current_user.stripe_account.nil? %>
+          <div class="modal-body p-4 d-flex flex-wrap">
+            <h6>Add a method to receive payments before applying</h6>
+            <%# TODO: add secure state %>
+            <%= link_to "https://connect.stripe.com/express/oauth/authorize?client_id=ca_HA7rfKJUEi7LbaFoN8G4kId01KVQQZ65&state=TESTSTATE&stripe_user[email]=#{current_user.email}&stripe_user[first_name]=#{current_user.first_name}&stripe_user[last_name]=#{current_user.last_name}&stripe_user[business_type]=individual&suggested_capabilities[]=card_payments" do %>
+              <p class="stripe-connect light-blue mt-3"><span>Connect with Stripe</span></p>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="modal-body p-4">
+            <%= simple_form_for [task, Help.new] do |f| %>
+              <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
+              <%= f.input :bid, default: "" %>
+              <%= f.button :submit, class: "btn-gradient float-right", value: "Send", data: { disable_with: "Sending..." } %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
