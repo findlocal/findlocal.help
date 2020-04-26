@@ -6,6 +6,7 @@ class PaymentsController < ApplicationController
 
   def oauth
     # this sets up a user's account to accept payments with stripe
+    authorize Payment
     state = params[:state]
 
     # TODO: create an actual state
@@ -22,9 +23,15 @@ class PaymentsController < ApplicationController
     rescue Stripe::OAuth::InvalidGrantError
       # status(400)
       { error: "Invalid authorization code: " + code }.to_json
+      flash[:error] = "Stripe account could not be connected"
+
+      redirect_to dashboard_path
     rescue Stripe::StripeError
       # status(500)
       { error: "An unknown error occurred." }.to_json
+      flash[:error] = "Stripe account could not be connected"
+
+      redirect_to dashboard_path
     end
 
     if current_user.update(stripe_account: response.stripe_user_id)

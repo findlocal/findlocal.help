@@ -2,7 +2,6 @@ class HelpsController < ApplicationController
   before_action :set_task, only: [:create]
 
   def create
-    binding.pry
     @help = Help.new(user: current_user, task: @task, **help_params) # use `**` to flatten the additional params
     authorize @help
     if @help.save
