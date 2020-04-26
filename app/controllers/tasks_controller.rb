@@ -62,18 +62,18 @@ class TasksController < ApplicationController
         customer_email: current_user.email,
         line_items: [{
           name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
-          # TODO: Add avatar of helper here
+          images: [Cloudinary::Utils.cloudinary_url(@help.user.avatar.key)],
           amount: @help.bid_cents,
           currency: "eur",
           quantity: 1
         }],
-        payment_intent_data: {
-          application_fee_amount: (@help.bid_cents * 0.05).round,
-          transfer_data: {
-            # TODO: Add actual stripe account of helper
-            destination: "acct_1Gbq6OBGE20DL2Et"
-          }
-        },
+        # payment_intent_data: {
+        #   application_fee_amount: (@help.bid_cents * 0.05).round,
+        #   transfer_data: {
+        #     # TODO: Add actual stripe account of helper
+        #     destination: "acct_1Gbq6OBGE20DL2Et"
+        #   }
+        # },
         success_url: dashboard_url,
         cancel_url: dashboard_url
       }
