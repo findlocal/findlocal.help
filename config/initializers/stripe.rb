@@ -11,3 +11,5 @@ StripeEvent.signing_secret = Rails.configuration.stripe[:signing_secret]
 StripeEvent.configure do |events|
   events.subscribe("checkout.session.completed", StripeCheckoutSessionService.new)
 end
+
+# TODO: Add notifications to let the other party know when a transation goes through
