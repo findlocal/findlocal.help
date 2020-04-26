@@ -19,7 +19,10 @@ rails db:migrate db:seed
 You need to connect a [Cloudinary](https://cloudinary.com/users/register/free) account in order to store and fetch images with Active Storage.
 
 Create an `.env` file at the root of the repository, then copy and paste your `CLOUDINARY_URL` there.
-You will also need a `STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_WEBHOOK_SECRET_KEY` to process payments.
+
+### Stripe
+You will  need a `STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_WEBHOOK_SECRET_KEY` in the `.env` to process payments.
+Use ngrok to host your localhost, this will allow webhooks to work. In `development.rb` set `config.hosts << "YOUR NGROK URL"`, and in the stripe dashboard set up webhooks pointing to that url.
 
 ### Lint
 

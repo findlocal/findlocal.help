@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_425_145_147) do
+ActiveRecord::Schema.define(version: 2020_04_25_215411) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +45,17 @@ ActiveRecord::Schema.define(version: 20_200_425_145_147) do
     t.integer("bid_cents", default: 0, null: false)
     t.index(["task_id"], name: "index_helps_on_task_id")
     t.index(["user_id"], name: "index_helps_on_user_id")
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "help_id", null: false
+    t.string "checkout_session_id"
+    t.boolean "completed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["help_id"], name: "index_payments_on_help_id"
+    t.index ["task_id"], name: "index_payments_on_task_id"
   end
 
   create_table "review_fields", force: :cascade do |t|
@@ -81,6 +93,7 @@ ActiveRecord::Schema.define(version: 20_200_425_145_147) do
   end
 
   create_table "tasks", force: :cascade do |t|
+<<<<<<< HEAD
     t.string("title")
     t.string("description")
     t.string("location")
@@ -94,6 +107,20 @@ ActiveRecord::Schema.define(version: 20_200_425_145_147) do
     t.string("checkout_session_id")
     t.index(["creator_id"], name: "index_tasks_on_creator_id")
     t.index(["helper_id"], name: "index_tasks_on_helper_id")
+=======
+    t.string "title"
+    t.string "description"
+    t.string "location"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
+    t.bigint "helper_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["creator_id"], name: "index_tasks_on_creator_id"
+    t.index ["helper_id"], name: "index_tasks_on_helper_id"
+>>>>>>> webhooks now work
   end
 
   create_table "users", force: :cascade do |t|
@@ -115,6 +142,8 @@ ActiveRecord::Schema.define(version: 20_200_425_145_147) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "helps", "tasks"
   add_foreign_key "helps", "users"
+  add_foreign_key "payments", "helps"
+  add_foreign_key "payments", "tasks"
   add_foreign_key "review_fields", "reviews"
   add_foreign_key "reviews", "tasks"
   add_foreign_key "reviews", "users"

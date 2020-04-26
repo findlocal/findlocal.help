@@ -5,8 +5,7 @@ class PaymentPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    user && user.created_task.where(status: "pending").include?(params[:task_id]) && !params[:task_id].checkout_session_id.nil?
-    # user
+  def show?
+    user && user.created_tasks.where(status: "pending").include?(record.task) && record.completed == false
   end
 end
