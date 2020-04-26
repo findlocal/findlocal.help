@@ -61,6 +61,7 @@ class TasksController < ApplicationController
       redirect_to dashboard_path
     else
 
+      # TODO: set up a transfer if the user already has a stripe account (this will be easier, since you won't have to enter your info)
       session = Stripe::Checkout::Session.create(
         {
           payment_method_types: ["card"],
@@ -76,6 +77,7 @@ class TasksController < ApplicationController
           # this points the transaction to the helper's connected stripe account
           payment_intent_data: {
             application_fee_amount: (@help.bid_cents * 0.05).round,
+            on_behalf_of: @help.user.stripe_account,
             transfer_data: {
               destination: @help.user.stripe_account
             }
