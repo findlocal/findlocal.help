@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :payments, only: [:show]
+
+  get "/oauth", to: "payments#oauth", as: :oauth
+
   get "/dashboard", to: "tasks#dashboard", as: :dashboard
 end

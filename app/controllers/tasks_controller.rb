@@ -54,35 +54,43 @@ class TasksController < ApplicationController
     @help = Help.find(params[:helper_id])
 
     authorize @task
-    # @task.status = "in progress"
 
-    session = Stripe::Checkout::Session.create(
-      {
-        payment_method_types: ["card"],
-        customer_email: current_user.email,
-        line_items: [{
-          name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
-          images: [Cloudinary::Utils.cloudinary_url(@help.user.avatar.key)],
-          amount: @help.bid_cents,
-          currency: "eur",
-          quantity: 1
-        }],
-        # payment_intent_data: {
-        #   application_fee_amount: (@help.bid_cents * 0.05).round,
-        #   transfer_data: {
-        #     # TODO: Add actual stripe account of helper
-        #     destination: "acct_1Gbq6OBGE20DL2Et"
-        #   }
-        # },
-        success_url: dashboard_url,
-        cancel_url: dashboard_url
-      }
-    )
+    if @help.user.stripe_account.nil?
+      # This error shouldn't ever go off, since you can't apply until you have a stripe account
+      flash[:error] = "This user does not have a method of receiving payments"
+      redirect_to dashboard_path
+    else
 
-    # Once we implement a chat feature we should redirect there instead of directly to the payment
-    payment = Payment.create(checkout_session_id: session.id, task: @task, help: @help, completed: false)
+      session = Stripe::Checkout::Session.create(
+        {
+          payment_method_types: ["card"],
+          customer_email: current_user.email,
+          line_items: [{
+            name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
+            # TODO: Check to see what happens if user doesn't have an avatar
+            images: [Cloudinary::Utils.cloudinary_url(@help.user.avatar.key)],
+            amount: @help.bid_cents,
+            currency: "eur",
+            quantity: 1
+          }],
+          # this points the transaction to the helper's connected stripe account
+          payment_intent_data: {
+            application_fee_amount: (@help.bid_cents * 0.05).round,
+            transfer_data: {
+              destination: @help.user.stripe_account
+            }
+          },
+          success_url: dashboard_url,
+          cancel_url: dashboard_url
+        }
+      )
 
-    redirect_to payment_path(payment)
+      # TODO: Once we implement a chat feature we should redirect there instead of directly to the payment
+      payment = Payment.create(checkout_session_id: session.id, task: @task, help: @help, completed: false)
+
+      redirect_to payment_path(payment)
+  end
+
     # if @task.save
     #   flash[:success] = task_success_message("assigned")
 
