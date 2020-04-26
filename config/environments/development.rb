@@ -4,7 +4,10 @@ Rails.application.configure do
   # Reload code on every request
   config.cache_classes = false
 
-  config.hosts << "7270d60e.ngrok.io"
+  config.hosts << "7d00b0c2.ngrok.io"
+
+  # stripe's ip
+  config.web_console.whitelisted_ips = "54.187.205.235"
 
   # Do not eager load code on boot
   config.eager_load = false
