@@ -86,17 +86,14 @@ class TasksController < ApplicationController
       )
 
       # TODO: Once we implement a chat feature we should redirect there instead of directly to the payment
-      payment = Payment.create(checkout_session_id: session.id, task: @task, help: @help, completed: false)
+      if payment = Payment.create(checkout_session_id: session.id, task: @task, help: @help, completed: false)
+        redirect_to payment_path(payment)
+      else
+        flash[:error] = task_error_message("assign")
+        redirect_to dashboard_path
+      end
 
-      redirect_to payment_path(payment)
-  end
-
-    # if @task.save
-    #   flash[:success] = task_success_message("assigned")
-
-    # else
-    #   flash[:error] = task_error_message("assign")
-    # end
+    end
   end
 
   def dashboard
