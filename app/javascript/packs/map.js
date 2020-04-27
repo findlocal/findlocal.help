@@ -1,15 +1,14 @@
-import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css'
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 
-const initMapbox = () => {
-  const mapElement = document.getElementById('map');
+const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.pk.eyJ1IjoicHdlc3RtYW4iLCJhIjoiY2s5aWdwa2F2MDFrYTNrcGh2bWRjYTVuZiJ9.BuMV46ODfPwtl2P-JiDbmg;
+    mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
   }
-};
 
-export { initMapbox };
+  export { mapElement };

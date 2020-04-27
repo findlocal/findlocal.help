@@ -9,7 +9,10 @@
     <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_pack_tag "map" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload", defer: true %>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
   </head>
 
   <body>
@@ -19,6 +22,8 @@
       <main id="content">
         <%= yield %>
       </main>
+      <%= yield(:after_js) %>
+      <%= javascript_pack_tag "map" %>
       <% unless devise_controller? %>
         <%= render "shared/footer" %>
       <% end %>
