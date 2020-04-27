@@ -21,3 +21,9 @@ document.addEventListener('turbolinks:load', () => {
   initTooltips()
   updateNavbarOnScroll()
 })
+
+import { initMapbox } from '../packs/map.js';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
