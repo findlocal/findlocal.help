@@ -36,11 +36,8 @@
       <%= task.title %>
     </div>
 
-    <div class="cardmap" id="map"
-     style="height: 100px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-     </div>
+  <div class="cardmap">
+    <img src= '<%="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff0000(#{task.longitude},#{task.latitude})/#{task.longitude},#{task.latitude},5/300x200?access_token=pk.eyJ1IjoicHdlc3RtYW4iLCJhIjoiY2s5aWdwa2F2MDFrYTNrcGh2bWRjYTVuZiJ9.BuMV46ODfPwtl2P-JiDbmg"%>'/></div>
 
     <div class="description">
       <p><%= task.description.truncate(80, separator: /\s/) %></p>
