@@ -10,7 +10,8 @@ class PaymentPolicy < ApplicationPolicy
   end
 
   def oauth?
-    # TODO: add more rules
-    user
+    # TODO: can this be secured further?
+    user && user.stripe_account.nil?
+    # signed in and doesn't already have an account
   end
 end
