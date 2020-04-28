@@ -1,4 +1,4 @@
-First of all make sure you've created a rails app
+`First of all make sure you've created a rails app
 
 ```bash
 rails new APP_NAME
