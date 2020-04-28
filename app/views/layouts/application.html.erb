@@ -4,9 +4,7 @@
     <title>Local Help</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <% if Rails.env.production? %>
-      <%= render "layouts/favicon_tags" %>
-    <% end %>
+    <%= render "layouts/favicon_tags" %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload", defer: true %>
@@ -14,13 +12,13 @@
 
   <body>
     <div id="root">
-      <%= render "shared/navbar" %>
-      <%= render "shared/flashes" %>
+      <%= render "layouts/navbar" %>
+      <%= render "layouts/flashes" %>
       <main id="content">
         <%= yield %>
       </main>
       <% unless devise_controller? %>
-        <%= render "shared/footer" %>
+        <%= render "layouts/footer" %>
       <% end %>
     </div>
   </body>
