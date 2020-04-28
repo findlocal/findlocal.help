@@ -7,10 +7,6 @@ class PaymentsController < ApplicationController
   def oauth
     # this sets up a user's account to accept payments with stripe
     authorize Payment
-    state = params[:state]
-
-    # TODO: create an actual state
-    { error: "Incorrect state parameter: " + state }.to_json if state != "TESTSTATE"
 
     code = params[:code]
     begin
