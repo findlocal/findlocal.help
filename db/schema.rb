@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_140745) do
-
+ActiveRecord::Schema.define(version: 20_200_426_140_745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,14 +47,14 @@ ActiveRecord::Schema.define(version: 2020_04_26_140745) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.bigint "task_id", null: false
-    t.bigint "help_id", null: false
-    t.string "checkout_session_id"
-    t.boolean "completed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["help_id"], name: "index_payments_on_help_id"
-    t.index ["task_id"], name: "index_payments_on_task_id"
+    t.bigint("task_id", null: false)
+    t.bigint("help_id", null: false)
+    t.string("checkout_session_id")
+    t.boolean("completed")
+    t.datetime("created_at", precision: 6, null: false)
+    t.datetime("updated_at", precision: 6, null: false)
+    t.index(["help_id"], name: "index_payments_on_help_id")
+    t.index(["task_id"], name: "index_payments_on_task_id")
   end
 
   create_table "review_fields", force: :cascade do |t|
@@ -93,7 +92,6 @@ ActiveRecord::Schema.define(version: 2020_04_26_140745) do
   end
 
   create_table "tasks", force: :cascade do |t|
-<<<<<<< HEAD
     t.string("title")
     t.string("description")
     t.string("location")
@@ -107,37 +105,23 @@ ActiveRecord::Schema.define(version: 2020_04_26_140745) do
     t.string("checkout_session_id")
     t.index(["creator_id"], name: "index_tasks_on_creator_id")
     t.index(["helper_id"], name: "index_tasks_on_helper_id")
-=======
-    t.string "title"
-    t.string "description"
-    t.string "location"
-    t.string "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "creator_id"
-    t.bigint "helper_id"
-    t.float "latitude"
-    t.float "longitude"
-    t.index ["creator_id"], name: "index_tasks_on_creator_id"
-    t.index ["helper_id"], name: "index_tasks_on_helper_id"
->>>>>>> webhooks now work
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "address"
-    t.string "phone_number"
-    t.string "stripe_account"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string("email", default: "", null: false)
+    t.string("encrypted_password", default: "", null: false)
+    t.string("reset_password_token")
+    t.datetime("reset_password_sent_at")
+    t.datetime("remember_created_at")
+    t.datetime("created_at", precision: 6, null: false)
+    t.datetime("updated_at", precision: 6, null: false)
+    t.string("first_name")
+    t.string("last_name")
+    t.string("address")
+    t.string("phone_number")
+    t.string("stripe_account")
+    t.index(["email"], name: "index_users_on_email", unique: true)
+    t.index(["reset_password_token"], name: "index_users_on_reset_password_token", unique: true)
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
