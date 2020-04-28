@@ -33,6 +33,7 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
   sleep 2
 
   # Destroy everything
+  Payment.destroy_all
   Review.destroy_all
   User.destroy_all
   Task.destroy_all

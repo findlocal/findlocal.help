@@ -10,118 +10,118 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_426_140_745) do
+ActiveRecord::Schema.define(version: 2020_04_26_140745) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string("name", null: false)
-    t.string("record_type", null: false)
-    t.bigint("record_id", null: false)
-    t.bigint("blob_id", null: false)
-    t.datetime("created_at", null: false)
-    t.index(["blob_id"], name: "index_active_storage_attachments_on_blob_id")
-    t.index(%w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness", unique: true)
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string("key", null: false)
-    t.string("filename", null: false)
-    t.string("content_type")
-    t.text("metadata")
-    t.bigint("byte_size", null: false)
-    t.string("checksum", null: false)
-    t.datetime("created_at", null: false)
-    t.index(["key"], name: "index_active_storage_blobs_on_key", unique: true)
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "helps", force: :cascade do |t|
-    t.bigint("user_id", null: false)
-    t.bigint("task_id", null: false)
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.text("message")
-    t.integer("bid_cents", default: 0, null: false)
-    t.index(["task_id"], name: "index_helps_on_task_id")
-    t.index(["user_id"], name: "index_helps_on_user_id")
+    t.bigint "user_id", null: false
+    t.bigint "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "message"
+    t.integer "bid_cents", default: 0, null: false
+    t.index ["task_id"], name: "index_helps_on_task_id"
+    t.index ["user_id"], name: "index_helps_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
-    t.bigint("task_id", null: false)
-    t.bigint("help_id", null: false)
-    t.string("checkout_session_id")
-    t.boolean("completed")
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.index(["help_id"], name: "index_payments_on_help_id")
-    t.index(["task_id"], name: "index_payments_on_task_id")
+    t.bigint "task_id", null: false
+    t.bigint "help_id", null: false
+    t.string "checkout_session_id"
+    t.boolean "completed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["help_id"], name: "index_payments_on_help_id"
+    t.index ["task_id"], name: "index_payments_on_task_id"
   end
 
   create_table "review_fields", force: :cascade do |t|
-    t.string("name")
-    t.text("content")
-    t.integer("rating")
-    t.bigint("review_id", null: false)
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.index(["review_id"], name: "index_review_fields_on_review_id")
+    t.string "name"
+    t.text "content"
+    t.integer "rating"
+    t.bigint "review_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_review_fields_on_review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint("task_id", null: false)
-    t.bigint("user_id", null: false)
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.index(["task_id"], name: "index_reviews_on_task_id")
-    t.index(["user_id"], name: "index_reviews_on_user_id")
+    t.bigint "task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_reviews_on_task_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string("name")
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "task_tags", force: :cascade do |t|
-    t.bigint("task_id", null: false)
-    t.bigint("tag_id", null: false)
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.index(["tag_id"], name: "index_task_tags_on_tag_id")
-    t.index(["task_id"], name: "index_task_tags_on_task_id")
+    t.bigint "task_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_task_tags_on_tag_id"
+    t.index ["task_id"], name: "index_task_tags_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string("title")
-    t.string("description")
-    t.string("location")
-    t.string("status")
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.bigint("creator_id")
-    t.bigint("helper_id")
-    t.float("latitude")
-    t.float("longitude")
-    t.string("checkout_session_id")
-    t.index(["creator_id"], name: "index_tasks_on_creator_id")
-    t.index(["helper_id"], name: "index_tasks_on_helper_id")
+    t.string "title"
+    t.string "description"
+    t.string "location"
+    t.string "status", default: "pending"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
+    t.bigint "helper_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["creator_id"], name: "index_tasks_on_creator_id"
+    t.index ["helper_id"], name: "index_tasks_on_helper_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string("email", default: "", null: false)
-    t.string("encrypted_password", default: "", null: false)
-    t.string("reset_password_token")
-    t.datetime("reset_password_sent_at")
-    t.datetime("remember_created_at")
-    t.datetime("created_at", precision: 6, null: false)
-    t.datetime("updated_at", precision: 6, null: false)
-    t.string("first_name")
-    t.string("last_name")
-    t.string("address")
-    t.string("phone_number")
-    t.string("stripe_account")
-    t.index(["email"], name: "index_users_on_email", unique: true)
-    t.index(["reset_password_token"], name: "index_users_on_reset_password_token", unique: true)
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "phone_number"
+    t.string "stripe_account"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
