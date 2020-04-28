@@ -88,7 +88,6 @@ end
       .where(status: "pending")
       .where.not(creator: current_user)
       .order(:created_at)
-      .geocoded
   end
 
   def filter_tasks_by_search_params(params)
