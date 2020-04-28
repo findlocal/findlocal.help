@@ -36,6 +36,12 @@
       <%= task.title %>
     </div>
 
+    <div id="map"
+     style="width: 80%; height: 100px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
+
     <div class="description">
       <p><%= task.description.truncate(80, separator: /\s/) %></p>
     </div>
