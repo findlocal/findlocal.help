@@ -36,7 +36,7 @@
       <%= task.title %>
     </div>
 
-    <div class="cardmap"><div id="map"
+    <div class="cardmap" id="map"
      style="height: 100px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
