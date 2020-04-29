@@ -113,7 +113,8 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
         Help.create(
           user: User.where.not(id: task_creator.id).sample,
           task: task,
-          message: [nil, Faker::Quote.matz].sample
+          message: [nil, Faker::Quote.matz].sample,
+          bid: rand(10..200)
         )
       end
 
