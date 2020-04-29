@@ -7,6 +7,11 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def initialize(user, record)
+    @user = user
+    @record = record
+  end
+
   def show?
     user 
   end
@@ -20,4 +25,23 @@ class UserPolicy < ApplicationPolicy
     edit? # directly related to edit?
   end
 
+  def new?
+    user # => return something truthy. `user` (`current_user`) mean that the user is logged in
+  end
+
+  def create?
+    new? # directly related to new?
+  end
+
+  def destroy?
+    record.creator == user && record.status == "pending"
+  end
+
+  def assign?
+    record.creator == user && record.status == "pending"
+  end
+
+  def dashboard?
+    user
+  end
 end

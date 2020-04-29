@@ -20,23 +20,23 @@
       <table style="width:100%">
         <tr>
           <th>TASKS CREATED</th>
-          <th><%=@user.created_tasks.count%></th>
+          <th></th>
         </tr>
         <tr>
           <td>Completed</td>
-          <td>#</td>
+          <td><%=@user.created_tasks.where(status: "completed").count%></td>
         </tr>
         <tr>
           <td>Pending</td>
-          <td>#</td>
+          <td><%=@user.created_tasks.where(status: "pending").count%></td>
         </tr>
         <tr>
           <td>In Progress</td>
-          <td>#</td>
+          <td><%=@user.created_tasks.where(status: "in progress").count%></td>
         </tr>
         <tr>
           <td>Total</td>
-          <td>#</td>
+          <td><%=@user.created_tasks.count%></td>
         </tr>
       </table>
       <br>
@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <td>Pending</td>
-          <td>#</td>
+          <td><%=@user.helps.task.where(status: "pending").count%> </td>
         </tr>
         <tr>
           <td>In Progress</td>
