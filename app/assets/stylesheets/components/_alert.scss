@@ -1,14 +1,9 @@
 .alerts {
   z-index: 1;
-  position: absolute;
-  top: 20%;
-  left: 20%;
+  margin-top: 70px;
 }
 
 .alert {
   text-align: center;
-  color: $red;
-  background-color: $white;
-  border-color: $primary;
   text-transform: uppercase;
 }
