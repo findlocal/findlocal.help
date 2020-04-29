@@ -16,7 +16,7 @@ class Task < ApplicationRecord
   validates :tags, length: { maximum: 3, message: "can be maximum 3 for a task" }
 
   # Geolocation
-  geocoded_by :location, latitude: :lat, longitude: :lon
+  geocoded_by :location
   reverse_geocoded_by :latitude, :longitude, address: :location
   after_validation :reverse_geocode
 
