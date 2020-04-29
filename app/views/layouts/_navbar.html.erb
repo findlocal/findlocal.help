@@ -1,10 +1,10 @@
 <% if current_page?( root_path ) %>
 <nav class="navbar navbar-expand-md navbar-local-help fixed-top ">
-<% elsif devise_controller? %>
-<nav class="navbar navbar-expand-md navbar-local-help fixed-top ">
-  <% else%>
+<% elsif devise_controller?%>
+<nav class="navbar navbar-expand-md navbar-local-help fixed-top "> 
+  <% else %>
   <nav class="navbar navbar-expand-md navbar-local-help-white-pages fixed-top ">
-    <% end %>
+    <% end%>
     <%= link_to root_path do %>
     <%= image_tag "logo.png", class: "nav-logo" %>
     <% end %>

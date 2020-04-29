@@ -35,11 +35,12 @@
   .nav-link {
     color: $white;
     font-weight: 600;
+    display: none;
   }
 
-  .nav-item {
-    @include media-breakpoint-up(sm) {
-      display: none;
+  @include media-breakpoint-down(sm) {
+    .nav-item {
+        display: none;
     }
   }
 
@@ -57,10 +58,7 @@
     display: flex;
     justify-content: center;
     margin-left: 20px;
-
-    @include media-breakpoint-up(sm) {
-      display: none;
-    }
+    display: none;
   }
 
   .form-control {
@@ -83,6 +81,7 @@
   .nav-link {
     color: $primary;
     font-weight: 600;
+    display: flex;
   }
 
   @include media-breakpoint-down(sm) {
