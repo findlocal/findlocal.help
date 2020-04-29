@@ -30,6 +30,6 @@ class HelpsController < ApplicationController
   end
 
   def help_params
-    params.require(:help).permit(:message)
+    params.require(:help).permit(:message, :bid)
   end
 end

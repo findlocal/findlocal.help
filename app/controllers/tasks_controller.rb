@@ -49,14 +49,54 @@ class TasksController < ApplicationController
 
   # Other actions:
   def assign
-    find_and_assign_help(params)
+    # find_and_assign_help(params)
+    @task = Task.find(params[:task_id])
+    @help = Help.find(params[:helper_id])
+
     authorize @task
-    if @task.save
-      flash[:success] = task_success_message("assigned")
+
+    if @help.user.stripe_account.nil?
+      # This error shouldn't ever go off, since you can't apply until you have a stripe account
+      flash[:error] = "This user does not have a method of receiving payments"
+      redirect_to dashboard_path
     else
-      flash[:error] = task_error_message("assign")
+
+      image = current_user.avatar.attached? ? [Cloudinary::Utils.cloudinary_url(@help.user.avatar.key)] : []
+
+      # TODO: set up a transfer if the user already has a stripe account (this will be easier, since you won't have to enter your info)
+      session = Stripe::Checkout::Session.create(
+        {
+          payment_method_types: ["card"],
+          customer_email: current_user.email,
+          line_items: [{
+            name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
+            images: image,
+            amount: @help.bid_cents,
+            currency: "eur",
+            quantity: 1
+          }],
+          # this points the transaction to the helper's connected stripe account
+          payment_intent_data: {
+            application_fee_amount: (@help.bid_cents * 0.05).round,
+            on_behalf_of: @help.user.stripe_account,
+            transfer_data: {
+              destination: @help.user.stripe_account
+            }
+          },
+          success_url: dashboard_url,
+          cancel_url: dashboard_url
+        }
+      )
+
+      # TODO: Once we implement a chat feature we should redirect there instead of directly to the payment
+      if payment = Payment.create(checkout_session_id: session.id, task: @task, help: @help, completed: false)
+        redirect_to payment_path(payment)
+      else
+        flash[:error] = task_error_message("assign")
+        redirect_to dashboard_path
+      end
+
     end
-    redirect_to dashboard_path
   end
 
   def dashboard
@@ -95,7 +135,6 @@ class TasksController < ApplicationController
     @help = Help.find(params[:helper_id])
     @task = Task.find(params[:task_id])
     @task.helper = @help.user
-    @task.status = "in progress"
   end
 
   def task_success_message(action)

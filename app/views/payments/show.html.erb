@@ -1,0 +1,25 @@
+<%# TODO: This is just a basic view, feel free to completely change it %>
+<div class="container">
+  <div class="row py-4">
+    <div class="col mt-5">
+      <h1>Payment summary</h1>
+      <% if @payment.help.user.avatar.attached? %>
+        <%= cl_image_tag @payment.help.user.avatar.key, class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "avatar-placeholder.png", class: "avatar-large" %>
+      <% end %>
+      <p>Payment of <strong><%= humanized_money_with_symbol @payment.help.bid %></strong> to <%= @payment.help.user.first_name %> <%= @payment.help.user.last_name %> for <%= @payment.task.title %></p>
+      <button id="pay" class="btn btn-primary">Pay</button>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @payment.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div>
