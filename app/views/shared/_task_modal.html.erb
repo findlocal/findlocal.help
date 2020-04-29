@@ -97,7 +97,7 @@
               <p class="stripe-connect light-blue mt-3"><span>Connect with Stripe</span></p>
             <% end %>
           </div>
-        <% else %>
+        <% elsif current_user %>
           <div class="modal-body p-4">
             <%= simple_form_for [task, Help.new] do |f| %>
               <%= f.input :message, placeholder: "Write a short description of why you want to help" %>
