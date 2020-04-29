@@ -43,13 +43,13 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
   # Create users
   Whirly.status = "Creating new users"
   # Women
-  15.times do |n|
+  10.times do |n|
     user = User.create(
       first_name: Faker::Name.female_first_name,
       last_name: Faker::Name.last_name,
       email: "user#{n + 1}@findlocal.help", # generates user1@findlocal.help, user2@findlocal.help, etc.
       password: "password",
-      address: Faker::Address.city,
+      address: locations.sample,
       phone_number: Faker::PhoneNumber.cell_phone
     )
     unless skip_assets?
@@ -59,13 +59,13 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
     end
   end
   # Men
-  15.times do |n|
+  10.times do |n|
     user = User.create(
       first_name: Faker::Name.male_first_name,
       last_name: Faker::Name.last_name,
       email: "man#{n + 11}@findlocal.help", # generates user11@findlocal.help, user12@findlocal.help, etc.
       password: "password",
-      address: Faker::Address.city,
+      address: locations.sample,
       phone_number: Faker::PhoneNumber.cell_phone
     )
     unless skip_assets?
