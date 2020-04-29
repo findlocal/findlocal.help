@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 
   mount StripeEvent::Engine, at: "/stripe-webhooks"
   devise_for :users # DON'T REMOVE, user routes are managed by devise!
+  resources :users, only: [:show, :index]
 
   resources :tasks, except: [:show] do
     # Everything below is related to a specific task 👇
     resources :helps, only: [:create, :update, :destroy] do
     end
     patch "/assign/:helper_id", to: "tasks#assign", as: :assign
-  end
+     end
 
   resources :payments, only: [:show]
 

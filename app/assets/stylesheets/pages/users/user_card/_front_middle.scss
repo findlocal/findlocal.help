@@ -1,0 +1,31 @@
+.user-profile-description {
+  margin-top: 60px; 
+  margin-left: 20px;
+}
+
+.user-details {
+  position: absolute;
+  margin-top: 10px;
+  text-align: right;
+  right: 30%;
+  bottom: 8%;
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    overflow-wrap: break-word;
+  }
+
+  h3 {
+    font-size: 14px;
+    color: $gray-dark;
+    overflow-wrap: break-word;
+  }
+}
+
+.user-profile-avatar {
+  position: absolute;
+  left: 40%;
+  top: 50%px;
+  width: 70px;
+}

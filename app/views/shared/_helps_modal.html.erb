@@ -1,4 +1,5 @@
-<div class="modal fade" id='<%= "applicationModal#{task.id}" %>' data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
+<div class="modal fade" id='<%= "applicationModal#{task.id}" %>' data-backdrop="true" tabindex="-1" role="dialog"
+  aria-labelledby="taskModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,7 +12,7 @@
         <div class="container-fluid">
           <div class="row">
             <% if task.helps.empty? %>
-              <h6>No one has applied for this task yet.</h6>
+            <h6>No one has applied for this task yet.</h6>
             <% else %>
               <h5>Manage applications (<%= task.helps.count %>)</h5>
               <% task.helps.each_with_index do |help, index| %>
@@ -37,9 +38,9 @@
                         data: { confirm: "Are you sure you want to pick #{help.user.shortname} as your helper?", disable_with: "Please wait..."} %>
                     <%= link_to "Decline", task_help_path(task, help), method: :delete, remote: true, class: "btn btn-sm btn-danger",
                         data: { confirm: "Are you sure you want to remove #{help.user.shortname}'s application?"} %>
-                  </div>
-                </div>
-              <% end %>
+              </div>
+            </div>
+            <% end %>
             <% end %>
           </div>
         </div>

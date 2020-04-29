@@ -1,0 +1,72 @@
+<div class="user-card">
+  <div class="user-card__side user-card__side--front">
+
+    <header>
+      <div class="user-profile-white-box">
+        <h2> <%= @user.first_name %> <%= @user.last_name %>
+      </div>
+    </header>
+
+    <div class="user-profile-separator"></div>
+    <% if @user.avatar.attached? %>
+    <%= cl_image_tag @user.avatar.key, class: "avatar user-profile-avatar" %>
+    <% else %>
+    <%= image_tag "avatar-placeholder.png", class: "avatar user-profile-avatar" %>
+    <% end %>
+
+    <div class="user-profile-description">
+      <table style="width:100%">
+        <tr>
+          <th>TASKS</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Completed</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Pending</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>In Progress</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>#</td>
+        </tr>
+      </table>
+      <br>
+      <table style="width:100%">
+        <tr>
+          <th>APPLICATIONS</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>Completed</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Pending</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>In Progress</td>
+          <td>#</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>#</td>
+        </tr>
+      </table>
+      <br>
+      <table style="width:100%">
+        <tr>
+          <th>Average Ratings</th>
+          <th></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
