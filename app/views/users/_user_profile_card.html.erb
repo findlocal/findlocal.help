@@ -8,17 +8,19 @@
     </header>
 
     <div class="user-profile-separator"></div>
+    <div class="user-profile-photo">
     <% if @user.avatar.attached? %>
     <%= cl_image_tag @user.avatar.key, class: "avatar user-profile-avatar" %>
     <% else %>
     <%= image_tag "avatar-placeholder.png", class: "avatar user-profile-avatar" %>
     <% end %>
+    </div>
 
     <div class="user-profile-description">
       <table style="width:100%">
         <tr>
-          <th>TASKS</th>
-          <th></th>
+          <th>TASKS CREATED</th>
+          <th><%=@user.created_tasks.count%></th>
         </tr>
         <tr>
           <td>Completed</td>
@@ -40,8 +42,8 @@
       <br>
       <table style="width:100%">
         <tr>
-          <th>APPLICATIONS</th>
-          <th></th>
+          <th>APPLICATIONS SUBMITTED</th>
+          <th><%=@user.helps.count%></th>
         </tr>
         <tr>
           <td>Completed</td>
@@ -67,6 +69,15 @@
           <th></th>
         </tr>
       </table>
-    </div>
   </div>
+     <br>
+       figuring stuff out: 
+<p>@user.helps.count:</p>
+   
+
+    </div>
 </div>
+
+
+
+

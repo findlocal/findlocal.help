@@ -4,16 +4,8 @@
   position: relative;
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
-  border: 1px solid $secondary;
+  border: 1.5px solid $primary;
   border-radius: 4px;
-
-  *,
-  *::after,
-  *::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
 
   &__side {
     overflow: hidden;
