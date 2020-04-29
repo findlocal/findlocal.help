@@ -5,7 +5,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # add your own ngork link when testing
-  config.hosts << "383f1e40.ngrok.io"
+  config.hosts << "e247ee1e.ngrok.io"
 
   # Do not eager load code on boot
   config.eager_load = false

@@ -35,7 +35,7 @@
     <hr>
     <% if current_user.stripe_account.nil? %>
       <h5>Set up your account to receive payments</h5>
-      <%= link_to "https://connect.stripe.com/express/oauth/authorize?client_id=ca_HA7rfKJUEi7LbaFoN8G4kId01KVQQZ65&state=TESTSTATE&stripe_user[email]=#{current_user.email}&stripe_user[first_name]=#{current_user.first_name}&stripe_user[last_name]=#{current_user.last_name}&stripe_user[business_type]=individual&suggested_capabilities[]=card_payments" do %>
+      <%= link_to "https://connect.stripe.com/express/oauth/authorize?client_id=ca_HA7rfKJUEi7LbaFoN8G4kId01KVQQZ65&stripe_user[email]=#{current_user.email}&stripe_user[first_name]=#{current_user.first_name}&stripe_user[last_name]=#{current_user.last_name}&stripe_user[business_type]=individual&suggested_capabilities[]=card_payments" do %>
         <p class="stripe-connect light-blue mt-3"><span>Connect with Stripe</span></p>
       <% end %>
     <% else %>

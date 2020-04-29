@@ -61,6 +61,8 @@ class TasksController < ApplicationController
       redirect_to dashboard_path
     else
 
+      image = current_user.avatar.attached? ? [Cloudinary::Utils.cloudinary_url(@help.user.avatar.key)] : []
+
       # TODO: set up a transfer if the user already has a stripe account (this will be easier, since you won't have to enter your info)
       session = Stripe::Checkout::Session.create(
         {
@@ -68,8 +70,7 @@ class TasksController < ApplicationController
           customer_email: current_user.email,
           line_items: [{
             name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
-            # TODO: Check to see what happens if user doesn't have an avatar
-            images: [Cloudinary::Utils.cloudinary_url(@help.user.avatar.key)],
+            images: image,
             amount: @help.bid_cents,
             currency: "eur",
             quantity: 1
