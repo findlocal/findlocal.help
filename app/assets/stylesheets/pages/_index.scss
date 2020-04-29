@@ -1,6 +1,6 @@
 // Import page-specific SCSS files here
 @import "dashboard";
 @import "home";
-@import "auth/index";
+// @import "auth/index"; not sure why this breaks everything, why is this here?
 @import "tasks/index";
 @import "tasks/new";

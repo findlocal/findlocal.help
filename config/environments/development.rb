@@ -4,6 +4,9 @@ Rails.application.configure do
   # Reload code on every request
   config.cache_classes = false
 
+  # add your own ngork link when testing
+  config.hosts << "e247ee1e.ngrok.io"
+
   # Do not eager load code on boot
   config.eager_load = false
 
@@ -16,7 +19,7 @@ Rails.application.configure do
     config.action_controller.enable_fragment_cache_logging = true
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false

@@ -1,16 +1,11 @@
 <div class="">
   <div class="container py-3">
-
     <h2>Edit Profile</h2>
-
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
-
       <div class="form-inputs">
-
         <h5>Account information</h5>
         <%= f.input :email, required: true, autofocus: true %>
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
@@ -19,7 +14,8 @@
         <%= f.input :last_name, required: true, autofocus: true %>
         <%= f.input :address, required: true, autofocus: true %>
         <%= f.input :phone_number, required: true, autofocus: true %>
-
+        <%# TODO: Style the "Choose File" button %>
+        <%= f.input :avatar %>
         <%= f.input :password,
                     hint: "Leave it blank if you don't want to change it",
                     required: false,
@@ -32,16 +28,26 @@
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
       </div>
-
       <div class="form-actions">
         <%= f.button :submit, "Update", class: "btn btn-primary" %>
       </div>
     <% end %>
     <hr>
+    <% if current_user.stripe_account.nil? %>
+      <h5>Set up your account to receive payments</h5>
+      <%= link_to "https://connect.stripe.com/express/oauth/authorize?client_id=ca_HA7rfKJUEi7LbaFoN8G4kId01KVQQZ65&stripe_user[email]=#{current_user.email}&stripe_user[first_name]=#{current_user.first_name}&stripe_user[last_name]=#{current_user.last_name}&stripe_user[business_type]=individual&suggested_capabilities[]=card_payments" do %>
+        <p class="stripe-connect light-blue mt-3"><span>Connect with Stripe</span></p>
+      <% end %>
+    <% else %>
+      <h5>Manage payment settings</h5>
+      <%# TODO: We might also want to have this somewhere in the dashboard %>
+      <%= link_to Stripe::Account.create_login_link(current_user.stripe_account, {redirect_url: request.url}).url do %>
+        <p class="stripe-connect light-blue mt-3"><span>View Stripe Account</span></p>
+      <% end %>
+    <% end %>
+    <hr>
     <h3>Cancel my account</h3>
-
     <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></p>
-
     <%= link_to "Back", :back %>
   </div>
 </div>

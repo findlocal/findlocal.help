@@ -11,7 +11,7 @@ OpenURI::Buffer.send(:remove_const, "StringMax") if OpenURI::Buffer.const_define
 OpenURI::Buffer.const_set("StringMax", 0)
 
 # Define locations, tags and categories here (a task will be generated for each title in categories):
-locations = ["Ahmedabad, India", "Baghdad, Iraq", "Bangalore, India", "Bangkok, Thailand", "Beijing, China", "Bogotá, Colombia", "Boston, United States",  "Buenos Aires, Argentina", "Cairo, Egypt", "Chengdu, China", "Chennai, India", "Chicago, United States", "Chongqing, China", "Dallas, United States", "Delhi, India", "Dhaka, Bangladesh", "Dongguan, China", "Düsseldorf, Germany", "Guangzhou, China", "Hangzhou, China", "Hanoi, Vietnam", "Ho Chi Minh City, Vietnam", "Hong Kong, China", "Houston, United States", "Hyderabad, India", "Istanbul, Turkey", "Jakarta, Indonesia", "Johannesburg, South Africa", "Karachi, Pakistan", "Kinshasa, DR Congo", "Kolkata, India", "Kuala Lumpur, Malaysia", "Lagos, Nigeria", "Lahore, Pakistan", "Lima, Peru", "London, United Kingdom", "Los Angeles, United States", "Luanda, Angola", "Madrid, Spain", "Manila, Philippines", "Mexico City, Mexico", "Moscow, Russia", "Mumbai, India", "Nagoya, Japan", "Nanjing, China", "New York City, United States", "Onitsha, Nigeria", "Osaka, Japan", "Paris, France", "Pune, India", "Quanzhou, China", "Rio de Janeiro, Brazil", "Riyadh, Saudi Arabia", "San Francisco, United States", "Santiago, Chile", "São Paulo, Brazil", "Seoul, South Korea", "Shanghai, China", "Shenyang, China", "Shenzhen, China", "Surat, India", "Taipei, Taiwan", "Tehran, Iran", "Tianjin, China", "Tokyo, Japan", "Toronto, Canada", "Washington, D.C., United States", "Wuhan, China", "Xi'an, China", "Zhengzhou, China"]
+locations = ["Ahmedabad, India", "Baghdad, Iraq", "Bangalore, India", "Bangkok, Thailand", "Beijing, China", "Bogotá, Colombia", "Boston, United States", "Buenos Aires, Argentina", "Cairo, Egypt", "Chengdu, China", "Chennai, India", "Chicago, United States", "Chongqing, China", "Dallas, United States", "Delhi, India", "Dhaka, Bangladesh", "Dongguan, China", "Düsseldorf, Germany", "Guangzhou, China", "Hangzhou, China", "Hanoi, Vietnam", "Ho Chi Minh City, Vietnam", "Hong Kong, China", "Houston, United States", "Hyderabad, India", "Istanbul, Turkey", "Jakarta, Indonesia", "Johannesburg, South Africa", "Karachi, Pakistan", "Kinshasa, DR Congo", "Kolkata, India", "Kuala Lumpur, Malaysia", "Lagos, Nigeria", "Lahore, Pakistan", "Lima, Peru", "London, United Kingdom", "Los Angeles, United States", "Luanda, Angola", "Madrid, Spain", "Manila, Philippines", "Mexico City, Mexico", "Moscow, Russia", "Mumbai, India", "Nagoya, Japan", "Nanjing, China", "New York City, United States", "Onitsha, Nigeria", "Osaka, Japan", "Paris, France", "Pune, India", "Quanzhou, China", "Rio de Janeiro, Brazil", "Riyadh, Saudi Arabia", "San Francisco, United States", "Santiago, Chile", "São Paulo, Brazil", "Seoul, South Korea", "Shanghai, China", "Shenyang, China", "Shenzhen, China", "Surat, India", "Taipei, Taiwan", "Tehran, Iran", "Tianjin, China", "Tokyo, Japan", "Toronto, Canada", "Washington, D.C., United States", "Wuhan, China", "Xi'an, China", "Zhengzhou, China"]
 
 tags = %w[help covid-19 chores housework medical other]
 
@@ -29,10 +29,11 @@ categories = [
 ]
 
 # Display a cool spinner with Whirly! Check https://github.com/janlelis/whirly
-Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Done! Local Help is ready to run 🎉", "#28b485"] do
+Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Done! Local Help is ready to run 🎉", "#28b485"]) do
   sleep 2
 
   # Destroy everything
+  Payment.destroy_all
   Review.destroy_all
   User.destroy_all
   Task.destroy_all
@@ -52,11 +53,11 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
       address: locations.sample,
       phone_number: Faker::PhoneNumber.cell_phone
     )
-    unless skip_assets?
-      file = URI.open("https://randomuser.me/api/portraits/women/#{n + 1}.jpg")
-      user.avatar.attach(io: file, filename: "avatar.jpg", content_type: "image/jpeg")
-      user.save
-    end
+    next if skip_assets?
+
+    file = URI.open("https://randomuser.me/api/portraits/women/#{n + 1}.jpg")
+    user.avatar.attach(io: file, filename: "avatar.jpg", content_type: "image/jpeg")
+    user.save
   end
   # Men
   10.times do |n|
@@ -68,11 +69,11 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
       address: locations.sample,
       phone_number: Faker::PhoneNumber.cell_phone
     )
-    unless skip_assets?
-      file = URI.open("https://randomuser.me/api/portraits/men/#{n + 1}.jpg")
-      user.avatar.attach(io: file, filename: "avatar.jpg", content_type: "image/jpeg")
-      user.save
-    end
+    next if skip_assets?
+
+    file = URI.open("https://randomuser.me/api/portraits/men/#{n + 1}.jpg")
+    user.avatar.attach(io: file, filename: "avatar.jpg", content_type: "image/jpeg")
+    user.save
   end
 
   # Create tags
@@ -89,7 +90,7 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
         title: title,
         description: task_category[:descriptions].sample,
         location: task_creator.address,
-        creator: task_creator,
+        creator: task_creator
         # status is "pending" by default, check the schema!
       )
 
@@ -112,7 +113,8 @@ Whirly.start spinner: "dots", status: "Destroying all records", stop: Paint["Don
         Help.create(
           user: User.where.not(id: task_creator.id).sample,
           task: task,
-          message: [nil, Faker::Quote.matz].sample
+          message: [nil, Faker::Quote.matz].sample,
+          bid: rand(10..200)
         )
       end
 
