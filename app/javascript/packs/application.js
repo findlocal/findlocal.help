@@ -30,6 +30,9 @@ document.addEventListener("turbolinks:load", () => {
   initTooltips()
   updateNavbarOnScroll()
   updateNavbarWhiteOnScroll()
+  algoliaPlaces()
+  autocompleteSearch()
+  autocompleteSearchNew()
 })
 
 //const algoliaPlaces = function() {
@@ -45,6 +48,3 @@ document.addEventListener("turbolinks:load", () => {
 // if (test) {
 // 	algoliaPlaces()
 // }
-algoliaPlaces()
-autocompleteSearch()
-autocompleteSearchNew()
