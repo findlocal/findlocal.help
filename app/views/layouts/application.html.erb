@@ -10,14 +10,13 @@
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload", defer: true %>
   </head>
-
   <body>
     <div id="root">
       <%= render "layouts/navbar" %>
-      <%= render "layouts/flashes" %>
       <main id="content">
         <%= yield %>
       </main>
+      <%= render "layouts/flashes" %>
       <% unless devise_controller? %>
         <%= render "layouts/footer" %>
       <% end %>

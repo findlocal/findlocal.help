@@ -1,14 +1,30 @@
 .alerts {
+  position: sticky;
   z-index: 1;
-  position: absolute;
-  top: 20%;
-  left: 20%;
+  bottom: 16px;
+  // width: 25vw;
+  margin-right: 16px;
 }
 
 .alert {
   text-align: center;
-  color: $red;
-  background-color: $white;
-  border-color: $primary;
   text-transform: uppercase;
+  width: max-content;
+
+  animation: fadeout 1s 1;
+  -webkit-animation: fadeout 1s 1;
+  animation-fill-mode: forwards;
+
+  animation-delay: 7s;
+  -webkit-animation-delay: 7s; /* Safari and Chrome */
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
