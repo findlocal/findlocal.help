@@ -23,6 +23,7 @@ gem "pundit"
 gem "money-rails"
 gem "stripe"
 gem "stripe_event"
+gem "algolia_places"
 
 # Frontend
 gem "autoprefixer-rails" # adds -webkit- and similar prefixes to css rules

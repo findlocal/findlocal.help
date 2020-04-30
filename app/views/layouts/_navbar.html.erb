@@ -17,10 +17,13 @@
           <ul class="navbar-nav mr-auto">
             <li>
               <div class="nav-form-container">
-                <form action="/tasks" method="get" class="form-inline my-2 my-lg-0">
-                  <input class="form-control" type="search" placeholder="Location" aria-label="Location">
-                  <button class="btn-gradient my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <%= simple_form_for :search, url: tasks_path, class: "search-form", method: :get  do |f| %>
+                  <div id= "search-data-new"  class="form-inline my-2 my-lg-0" data-skills="<%= @location.to_json %>">
+                    <input class="form-control" placeholder="Search by city" type="text" id="search_new" autocomplete="off" name= "search[location]">
+                    <div class="form-actions"> <%= f.submit "Search", class: "btn-gradient my-2 my-sm-0"%>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </li>
           </ul>

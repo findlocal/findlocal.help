@@ -125,9 +125,13 @@ class TasksController < ApplicationController
   def filter_tasks_by_search_params(params)
     location = params[:location]
     task_tags = params[:task_tags]
+    if task_tags.nil? || task_tags == ""
+     @tasks = @tasks.where("location ILIKE ?", "%#{location}%") 
+   else
+    @tasks = @tasks.joins(:tags).where(tags: { name: task_tags }).where("location ILIKE ?", "%#{location}%") 
+  end
     # due_date = params[:due_date].present? && Date.parse(params[:due_date])
-    @tasks = @tasks.where("location ILIKE ?", "%#{location}%") unless location.empty?
-    @tasks = @tasks.joins(:tags).where(tags: { name: task_tags }) unless task_tags.empty?
+     
     # @tasks = @tasks.where("due_date < ?", due_date) if due_date
   end
 
