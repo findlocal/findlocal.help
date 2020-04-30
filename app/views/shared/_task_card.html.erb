@@ -36,11 +36,6 @@
       <%= task.title %>
     </div>
 
-
-  <div class="cardmap">
-    <img src= '<%="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff0000(#{task.longitude},#{task.latitude})/#{task.longitude},#{task.latitude},13/300x160?access_token=pk.eyJ1IjoicHdlc3RtYW4iLCJhIjoiY2s5aWdwa2F2MDFrYTNrcGh2bWRjYTVuZiJ9.BuMV46ODfPwtl2P-JiDbmg" %>'/>
-    </div>
-
     <div class="description">
       <p><%= task.description.truncate(80, separator: /\s/) %></p>
     </div>
