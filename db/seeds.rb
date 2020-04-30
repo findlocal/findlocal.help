@@ -13,16 +13,16 @@ OpenURI::Buffer.const_set("StringMax", 0)
 # Define locations, tags and categories here (a task will be generated for each title in categories):
 locations = ["Ahmedabad, India", "Baghdad, Iraq", "Bangalore, India", "Bangkok, Thailand", "Beijing, China", "Bogotá, Colombia", "Boston, United States", "Buenos Aires, Argentina", "Cairo, Egypt", "Chengdu, China", "Chennai, India", "Chicago, United States", "Chongqing, China", "Dallas, United States", "Delhi, India", "Dhaka, Bangladesh", "Dongguan, China", "Düsseldorf, Germany", "Guangzhou, China", "Hangzhou, China", "Hanoi, Vietnam", "Ho Chi Minh City, Vietnam", "Hong Kong, China", "Houston, United States", "Hyderabad, India", "Istanbul, Turkey", "Jakarta, Indonesia", "Johannesburg, South Africa", "Karachi, Pakistan", "Kinshasa, DR Congo", "Kolkata, India", "Kuala Lumpur, Malaysia", "Lagos, Nigeria", "Lahore, Pakistan", "Lima, Peru", "London, United Kingdom", "Los Angeles, United States", "Luanda, Angola", "Madrid, Spain", "Manila, Philippines", "Mexico City, Mexico", "Moscow, Russia", "Mumbai, India", "Nagoya, Japan", "Nanjing, China", "New York City, United States", "Onitsha, Nigeria", "Osaka, Japan", "Paris, France", "Pune, India", "Quanzhou, China", "Rio de Janeiro, Brazil", "Riyadh, Saudi Arabia", "San Francisco, United States", "Santiago, Chile", "São Paulo, Brazil", "Seoul, South Korea", "Shanghai, China", "Shenyang, China", "Shenzhen, China", "Surat, India", "Taipei, Taiwan", "Tehran, Iran", "Tianjin, China", "Tokyo, Japan", "Toronto, Canada", "Washington, D.C., United States", "Wuhan, China", "Xi'an, China", "Zhengzhou, China"]
 
-tags = %w[help covid-19 chores housework medical other]
+tags = %w[help cleaning chores housework medical repairs errands gardening]
 
 categories = [
   {
-    tags: %w[chores help home covid-19 other], # pick some tags from the array above, the first one will be used for the picture!
+    tags: %w[help cleaning chores housework medical repairs errands gardening], # pick some tags from the array above, the first one will be used for the picture!
     titles: ["Home Repair and Maintenance", "Household Fixes", "Seeking Help", "Assist Elderly People", "Fix the Building Elevator", "Seeking Babysitter", "Nanny Wanted", "Help Fix My Busted-up Roof", "Fix My Taxi", "Repair my bicycle", "Fix the Bathroom", "Repair the Entrance Door", "Take Care of the Garden"],
     descriptions: ["I need help to fix it, and the members of my family don't have any experience with it. I would prefer someone who has handyman experience. Thank you.", "I've been living the last 2 months at home with this problem. Please apply if you have experience and want to help me out. Professionals preferred. Happy to negotiate the payment.", "Need help ASAP. My family are currently in a very diffult situation, any kind of help would be highly appreciared. We live just 10 minutes outside the city center."]
   },
   {
-    tags: %w[housework help covid-19 medical other],
+    tags: %w[help cleaning chores housework medical repairs errands gardening],
     titles: ["Shopping For My Grandparents", "Grocery Shopping", "Family Grocery Shopping", "My Daughter Needs Medicines", "Masks For My Family", "Transport My Grandmother", "Bring Kids to School", "Bring My Uncle to the Hospital", "Assistance to Go to the Supermarket"],
     descriptions: ["I urgently need this service weekly. I'm happy to pay an extra if necessary. Please contact me privately or apply here.", "All my family is under quarantine and we need someone to take care of this. Please apply here if you are willing to help.", "Bi-weekly for the next month, or until the situation will improve. No one in my family is currently able to do this independently."]
   }
@@ -44,7 +44,7 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
   # Create users
   Whirly.status = "Creating new users"
   # Women
-  10.times do |n|
+  15.times do |n|
     user = User.create(
       first_name: Faker::Name.female_first_name,
       last_name: Faker::Name.last_name,
@@ -60,7 +60,7 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
     user.save
   end
   # Men
-  10.times do |n|
+  15.times do |n|
     user = User.create(
       first_name: Faker::Name.male_first_name,
       last_name: Faker::Name.last_name,
