@@ -35,7 +35,7 @@
   .nav-link {
     color: $white;
     font-weight: 600;
-    display: none;
+    // display: none;
   }
 
   @include media-breakpoint-down(sm) {
