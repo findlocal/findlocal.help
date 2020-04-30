@@ -1,12 +1,14 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <% if @task.creator == current_user # TODO: remove after implementing pundit %>
+<section class="edit-task">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <% if @task.creator == current_user # TODO: remove after implementing pundit %>
         <h1 class="mt-2">Edit this task</h1>
         <%= render "form", task: @task %>
-      <% else %>
+        <% else %>
         <p>You not not have permission to edit this task.</p>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</section>

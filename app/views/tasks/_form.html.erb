@@ -2,7 +2,6 @@
   <%= f.input :title, class: "form-control" %>
   <%= f.input :description, as: :text, class: "form-control" %>
   <%= f.input :location, label: "City or Postcode", class: "form-control" %>
-  
   <div class="form-group">
     <%= f.label :photos, "Add Task Photos (Optional)", class: "d-block" %>
     <%= f.file_field :photos, label: "Task Photo", multiple: true, direct_upload: true %>

@@ -1,8 +1,9 @@
 .tasks-index {
-  min-height: calc(100vh - #{$navbar-height});
+  background-image: $white;
+  opacity: 0.8;
+  padding: 70px;
 }
 
 .city-title {
   font-size: 64px;
-  color: black;
 }
