@@ -47,3 +47,17 @@
 #home-card-image {
   width: 100%;
 }
+
+.index-map {
+  position: sticky;
+  width: 418px;
+  height: 634px;
+  left: 912px;
+  top: 239px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

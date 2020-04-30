@@ -1,25 +1,38 @@
 <section class="tasks-index">
-  <div class="container">
+  <header>
     <h1 class="city-title">Available tasks</h1>
-
-    <div class="row">
-      <% if @tasks.empty? %>
-      <div>
-        <p class="my-2">Can't find any task with the specified options</p>
-        <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
-        <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
-      </div>
+  </header>
+  <div id="content">
+    <div class="cards"> 
+    <% if @tasks.empty? %>
+        <div>
+          <p class="my-2">Can't find any task with the specified options</p>
+          <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
+          <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
+        </div>
       <% else %>
-      <% @tasks.each do |task| %>
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
-        <%= render "shared/task_card", task: task %>
-      <div id="map" class ="index-map" 
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-      </div>
-      <%= render "shared/task_modal", task: task %>
-      <% end %>
+        <% @tasks.each do |task| %>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+            <%= render "shared/task_card", task: task %>
+          </div>
+        <% end %>
       <% end %>
     </div>
+    <div id="map" class ="index-map" 
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div></div>
   </div>
 </section>
+
+
+
+
+
+      
+
+
+
+      
+     
+  
