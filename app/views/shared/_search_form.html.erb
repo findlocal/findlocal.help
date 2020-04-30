@@ -4,13 +4,10 @@
   <input class="form-control string required" placeholder="Search by city" type="text" id="search_" autocomplete="off" name= "search[location]">
   </div>
   <div id="tags-search">
-  <%= f.input :task_tags, label: "Task Categories", class: "form-control", collection: @task_tags, input_html: {:multiple => true}, as: :select %>
+  <%= f.input :task_tags, label: "Task Categories", class: "form-control", collection: @task_tags, input_html: {:multiple => false}, as: :select, value_method: :name %>
   </div>
     <div class="form-actions">
       <%= f.submit "Search", class: "btn-gradient mt-3"%>
     </div>
   <% end %>
 </div>
-<%= form_tag(root_path, method: 'get', class: "form-inline") do %>
-
-<% end %>

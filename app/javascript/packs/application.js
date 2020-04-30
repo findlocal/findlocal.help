@@ -13,7 +13,6 @@ require("channels")
 import "bootstrap"
 
 // Internal imports
-
 import {
   initDatepicker,
   initTooltips,
@@ -21,6 +20,7 @@ import {
   updateNavbarWhiteOnScroll,
 } from "../components"
 import { autocompleteSearch } from "../components/autocomplete.js"
+import { autocompleteSearchNew } from "../components/autocomplete2.js"
 import { algoliaPlaces } from "../components/algoliaplaces.js"
 
 document.addEventListener("turbolinks:load", () => {
@@ -42,8 +42,9 @@ document.addEventListener("turbolinks:load", () => {
 // });
 // }
 // const test = document.querySelector('#task_location')
-// if (test) { 
+// if (test) {
 // 	algoliaPlaces()
 // }
 algoliaPlaces()
 autocompleteSearch()
+autocompleteSearchNew()

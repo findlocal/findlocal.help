@@ -1,10 +1,10 @@
 import 'js-autocomplete/auto-complete.css';
 import autocomplete from 'js-autocomplete';
-const autocompleteSearch = function() {
-  const s = document.getElementById('search-data')
+const autocompleteSearchNew = function() {
+  const s = document.getElementById('search-data_new')
   console.log(s)
-  const skills = JSON.parse(document.getElementById('search-data').dataset.skills)
-  const searchInput = document.getElementById('search_');
+  const skills = JSON.parse(document.getElementById('search-data-new').dataset.skills)
+  const searchInput = document.getElementById('search_new');
   if (skills && searchInput) {
     new autocomplete({
       selector: searchInput,
@@ -20,4 +20,4 @@ const autocompleteSearch = function() {
     });
   }
 };
-export { autocompleteSearch };
+export { autocompleteSearchNew };
