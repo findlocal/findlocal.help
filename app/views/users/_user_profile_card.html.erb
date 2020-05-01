@@ -49,25 +49,22 @@ Applications numbers %>
       <br>
       <table style="width:100%">
         <tr>
-          <th>APPLICATIONS SUBMITTED</th>
+          <th>PEOPLE HELPED</th>
           <th></th>
         </tr>
         <tr>
           <td>Completed</td>
-          <td>#</td>
-        </tr>
-        <tr>
-          <td>Pending</td>
-          <td>#</td>
+          <td><%= @completed %></td>
         </tr>
         <tr>
           <td>In Progress</td>
-          <td>#</td>
+          <td><%= @in_progress  %></td>
         </tr>
         <tr>
           <td>Total</td>
-          <td><%=@user.helps.count%></td>
+          <td><%= @total %></td>
         </tr>
+        
       </table>
       <br>
       <table style="width:100%">
