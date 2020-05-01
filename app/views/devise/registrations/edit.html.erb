@@ -15,7 +15,7 @@
         <%= f.input :address, required: true, autofocus: true %>
         <%= f.input :phone_number, required: true, autofocus: true %>
         <%# TODO: Style the "Choose File" button %>
-        <%= f.input :avatar %>
+        <%= f.input :avatar, as: :file, label: "Avatar", multiple: false, direct_upload: true, class: "mb-2" %>
         <%= f.input :password,
                     hint: "Leave it blank if you don't want to change it",
                     required: false,
