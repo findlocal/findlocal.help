@@ -18,13 +18,17 @@
               <% task.helps.each_with_index do |help, index| %>
                 <div class="modal-help d-flex justify-content-between aling-items-center px-3">
                   <div class="modal-help-message d-flex align-items-center">
+                  <div class="modal-user-container">
                     <% if help.user.avatar.attached? %>
-                      <%= cl_image_tag help.user.avatar.key, class: "avatar-large" %>
+                      <%= cl_image_tag help.user.avatar.key, class: "avatar" %>
                     <% else %>
-                      <%= image_tag "avatar-placeholder.png", class: "avatar-large" %>
+                      <%= image_tag "avatar-placeholder.png", class: "avatar" %>
                     <% end %>
+                    <h6><%=link_to(help.user.shortname, user_path(help.user))%></h6>
+                  </div>
+
                     <div class="ml-3 d-flex align-items-center flex-wrap">
-                      <p class="w-100 m-0">Bid: <%= humanized_money_with_symbol(help.bid) %></p>
+                      <h5 class="w-100 m-0"><strong><%= humanized_money_with_symbol(help.bid) %></strong></h5>
                       <% if help.message.nil? %>
                         <p class="m-0"><i><%= help.user.first_name %> did not provide a message.</i></p>
                       <% else %>
