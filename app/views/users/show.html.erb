@@ -1,0 +1,27 @@
+<%# -->#TODO - SAM: This page would need to be linked %>
+<section class="user-show">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+        <%= render "user_profile_card" %>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-8">
+        <h1>About <%= @user.first_name %></h1>
+        <% unless @user.bio.nil? %>
+          <h2>Introduction</h2>
+          <p><%= @user.bio %></p>
+        <% end %>
+        <%# <h2>Skills and Services
+          <span class="d-inline-block material-tooltip-main" data-toggle="tooltip" data-placement="right" id="tooltip"
+            title="Skills and Services Applied to or Completed"> <i class="far fa-question-circle"></i></span>
+        </h2>
+        <p>#TODO: this is where we would need tags of the helper - for any tasks that they have completed or applied to
+        </p> %>
+        <h2>Reviews as a Helper</h2>
+        <p> #TODO: this is where the users reviews being a helper would need to be. See figma </p>
+        <h2>Reviews as a Requestor</h2>
+        <p>#TODO: this is where the users reviews being a requestor would need to be. See figma </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -16,6 +16,7 @@
         <%= f.input :phone_number, required: true, autofocus: true %>
         <%# TODO: Style the "Choose File" button %>
         <%= f.input :avatar, as: :file, label: "Avatar", multiple: false, direct_upload: true, class: "mb-2" %>
+        <%= f.input :bio, placeholder: "Let others know what your all about!" %>
         <%= f.input :password,
                     hint: "Leave it blank if you don't want to change it",
                     required: false,
@@ -31,6 +32,11 @@
       <div class="form-actions">
         <%= f.button :submit, "Update", class: "btn btn-primary" %>
       </div>
+    <% end %>
+    <hr>
+    <h5>View your public profile</h5>
+    <%= link_to user_path(current_user) do %>
+    <button class="btn btn-dark">Preview</button>
     <% end %>
     <hr>
     <% if current_user.stripe_account.nil? %>

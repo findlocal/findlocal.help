@@ -9,7 +9,7 @@
         </div>
       <% else %>
         <% @tasks.each do |task| %>
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3 p-4">
             <%= render "shared/task_card", task: task %>
           </div>
         <% end %>

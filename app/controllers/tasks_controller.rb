@@ -118,7 +118,8 @@ class TasksController < ApplicationController
   def filtered_tasks
     policy_scope(Task)
       .where(status: "pending")
-      .where.not(creator: current_user)
+      # Gabriele, I am removing this because users should be able to see their tasks on the dashboard as well - in Airbnb you can see your own posting. 
+      # .where.not(creator: current_user)
       .order(:created_at)
   end
 
