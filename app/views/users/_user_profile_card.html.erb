@@ -1,3 +1,6 @@
+<%# -->#TODO - SAM: Anywhere you see "#", can you please add in the correct code. I was having difficulty troubleshooting the
+Applications numbers %>
+
 <div class="user-card">
   <div class="user-card__side user-card__side--front">
 
@@ -8,13 +11,17 @@
     </header>
 
     <div class="user-profile-separator"></div>
-    <div class="user-profile-photo">
-    <% if @user.avatar.attached? %>
-    <%= cl_image_tag @user.avatar.key, class: "avatar user-profile-avatar" %>
-    <% else %>
-    <%= image_tag "avatar-placeholder.png", class: "avatar user-profile-avatar" %>
-    <% end %>
+
+    <div class="user_card_photo">
+      <div class="user-profile-photo ">
+        <% if @user.avatar.attached? %>
+        <%= cl_image_tag @user.avatar.key, class: "user-profile" %>
+        <% else %>
+        <%= image_tag "avatar-placeholder.png", class: "user-profile" %>
+        <% end %>
+      </div>
     </div>
+
 
     <div class="user-profile-description">
       <table style="width:100%">
@@ -43,7 +50,7 @@
       <table style="width:100%">
         <tr>
           <th>APPLICATIONS SUBMITTED</th>
-          <th><%=@user.helps.count%></th>
+          <th></th>
         </tr>
         <tr>
           <td>Completed</td>
@@ -59,25 +66,16 @@
         </tr>
         <tr>
           <td>Total</td>
-          <td>#</td>
+          <td><%=@user.helps.count%></td>
         </tr>
       </table>
       <br>
       <table style="width:100%">
         <tr>
           <th>Average Ratings</th>
-          <th></th>
+          <th>#TODO:need to see the average stars here</th>
         </tr>
       </table>
-  </div>
-     <br>
-       figuring stuff out: 
-<p>@user.helps.count:</p>
-   
-
     </div>
+  </div>
 </div>
-
-
-
-

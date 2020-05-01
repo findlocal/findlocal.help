@@ -1,17 +1,16 @@
-.user-show{
+.user-show {
   min-height: calc(100vh - #{$navbar-height});
   padding-top: 70px;
-  margin: auto;
+  margin: 70px;
 
+  h1 {
+    color: $black;
+    border-bottom: 1px solid $gray-dark;
+    
+  }
+  h2 {
+    color: $primary;
+  }
 
-h1{
-  color: $black;
-  border-bottom: 1px solid $gray-dark;
-}
-h2{
-  color: $primary;
-}
-
-@import "user_card/index";
-
+  @import "user_card/index";
 }

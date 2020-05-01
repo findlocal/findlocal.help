@@ -1,11 +1,18 @@
 .user-profile-description {
-  margin-top: 60px; 
-  margin-left: 20px;
+  margin: 60px 20px;
+  
+
 }
 
-.user-profile-avatar {
-  position: absolute;
-  left: 40%;
-  top: 50%px;
-  width: 70px;
+.user-profile-photo {
+  width: 250px;
+  // position: absolute;
+
+
+
+.user-profile {
+  border-radius: 4px;
+  align-self: center;
+
+}
 }
