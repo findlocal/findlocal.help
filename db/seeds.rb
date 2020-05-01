@@ -25,7 +25,7 @@ categories = [
     descriptions: ["I need help to fix it, and the members of my family don't have any experience with it. I would prefer someone who has handyman experience. Thank you.", "I've been living the last 2 months at home with this problem. Please apply if you have experience and want to help me out. Professionals preferred. Happy to negotiate the payment.", "Need help ASAP. My family are currently in a very difficult situation, any kind of help would be highly appreciated. We live just 10 minutes outside the city center."]
   },
   {
-    tags: %w[chores cleaning gardening repairs technology shopping medical moving advic covid-19],
+    tags: %w[chores cleaning gardening repairs technology shopping medical moving advice covid-19],
     titles: ["Shopping For My Grandparents", "Grocery Shopping", "Family Grocery Shopping", "My Daughter Needs Medicine", "Masks For My Family", "Transport My Grandmother", "Bring Kids to School", "Bring My Uncle to the Hospital", "Assistance to Go to the Supermarket"],
     descriptions: ["I urgently need this service weekly. I'm happy to pay an extra if necessary. Please contact me privately or apply here.", "All my family is under quarantine and we need someone to take care of this. Please apply here if you are willing to help.", "Bi-weekly for the next month, or until the situation will improve. No one in my family is currently able to do this independently."]
   }
