@@ -13,17 +13,20 @@ OpenURI::Buffer.const_set("StringMax", 0)
 # Define locations, tags and categories here (a task will be generated for each title in categories):
 locations = ["Lombardy, Italy", 	"Turin, Italy", 	"Genoa, Italy", 	"Bologna, Italy", 	"Venice, Italy", 	"Verona, Italy", 	"Padua, Italy", 	"Trieste, Italy", 	"Brescia, Italy", 	"Parma, Italy", 	"Modena, Italy", 	"Reggio Emilia, Italy", 	"Ravenna, Italy", 	"Rimini, Italy", 	"Ferrara, Italy", 	"Monza, Italy", 	"Bergamo, Italy", 	"Trento, Italy", 	"Forlì, Italy", 	"Vicenza, Italy", 	"Bolzano, Italy", 	"Novara, Italy", 	"Piacenza, Italy", 	"Abbiategrasso, Italy", 	"Albairate, Italy", 	"Arconate, Italy", 	"Arese, Italy", 	"Arluno, Italy", 	"Assago, Italy", 	"Baranzate, Italy", 	"Bareggio, Italy", 	"Basiano, Italy", 	"Basiglio, Italy", 	"Bellinzago Lombardo, Italy", 	"Bernate Ticino, Italy", 	"Besate, Italy", 	"Binasco, Italy", 	"Boffalora sopra Ticino, Italy", 	"Bollate, Italy", 	"Bresso, Italy", 	"Bubbiano, Italy", 	"Buccinasco, Italy", 	"Buscate, Italy", 	"Bussero, Italy", 	"Busto Garolfo, Italy", 	"Calvignasco, Italy", 	"Cambiago, Italy", 	"Canegrate, Italy", 	"Carpiano, Italy", 	"Carugate, Italy", 	"Casarile, Italy", 	"Casorezzo, Italy", 	"Cassano d'Adda, Italy", 	"Cassina de' Pecchi, Italy", 	"Cassinetta di Lugagnano, Italy", 	"Castano Primo, Italy", 	"Cernusco sul Naviglio, Italy", 	"Cerro al Lambro, Italy", 	"Cerro Maggiore, Italy", 	"Cesano Boscone, Italy", 	"Cesate, Italy", 	"Cinisello Balsamo, Italy", 	"Cisliano, Italy", 	"Cologno Monzese, Italy", 	"Colturano, Italy", 	"Corbetta, Italy", 	"Cormano, Italy", 	"Cornaredo, Italy", 	"Corsico, Italy", 	"Cuggiono, Italy", 	"Cusago, Italy", 	"Cusano Milanino, Italy", 	"Dairago, Italy", 	"Dresano, Italy", 	"Gaggiano, Italy", 	"Garbagnate Milanese, Italy", 	"Gessate, Italy", 	"Gorgonzola, Italy", 	"Grezzago, Italy", 	"Gudo Visconti, Italy", 	"Inveruno, Italy", 	"Inzago, Italy", 	"Lacchiarella, Italy", 	"Lainate, Italy", 	"Legnano, Italy", 	"Liscate, Italy", 	"Locate di Triulzi, Italy", 	"Magenta, Italy", 	"Magnago, Italy", 	"Marcallo con Casone, Italy", 	"Masate, Italy", 	"Mediglia, Italy", 	"Melegnano, Italy", 	"Melzo, Italy", 	"Mesero, Italy", 	"Milano [Milan], Italy", 	"Morimondo, Italy", 	"Motta Visconti, Italy", 	"Nerviano, Italy", 	"Nosate, Italy", 	"Novate Milanese, Italy", 	"Noviglio, Italy", 	"Opera, Italy", 	"Ossona, Italy", 	"Ozzero, Italy", 	"Paderno Dugnano, Italy", 	"Pantigliate, Italy", 	"Parabiago, Italy", 	"Paullo, Italy", 	"Pero, Italy", 	"Peschiera Borromeo, Italy", 	"Pessano con Bornago, Italy", 	"Pieve Emanuele, Italy", 	"Pioltello, Italy", 	"Pogliano Milanese, Italy", 	"Pozzo d'Adda, Italy", 	"Pozzuolo Martesana, Italy", 	"Pregnana Milanese, Italy", 	"Rescaldina, Italy", 	"Rho, Italy", 	"Robecchetto con Induno, Italy", 	"Robecco sul Naviglio, Italy", 	"Rodano, Italy", 	"Rosate, Italy", 	"Rozzano, Italy", 	"San Colombano al Lambro, Italy", 	"San Donato Milanese, Italy", 	"San Giorgio su Legnano, Italy", 	"San Giuliano Milanese, Italy", 	"Santo Stefano Ticino, Italy", 	"San Vittore Olona, Italy", 	"San Zenone al Lambro, Italy", 	"Sedriano, Italy", 	"Segrate, Italy", 	"Senago, Italy", 	"Sesto San Giovanni, Italy", 	"Settala, Italy", 	"Settimo Milanese, Italy", 	"Solaro, Italy", 	"Trezzano Rosa, Italy", 	"Trezzano sul Naviglio, Italy", 	"Trezzo sull'Adda, Italy", 	"Tribiano, Italy", 	"Truccazzano, Italy", 	"Turbigo, Italy", 	"Vanzaghello, Italy", 	"Vanzago, Italy", 	"Vaprio d'Adda, Italy", 	"Vermezzo, Italy", 	"Vernate, Italy", 	"Vignate, Italy", 	"Villa Cortese, Italy", 	"Vimodrone, Italy", 	"Vittuone, Italy", 	"Vizzolo Predabissi, Italy", 	"Zelo Surrigone, Italy", 	"Zibido San Giacomo, Italy"]
 
-tags = %w[help covid-19 chores housework medical other]
+tags = %w[chores cleaning gardening repairs technology shopping medical moving advice covid-19]
+
+latitudes = [45.4642, 45.442, 45.4374, 45.4426, 45.4634, 44.998, 45.4669, 45.4532, 45.4402, 43.4676, 45.4587, 45.477, 45.89]
+longitudes = [9.1834, 9.1865, 9.1856, 9.19183, 9.19765, 9.18023, 9.18034, 9.19245, 9.2013, 9.1845, 9.1745, 9.1877, 9.1988]
 
 categories = [
   {
-    tags: %w[chores help home covid-19 other], # pick some tags from the array above, the first one will be used for the picture!
+    tags: %w[chores cleaning gardening repairs technology shopping medical moving advice covid-19], # pick some tags from the array above, the first one will be used for the picture!
     titles: ["Home Repair and Maintenance", "Household Fixes", "Seeking Help", "Assist Elderly People", "Fix the Building Elevator", "Seeking Babysitter", "Nanny Wanted", "Help Fix My Busted-up Roof", "Fix My Taxi", "Repair my bicycle", "Fix the Bathroom", "Repair the Entrance Door", "Take Care of the Garden"],
-    descriptions: ["I need help to fix it, and the members of my family don't have any experience with it. I would prefer someone who has handyman experience. Thank you.", "I've been living the last 2 months at home with this problem. Please apply if you have experience and want to help me out. Professionals preferred. Happy to negotiate the payment.", "Need help ASAP. My family are currently in a very diffult situation, any kind of help would be highly appreciared. We live just 10 minutes outside the city center."]
+    descriptions: ["I need help to fix it, and the members of my family don't have any experience with it. I would prefer someone who has handyman experience. Thank you.", "I've been living the last 2 months at home with this problem. Please apply if you have experience and want to help me out. Professionals preferred. Happy to negotiate the payment.", "Need help ASAP. My family are currently in a very difficult situation, any kind of help would be highly appreciated. We live just 10 minutes outside the city center."]
   },
   {
-    tags: %w[housework help covid-19 medical other],
-    titles: ["Shopping For My Grandparents", "Grocery Shopping", "Family Grocery Shopping", "My Daughter Needs Medicines", "Masks For My Family", "Transport My Grandmother", "Bring Kids to School", "Bring My Uncle to the Hospital", "Assistance to Go to the Supermarket"],
+    tags: %w[chores cleaning gardening repairs technology shopping medical moving advic covid-19],
+    titles: ["Shopping For My Grandparents", "Grocery Shopping", "Family Grocery Shopping", "My Daughter Needs Medicine", "Masks For My Family", "Transport My Grandmother", "Bring Kids to School", "Bring My Uncle to the Hospital", "Assistance to Go to the Supermarket"],
     descriptions: ["I urgently need this service weekly. I'm happy to pay an extra if necessary. Please contact me privately or apply here.", "All my family is under quarantine and we need someone to take care of this. Please apply here if you are willing to help.", "Bi-weekly for the next month, or until the situation will improve. No one in my family is currently able to do this independently."]
   }
 ]
@@ -90,7 +93,9 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
         title: title,
         description: task_category[:descriptions].sample,
         location: task_creator.address,
-        creator: task_creator
+        creator: task_creator,
+        latitude: latitudes.sample,
+        longitude: longitudes.sample
         # status is "pending" by default, check the schema!
       )
 
