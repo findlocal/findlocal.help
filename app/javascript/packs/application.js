@@ -35,6 +35,11 @@ document.addEventListener("turbolinks:load", () => {
   autocompleteSearchNew()
 })
 
+import { initMapbox } from '../packs/map.js';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
 //const algoliaPlaces = function() {
 //const for_input = document.querySelector('#task_location')
 // var places = require('places.js');
