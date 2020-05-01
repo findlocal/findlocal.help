@@ -8,7 +8,7 @@ gem "rails", "~> 6.0.2", ">= 6.0.2.2"
 gem "pg", ">= 0.18", "< 2.0" # postgresql as database
 gem "puma", "~> 4.1" # app server
 gem "sass-rails", ">= 6" # scss instead of css
-gem "webpacker", "~> 4.0" # webpack for js
+gem "webpacker", "~> 3.5.5" # webpack for js
 gem "turbolinks", "~> 5" # make navigation faster
 gem "jbuilder", "~> 2.7" # build an api and render json
 gem "redis", "~> 4.0" # run action cable
@@ -24,6 +24,7 @@ gem "money-rails"
 gem "stripe"
 gem "stripe_event"
 gem "algolia_places"
+gem 'mapbox-gl-rails'
 
 # Frontend
 gem "autoprefixer-rails" # adds -webkit- and similar prefixes to css rules

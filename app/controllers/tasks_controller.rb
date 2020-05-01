@@ -4,6 +4,10 @@ class TasksController < ApplicationController
 
   def index
     @tasks = filtered_tasks
+    @markers = []
+    @tasks.each do |task|
+    @markers << {lat: task.latitude, lng: task.longitude}
+  end
     return if params[:search].blank?
 
     filter_tasks_by_search_params(params[:search])

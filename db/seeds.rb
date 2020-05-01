@@ -93,9 +93,9 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
         title: title,
         description: task_category[:descriptions].sample,
         location: task_creator.address,
-        creator: task_creator,
-        latitude: latitudes.sample,
-        longitude: longitudes.sample
+        creator: task_creator
+        latitude: Faker::Address.latitude(),
+        longitude: Faker::Address.longitude()
         # status is "pending" by default, check the schema!
       )
 
