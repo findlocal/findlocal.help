@@ -3,13 +3,13 @@
     <h1 class="city-title">Available tasks</h1>
   </header>
   <div id="content">
-    <div class="cards"> 
     <% if @tasks.empty? %>
-        <div>
+        </div>
           <p class="my-2">Can't find any task with the specified options</p>
           <%= link_to "Search again", root_path, class: "btn btn-primary mr-3" %>
           <%= link_to "See all tasks", tasks_path, class: "btn btn-success" %>
         </div>
+        <div class="cards"> 
       <% else %>
         <% @tasks.each do |task| %>
           <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
@@ -17,12 +17,9 @@
           </div>
         <% end %>
       <% end %>
-    </div>
-    <div id="map" class ="index-map" 
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-     </div></div>
-  </div>
+            <div id="map" class ="index-map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
+   </div>
 </section>
 
 
