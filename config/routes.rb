@@ -8,10 +8,11 @@ Rails.application.routes.draw do
 
   resources :tasks, except: [:show] do
     # Everything below is related to a specific task 👇
-    resources :helps, only: [:create, :update, :destroy] do
-    end
+    resources :helps, only: [:create, :update, :destroy]
+    resources :reviews, only: [:new, :create]
+
     patch "/assign/:helper_id", to: "tasks#assign", as: :assign
-     end
+  end
 
   resources :payments, only: [:show]
 
