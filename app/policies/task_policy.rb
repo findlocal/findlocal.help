@@ -20,7 +20,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def edit?
-    record.creator == user
+    record.creator == user && record.status == "pending"
   end
 
   def update?
