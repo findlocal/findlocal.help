@@ -35,6 +35,10 @@ class TaskPolicy < ApplicationPolicy
     record.creator == user && record.status == "pending"
   end
 
+  def complete?
+    record.creator == user && record.status == "in progress"
+  end
+
   def dashboard?
     user
   end

@@ -29,11 +29,17 @@
         <button type="button" class="btn btn-outline-secondary btn-sm w-100 mt-3" data-toggle="modal" data-target="#applicationModal<%= task.id %>">
           Applications <span class="badge badge-dark"><%= task.helps.count %></span>
         </button>
-      <% else %>
+      <% elsif task.status != "completed" %>
         <div class="d-flex align-items-center">
           <h5 class=" ml-2"><%= link_to task.helper.first_name, user_path(task.helper) %> is your helper!</h5>
         </div>
-        <%= link_to "Mark as done", new_task_review_path(task), class: "btn btn-success btn-sm w-100 mt-2" %>
+        <%= link_to "Mark as done", task_complete_path(task), class: "btn btn-success btn-sm w-100 mt-2", data: { confirm: "Are you sure?"}, method: :patch %>
+        <%# TODO: Make this path lead to creating a review %>
+        <%# <%= link_to "Mark as done", new_task_review_path(task), class: "btn btn-success btn-sm w-100 mt-2" %>
+      <% else %>
+        <div class="d-flex align-items-center">
+          <h5 class=" ml-2"><%= link_to task.helper.first_name, user_path(task.helper) %> was your helper!</h5>
+        </div>
       <% end %>
     <% end %>
   </div>

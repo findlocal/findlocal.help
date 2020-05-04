@@ -7,15 +7,14 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
+  # def initialize(user, record)
+  #   @user = user
+  #   @record = record
+  # end
 
   def show?
-    user 
+    true
   end
-
 
   def edit?
     record.creator == user

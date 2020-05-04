@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
+    authorize @user
 
     @completed = Task.where(helper: @user).where(status: "completed").count
     @in_progress = Task.where(helper: @user).where(status: "in progress").count
