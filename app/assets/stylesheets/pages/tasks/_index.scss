@@ -1,3 +1,7 @@
+.task-content {
+  display: flex;
+  padding: 16px
+}
 .tasks-index {
   margin-top: 100px;
   background-image: $white;
@@ -5,17 +9,78 @@
   padding: 70px;
 }
 
-.city-title {
-  font-size: 64px;
+.tasks-index-map {
+  width: 418px;
+  height: 75vh;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 4px;
+  position: sticky;
+  margin-top: 20px;
+  top: 0;
+  }
+
+.tasks-index-cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;  
 }
 
-.index-map {
-  position: absolute;
-  width: 418px;
-  height: 634px;
-  left: 912px;
-  top: 239px;
-  border: 1px solid #C4C4C4;
-  box-sizing: border-box;
-  border-radius: 8px;
+@media (min-width: 100px) and (max-width: 575px) {
+  .tasks-index-cards {
+    grid-template-columns: 1fr;
+  }
+  #map {
+    display: block;
+    position: sticky;
+
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .tasks-index-cards {
+    grid-template-columns: 1fr;
+  }
+  #map {
+    display: block;
+    position: sticky;
+
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .tasks-index-cards {
+    grid-template-columns: 1fr;
+  }
+  #map {
+    display: block;
+    position: sticky;
+
+  }
+}
+
+/*Large devices (992px and up)*/
+@media (min-width: 992px) {
+  .tasks-index-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  #map {
+    display: block;
+    position: sticky;
+  }
+}
+
+/*XLarge devices (1200px and up)*/
+@media (min-width: 1200px) {
+  .tasks-index-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  #map {
+    display: block;
+    position: sticky;
+  }
 }

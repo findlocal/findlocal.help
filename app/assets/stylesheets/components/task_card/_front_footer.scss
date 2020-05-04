@@ -1,9 +1,11 @@
 .user-details {
   position: absolute;
-  margin-top: 10px;
   text-align: right;
+  margin-top: 20px;
+  margin-left: 10px;
+  bottom: 20px;
   right: 30%;
-  bottom: 8%;
+  justify-content: left;
 
   h2 {
     font-size: 16px;
@@ -14,7 +16,8 @@
   h3 {
     font-size: 14px;
     color: $gray-dark;
-    overflow-wrap: break-word;
+    overflow: hidden;
+    max-height: 36px;
   }
 }
 
@@ -23,4 +26,24 @@
   right: 16px;
   bottom: 20px;
   width: 70px;
+}
+
+@media (min-width: 576px) {
+  .user-details {
+    right: 40%;
+
+   
+  
+    h2 {
+      
+      overflow-wrap: break-word;
+      overflow: hidden;
+      max-width: 150px;
+    }
+  
+    h3 {
+      overflow: hidden;
+      max-width: 150px;
+    }
+  }
 }
