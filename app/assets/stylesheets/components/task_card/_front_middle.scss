@@ -1,4 +1,4 @@
-.description {
+.description-front {
   margin-top: -30px;
   text-align: center;
 
@@ -16,7 +16,10 @@
   }
 }
 
-.tag {
-  margin-top: 20px;
-  font-size: 14px;
+.tags {
+  margin: 8px;
+  font-size: 16px;
+  overflow: hidden;
+  max-height: 36px;
 }
+
