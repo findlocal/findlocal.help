@@ -15,8 +15,8 @@ locations = ["Lombardy, Italy", 	"Turin, Italy", 	"Genoa, Italy", 	"Bologna, Ita
 
 tags = %w[chores cleaning gardening repairs technology shopping medical moving advice covid-19]
 
-latitudes = [45.4642, 45.442, 45.4374, 45.4426, 45.4634, 44.998, 45.4669, 45.4532, 45.4402, 43.4676, 45.4587, 45.477, 45.89, 47.34, 47.94, 45.65, 46.334]
-longitudes = [9.1834, 9.1865, 9.1856, 9.19183, 9.19765, 9.18023, 9.18034, 9.19245, 9.2013, 9.1845, 9.1745, 9.1877, 9.1988, 9.33, 9.202, 9.43, 9.1504]
+latitudes = [45.4642, 45.442, 45.4374, 45.4426, 45.4634, 44.998, 45.4669, 45.4532, 45.4402, 45.4587, 45.477, 45.89, 45.34, 45.94, 45.65, 45.334]
+longitudes = [9.1834, 9.1865, 9.1856, 9.19183, 9.19765, 9.18023, 9.18034, 8.64, 8.76, 9.19245, 9.2013, 9.1845, 9.1745, 9.1877, 9.1988, 9.33, 9.202, 9.43, 9.1504, 10.11, 11.32, 8.99]
 
 categories = [
   {
@@ -94,8 +94,8 @@ Whirly.start(spinner: "dots", status: "Destroying all records", stop: Paint["Don
         description: task_category[:descriptions].sample,
         location: task_creator.address,
         creator: task_creator,
-        latitude: Faker::Address.latitude(),
-        longitude: Faker::Address.longitude()
+        latitude: latitudes.sample,
+        longitude: longitudes.sample
         # status is "pending" by default, check the schema!
       )
 
