@@ -28,6 +28,17 @@
   padding: 16px;  
 }
 
+.marker {
+  background-image: url('logo.png');
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border-color: solid;
+  border-color: #28B485;
+}
+
 @media (min-width: 100px) and (max-width: 575px) {
   .tasks-index-cards {
     grid-template-columns: 1fr;

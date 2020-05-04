@@ -4,13 +4,17 @@ const buildMap = () => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9'
+    style: 'mapbox://styles/mapbox/streets-v11',
+    zoom: 24
   });
 };
 
 const addMarkersToMap = (map, markers) => {
+
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+  var el = document.createElement('div');
+  el.className = 'marker';
+    new mapboxgl.Marker(el)
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
   });
