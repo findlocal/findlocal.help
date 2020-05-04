@@ -11,7 +11,7 @@ class PaymentPolicy < ApplicationPolicy
 
   def oauth?
     # TODO: can this be secured further?
-    user && user.stripe_account.nil?
+    user && user.stripe_account.blank?
     # signed in and doesn't already have an account
   end
 end

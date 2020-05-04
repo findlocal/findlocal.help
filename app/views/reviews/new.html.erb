@@ -1,2 +1,18 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<section class="new-review">
+  <div class="container">
+    <h1>Write a review!</h1>
+    <h5 class="mb-4">Before marking this task as done, let <%= @task.helper.first_name %> know how they did.</h5>
+    <%# REVIEW DONE BY CREATOR FOR HELPER %>
+    <%= simple_form_for [@task, @review] do |f| %>
+      <%= f.simple_fields_for @public_review do |p| %>
+        <h4>Public Review </h4>
+        <%= p.input :content, label: false, as: :text, required: true, placeholder: "Give a review for #{@task.helper.first_name}! This will be publicly shown on their profile." %>
+      <% end %>
+      <%= f.simple_fields_for @private_review do |p| %>
+        <h4>Private Review</h4>
+        <%= p.input :content, label: false, as: :text, required: true, placeholder: "Leave some private feedback for #{@task.helper.first_name}. This will be only visible to them." %>
+      <% end %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</section>

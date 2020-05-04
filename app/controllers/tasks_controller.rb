@@ -55,7 +55,7 @@ class TasksController < ApplicationController
 
     authorize @task
 
-    if @help.user.stripe_account.nil?
+    if @help.user.stripe_account.blank?
       # This error shouldn't ever go off, since you can't apply until you have a stripe account
       flash[:error] = "This user does not have a method of receiving payments"
       redirect_to dashboard_path
@@ -118,7 +118,7 @@ class TasksController < ApplicationController
   def filtered_tasks
     policy_scope(Task)
       .where(status: "pending")
-      # Gabriele, I am removing this because users should be able to see their tasks on the dashboard as well - in Airbnb you can see your own posting. 
+      # Gabriele, I am removing this because users should be able to see their tasks on the dashboard as well - in Airbnb you can see your own posting.
       # .where.not(creator: current_user)
       .order(:created_at)
   end
@@ -126,13 +126,13 @@ class TasksController < ApplicationController
   def filter_tasks_by_search_params(params)
     location = params[:location]
     task_tags = params[:task_tags]
-    if task_tags.nil? || task_tags == ""
-     @tasks = @tasks.where("location ILIKE ?", "%#{location}%") 
-   else
-    @tasks = @tasks.joins(:tags).where(tags: { name: task_tags }).where("location ILIKE ?", "%#{location}%") 
-  end
+    @tasks = if task_tags.nil? || task_tags == ""
+               @tasks.where("location ILIKE ?", "%#{location}%")
+             else
+               @tasks.joins(:tags).where(tags: { name: task_tags }).where("location ILIKE ?", "%#{location}%")
+           end
     # due_date = params[:due_date].present? && Date.parse(params[:due_date])
-     
+
     # @tasks = @tasks.where("due_date < ?", due_date) if due_date
   end
 
