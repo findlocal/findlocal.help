@@ -6,7 +6,7 @@
     </div>
     <div id="tags-search">
       <h5 class="float-left mt-2"><strong>Tags</strong></h5>
-      <%= f.input :task_tags, label: false, class: "form-control", collection: @task_tags, input_html: {:multiple => true}, as: :select, value_method: :name %>
+      <%= f.input :task_tags, label: false, class: "form-control", collection: @task_tags, input_html: {:multiple => false}, as: :select, value_method: :name %>
     </div>
     <div class="form-actions">
       <%= f.submit "Search", class: "btn-gradient mt-3"%>
