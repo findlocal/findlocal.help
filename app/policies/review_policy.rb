@@ -7,10 +7,10 @@ class ReviewPolicy < ApplicationPolicy
 
   def new?
     # Add more
-    user
+    # user
   end
 
   def create?
-    new?
+    # new?
   end
 end

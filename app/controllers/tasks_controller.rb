@@ -99,6 +99,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete
+    # Right now this runs directly after the "mark as done" button is pressed, later we should make it run after a review is made
+    @task = Task.find(params[:task_id])
+    authorize @task
+
+    if @task.update(status: "completed")
+      flash[:success] = "#{@task.title} complete!"
+
+    else
+      flash[:error] = "There was an error in marking #{@task.title} as complete."
+
+    end
+    redirect_to dashboard_path
+  end
+
   def dashboard
     # No need to send any task, we can retrieve them from current_user
     authorize Task # if you don't have any instance, call `authorize` on the model

@@ -7,11 +7,13 @@
         <p class="ml-3">You haven't created any tasks yet.</p>
       <% else %>
         <% current_user.created_tasks.each do |task| %>
-          <div class="col-sm-12 col-md-6 col-lg-4 h-100">
-            <%= render "shared/task_card_small", task: task, card_type: "creator" %>
-          </div>
-          <%= render 'shared/task_modal', task: task %>
-          <%= render 'shared/helps_modal', task: task %>
+          <% if task.status != "completed" %>
+            <div class="col-sm-12 col-md-6 col-lg-4 h-100">
+              <%= render "shared/task_card_small", task: task, card_type: "creator" %>
+            </div>
+            <%= render 'shared/task_modal', task: task %>
+            <%= render 'shared/helps_modal', task: task %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -42,5 +44,16 @@
         <% end %>
       <% end %>
     </div>
+    <% unless current_user.created_tasks.where(status: "completed").count == 0 %>
+      <h4>Completed Tasks</h4>
+      <div class="row">
+        <% current_user.created_tasks.where(status: "completed").each do |task| %>
+          <div class="col-sm-12 col-md-6 col-lg-4 h-100">
+            <%= render "shared/task_card_small", task: task, card_type: "creator" %>
+            <%= render "shared/task_modal", task: task %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </section>
