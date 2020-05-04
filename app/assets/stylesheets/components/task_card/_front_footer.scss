@@ -26,21 +26,19 @@
   right: 16px;
   bottom: 20px;
   width: 70px;
+  height: 70px;
 }
 
 @media (min-width: 576px) {
   .user-details {
     right: 40%;
 
-   
-  
     h2 {
-      
       overflow-wrap: break-word;
       overflow: hidden;
       max-width: 150px;
     }
-  
+
     h3 {
       overflow: hidden;
       max-width: 150px;
