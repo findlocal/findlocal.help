@@ -31,10 +31,9 @@
         </button>
       <% else %>
         <div class="d-flex align-items-center">
-          <h5 class=" ml-2"><%= task.helper.first_name %> is your helper!</h5>
+          <h5 class=" ml-2"><%= link_to task.helper.first_name, user_path(task.helper) %> is your helper!</h5>
         </div>
-        <%# TODO: Make a new route to handle the completion of a task %>
-        <%= link_to "Mark as done", edit_task_path(task), class: "btn btn-success btn-sm w-100 mt-2 disabled" %>
+        <%= link_to "Mark as done", new_task_review_path(task), class: "btn btn-success btn-sm w-100 mt-2" %>
       <% end %>
     <% end %>
   </div>
