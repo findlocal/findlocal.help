@@ -1,9 +1,7 @@
 .banner-home {
   min-height: 100vh;
-  background: linear-gradient(
-              rgba(40,180,131,0.6),
-              rgba(40,180,131,0.6)),
-              asset_url("banner-home.png");
+  background: linear-gradient(rgba(40, 180, 131, 0.6), rgba(40, 180, 131, 0.6)),
+    asset_url("banner-home.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -55,8 +53,8 @@
 }
 
 .banner-home-search {
-  background-color: rgba(255,255,255,0.9);
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding: 32px 24px;
   width: 30%;
