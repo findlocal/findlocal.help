@@ -18,7 +18,6 @@ class Task < ApplicationRecord
   # Geolocation
   geocoded_by :location
   reverse_geocoded_by :latitude, :longitude, address: :location
-  after_validation :reverse_geocode
 
   def mark_as_in_progress!
     update!(status: "in progress") if status == "pending" && helper.present?
