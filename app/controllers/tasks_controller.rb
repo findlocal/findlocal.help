@@ -10,8 +10,11 @@ class TasksController < ApplicationController
   end
     return if params[:search].blank?
 
-    filter_tasks_by_search_params(params[:search])
+    @markers = []
+    filter_tasks_by_search_params(params[:search]).each do |task|
+    @markers << {lat: task.latitude, lng: task.longitude}
   end
+end
 
   def new
     @task = Task.new
