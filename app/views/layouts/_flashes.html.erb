@@ -2,7 +2,7 @@
 <section class="alerts">
   <% flash.each do |type, msg| %>
     <div
-        class="alert alert-success alert-dismissible<%= type =~ /^(alert)|(notice)$/ ? 'info' : type == 'error' ? 'danger' : type %> alert-dismissible fade show mb-0"
+        class="alert alert-warning alert-dismissible<%= type =~ /^(alert)|(notice)$/ ? 'info' : type == 'error' ? 'danger' : type %> alert-dismissible fade show mb-0"
         role="alert">
       <%= msg %>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
