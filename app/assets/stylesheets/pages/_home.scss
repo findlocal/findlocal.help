@@ -19,10 +19,14 @@
 }
 
 .home-card {
-  border: 2px solid $primary;
+  border: 1px solid $primary;
   border-radius: 4px;
   margin: 3rem 0;
   transition: 300ms;
+
+  .card-header {
+    background: $primary;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -30,7 +34,6 @@
 
   h5 {
     color: $white;
-    background-color: $primary;
     padding: 16px;
     text-transform: uppercase;
     text-align: center;
@@ -44,6 +47,6 @@
   }
 }
 
-#home-card-image {
-  width: 100%;
-}
+// #home-card-image {
+//   width: 100%;
+// }

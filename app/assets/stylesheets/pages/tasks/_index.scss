@@ -1,6 +1,6 @@
 .task-content {
   display: flex;
-  padding: 16px
+  padding: 16px;
 }
 .tasks-index {
   margin-top: 100px;
@@ -10,7 +10,7 @@
 }
 
 .tasks-index-map {
-  width: 418px;
+  width: 40vw;
   height: 75vh;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
@@ -18,14 +18,14 @@
   position: sticky;
   margin-top: 20px;
   top: 0;
-  }
+}
 
 .tasks-index-cards {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  padding: 16px;  
+  padding: 16px;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -35,7 +35,6 @@
   #map {
     display: block;
     position: sticky;
-
   }
 }
 
@@ -47,7 +46,6 @@
   #map {
     display: block;
     position: sticky;
-
   }
 }
 
@@ -59,7 +57,6 @@
   #map {
     display: block;
     position: sticky;
-
   }
 }
 
@@ -77,7 +74,7 @@
 /*XLarge devices (1200px and up)*/
 @media (min-width: 1200px) {
   .tasks-index-cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   #map {
     display: block;

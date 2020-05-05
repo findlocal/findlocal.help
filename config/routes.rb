@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :users
   # , only: [:show, :index]
 
-  resources :tasks, except: [:show] do
+  # resources :tasks, except: [:show] do
+    resources :tasks do
     # Everything below is related to a specific task 👇
     resources :helps, only: [:create, :update, :destroy]
     # resources :reviews

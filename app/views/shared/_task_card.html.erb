@@ -40,6 +40,7 @@
       <p><%= task.description.truncate(80, separator: /\s/) %></p>
     </div>
 
-    <%= button_tag "See details", class: "button", "data-toggle": "modal", "data-target": "#taskModal#{task.id}" %>
+    <h6 class="button text-center"><%=link_to("See details", task_path(task.id))%></h6>
+    <%# <%= button_tag "See details", class: "button", "data-toggle": "modal", "data-target": "#taskModal#{task.id}" %> %>
   </div>
 </div>

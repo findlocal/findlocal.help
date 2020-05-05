@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_and_authorize_task, only: [:edit, :update, :destroy]
 
   def index
@@ -11,6 +11,12 @@ class TasksController < ApplicationController
     return if params[:search].blank?
 
     filter_tasks_by_search_params(params[:search])
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    @tasks = Task.all
+    authorize @task
   end
 
   def new
@@ -122,6 +128,9 @@ class TasksController < ApplicationController
     # No need to send any task, we can retrieve them from current_user
     authorize Task # if you don't have any instance, call `authorize` on the model
   end
+
+
+
 
   private
 

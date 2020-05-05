@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_and_authorize_task, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show]
+  before_action :set_and_authorize_task, only: [:show]
 
   def index
     @users = User.all
