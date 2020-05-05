@@ -10,6 +10,10 @@ class TaskPolicy < ApplicationPolicy
   # Inside a policy method, I have access just to 2 variables:
   # 1. user -> current_user
   # 2. record -> the current record (@task)
+  
+  def show?
+    true
+  end
 
   def new?
     user # => return something truthy. `user` (`current_user`) mean that the user is logged in
