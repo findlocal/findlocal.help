@@ -29,7 +29,7 @@
 }
 
 .marker {
-  background-image: url("https://files.slack.com/files-pri/T02NE0241-F0138J6L7M2/map-index_marker.png");
+  background-image: asset_url("Map-index-marker.png");
   background-size: cover;
   width: 30px;
   height: 30px;
@@ -43,7 +43,7 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
