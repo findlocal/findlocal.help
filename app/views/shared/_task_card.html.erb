@@ -3,44 +3,36 @@
     <header>
       <div class="white-box">
         <h2>Help <%= task.creator.first_name %>
+        </div>
+      </header>
+      <div class="separator"></div>
+      <div class="description-front">
+        <h2><%= task.title %></h2>
+        <p>Posted <%= distance_of_time_in_words(task.created_at, Time.zone.now) %> ago</p>
+        <div class="tags">
+          <% task.tags.max(3).each do |tag| %>
+            <p class="tag shadow-sm">#<%= tag.name.truncate(10, separator: /\s/) %></p>
+          <% end %>
+        </div>
       </div>
-    </header>
-
-    <div class="separator"></div>
-
-    <div class="description-front">
-      <h2><%= task.title %></h2>
-      <p>Posted <%= distance_of_time_in_words(task.created_at, Time.zone.now) %> ago</p>
-
-      <div class="tags">
-        <% task.tags.max(3).each do |tag| %>
-          <p class="tag shadow-sm">#<%= tag.name.truncate(10, separator: /\s/) %></p>
-        <% end %>
+      <div class="user-details">
+        <h2><%= task.creator.shortname %></h2>
+        <h3><%= task.location %></h3>
       </div>
+      <% if task.creator.avatar.attached? %>
+        <%= cl_image_tag task.creator.avatar.key, class: "avatar user-avatar" %>
+      <% else %>
+        <%= image_tag "avatar-placeholder.png", class: "avatar user-avatar" %>
+      <% end %>
     </div>
-
-    <div class="user-details">
-      <h2><%= task.creator.shortname %></h2>
-      <h3><%= task.location %></h3>
+    <div class="task-card__side task-card__side--back">
+      <div class="title">
+        <%= task.title %>
+      </div>
+      <div class="description">
+        <p><%= task.description.truncate(80, separator: /\s/) %></p>
+      </div>
+      <h6 class="button text-center"><%=link_to("See details", task_path(task.id))%></h6>
+      <%# <%= button_tag "See details", class: "button", "data-toggle": "modal", "data-target": "#taskModal#{task.id}" %>
     </div>
-
-    <% if task.creator.avatar.attached? %>
-      <%= cl_image_tag task.creator.avatar.key, class: "avatar user-avatar" %>
-    <% else %>
-      <%= image_tag "avatar-placeholder.png", class: "avatar user-avatar" %>
-    <% end %>
   </div>
-
-  <div class="task-card__side task-card__side--back">
-    <div class="title">
-      <%= task.title %>
-    </div>
-
-    <div class="description">
-      <p><%= task.description.truncate(80, separator: /\s/) %></p>
-    </div>
-
-    <h6 class="button text-center"><%=link_to("See details", task_path(task.id))%></h6>
-    <%# <%= button_tag "See details", class: "button", "data-toggle": "modal", "data-target": "#taskModal#{task.id}" %> %>
-  </div>
-</div>
