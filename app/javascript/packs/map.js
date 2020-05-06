@@ -4,14 +4,25 @@ const buildMap = () => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9'
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [9.194691, 45.471711],
+    zoom: 22
   });
 };
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+  const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+  const element = document.createElement('div');
+  element.className = 'marker';
+  element.style.backgroundSize = 'contain';
+  element.style.width = '25px';
+  element.style.height = '25px';
+ 
+    new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
       .addTo(map);
   });
 };

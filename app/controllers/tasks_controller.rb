@@ -4,14 +4,28 @@ class TasksController < ApplicationController
 
   def index
     @tasks = filtered_tasks
+   if params[:search].blank? 
     @markers = []
     @tasks.each do |task|
-    @markers << {lat: task.latitude, lng: task.longitude}
+    @markers << {lat: task.latitude, 
+      lng: task.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { task: task })
+    }
   end
-    return if params[:search].blank?
+    elsif params[:search].blank? == false
 
-    filter_tasks_by_search_params(params[:search])
+    @markers = []
+    filter_tasks_by_search_params(params[:search]).each do |task| 
+
+     @markers << {
+    
+    lat: task.latitude, 
+    lng: task.longitude,
+    infoWindow: render_to_string(partial: "info_window", locals: { task: task })
+    }
+    end 
   end
+end
 
   def show
     @task = Task.find(params[:id])

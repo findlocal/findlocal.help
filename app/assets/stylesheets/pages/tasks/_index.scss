@@ -28,6 +28,24 @@
   padding: 16px;
 }
 
+.marker {
+  background-image: url("https://files.slack.com/files-pri/T02NE0241-F0138J6L7M2/map-index_marker.png");
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 40%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
 @media (min-width: 100px) and (max-width: 575px) {
   .tasks-index-cards {
     grid-template-columns: 1fr;

@@ -1,8 +1,7 @@
 import "js-autocomplete/auto-complete.css"
 import autocomplete from "js-autocomplete"
 const autocompleteSearchNew = function () {
-  const s = document.getElementById("search-data_new")
-  // console.log(s)
+  const s = document.getElementById("search-data-new")
   const skills = JSON.parse(
     document.getElementById("search-data-new").dataset.skills
   )

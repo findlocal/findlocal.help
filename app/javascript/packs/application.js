@@ -22,23 +22,21 @@ import {
 import { autocompleteSearch } from "../components/autocomplete.js"
 import { autocompleteSearchNew } from "../components/autocomplete2.js"
 import { algoliaPlaces } from "../components/algoliaplaces.js"
+import { initMapbox } from '../packs/map.js'
 
 document.addEventListener("turbolinks:load", () => {
   // Call all the custom functions here or they won't load correctly:
-
+const mapElement = document.getElementById('map');
+if (mapElement) {
+  initMapbox()
+}
   initDatepicker()
   initTooltips()
   updateNavbarOnScroll()
   updateNavbarWhiteOnScroll()
   algoliaPlaces()
-  autocompleteSearch()
+  // autocompleteSearch()
   autocompleteSearchNew()
-})
-
-import { initMapbox } from '../packs/map.js';
-
-document.addEventListener('turbolinks:load', () => {
-  initMapbox();
 })
 //const algoliaPlaces = function() {
 //const for_input = document.querySelector('#task_location')
