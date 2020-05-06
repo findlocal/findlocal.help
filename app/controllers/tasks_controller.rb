@@ -4,27 +4,25 @@ class TasksController < ApplicationController
 
   def index
     @tasks = filtered_tasks
-   if params[:search].blank? 
-    @markers = []
-    @tasks.each do |task|
-    @markers << {lat: task.latitude, 
-      lng: task.longitude,
-      infoWindow: render_to_string(partial: "info_window", locals: { task: task })
-    }
-  end
+    if params[:search].blank?
+      @markers = []
+      @tasks.each do |task|
+        @markers << { lat: task.latitude,
+                      lng: task.longitude,
+                      infoWindow: render_to_string(partial: "info_window", locals: { task: task }) }
+      end
     elsif params[:search].blank? == false
 
-    @markers = []
-    filter_tasks_by_search_params(params[:search]).each do |task| 
+      @markers = []
+      filter_tasks_by_search_params(params[:search]).each do |task|
+        @markers << {
 
-     @markers << {
-    
-    lat: task.latitude, 
-    lng: task.longitude,
-    infoWindow: render_to_string(partial: "info_window", locals: { task: task })
-    }
-    end 
-  end
+          lat: task.latitude,
+          lng: task.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { task: task })
+        }
+      end
+   end
 end
 
   def show
@@ -94,7 +92,7 @@ end
           customer_email: current_user.email,
           line_items: [{
             name: "Help from #{@help.user.first_name} #{@help.user.last_name} for #{@task.title}",
-            images: image,
+            # images: image,
             amount: @help.bid_cents,
             currency: "eur",
             quantity: 1
@@ -142,9 +140,6 @@ end
     # No need to send any task, we can retrieve them from current_user
     authorize Task # if you don't have any instance, call `authorize` on the model
   end
-
-
-
 
   private
 
