@@ -339,7 +339,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-driver (0.7.1-java)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     whirly (0.2.6)
       unicode-display_width (~> 1.1)
     zeitwerk (2.3.0)
