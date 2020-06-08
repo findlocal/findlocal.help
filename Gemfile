@@ -6,7 +6,7 @@ ruby "2.7.1"
 # Core
 gem "rails", "~> 6.0.2", ">= 6.0.2.2"
 gem "pg", ">= 0.18", "< 2.0" # postgresql as database
-gem "puma", "~> 4.1" # app server
+gem "puma", "~> 4.3" # app server
 gem "sass-rails", ">= 6" # scss instead of css
 gem "webpacker", "~> 3.5.5" # webpack for js
 gem "turbolinks", "~> 5" # make navigation faster
